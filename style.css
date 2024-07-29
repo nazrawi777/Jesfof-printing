@@ -69,6 +69,7 @@ Tags: consulting, finance, corporate, business, consultant, multipurpose, techno
     margin: auto;
     position: fixed !important;
     top: 0;
+    color: white !important;
     width: 100%;
     -webkit-box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.1);
@@ -900,11 +901,12 @@ nav.print_shop_menu {
 /*header button*/
 .header-button {
     margin-top: 7px;
-    display: inline-block;
+    display: flex;
+    width: auto;
+    width: 290px;
 }
 .header-button a {
     font-size: 16px;
-    padding: 13px 38px;
     font-weight: 500;
     border-radius: 4px;
     color: #fff;
