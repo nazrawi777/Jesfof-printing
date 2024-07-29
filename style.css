@@ -2532,7 +2532,7 @@ nav.print_shop_menu {
 }
 .shop-single-box:hover .shop-content {
     padding: 32px 0 28px;
-    margin-top: -55px;
+    margin-top: -20px;
 }
 .shop-single-box:hover .shop-card a {
     opacity: 1;
