@@ -211,11 +211,12 @@
 
 <div class="login-container">
     <h2>Login</h2>
-    <form action="login_action.php" method="POST">
+	<form id="loginForm">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
+    <a href="/Dashboard/index.html" class="link-below">Forgot Password?</a>
 </div>
 
 		
@@ -373,6 +374,16 @@
                     item.style.flex = "1"; //Contract the item
                 });
             }
+        });
+    </script>
+	<script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // You can add validation or authentication logic here if needed
+
+            // Redirect to the Dashboard page
+            window.location.href = '/Dashboard/index.html';
         });
     </script>
 </body>
