@@ -1346,7 +1346,7 @@ nav.print_shop_menu {
 .print_shop-section-title h5 {
     font-size: 15px;
     font-weight: 500;
-    color: #dd1d26;
+    color: #0095D9;
     margin: 0 0 19px;
     text-transform: uppercase;
     position: relative;
@@ -1359,7 +1359,7 @@ nav.print_shop_menu {
     top: -4px;
     width: 30px;
     height: 25px;
-    background: #dd1d26;
+    background: #0142A6;
     opacity: .2;
     border-radius: 3px;
     transition: .5s;
@@ -1427,7 +1427,7 @@ nav.print_shop_menu {
     line-height: 52px;
     border-radius: 100%;
     color: #fff;
-    background-image: linear-gradient(-86deg, #dd1d25 0%, #fb9737 100%);
+    background-image: linear-gradient(-86deg, #00d5d9 0%, #0142a6 100%);
     display: inline-block;
     text-align: center;
     -webkit-transition: .5s;
@@ -1514,7 +1514,7 @@ nav.print_shop_menu {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(-45deg, #dd1d25 0%, #fb9737 100%);
+    background-image: linear-gradient(-45deg,  #00d5d9 0%, #0142a6 100%);
     transform: scale(.2, 1);
     opacity: 0;
     transition: .5s;
@@ -1540,6 +1540,9 @@ nav.print_shop_menu {
 .service-icon {
     position: relative;
 }
+.service-icon img{
+filter: invert(13%) sepia(98%) saturate(4537%) hue-rotate(212deg) brightness(77%) contrast(99%) !important;
+}
 .service-icon:before {
     position: absolute;
     content: "";
@@ -1550,7 +1553,7 @@ nav.print_shop_menu {
     width: 51px;
     height: 51px;
     line-height: 51px;
-    background: #dd1d26;
+    background:  #00d5d9;
     border-radius: 50%;
     opacity: .102;
 }
@@ -1570,7 +1573,7 @@ nav.print_shop_menu {
 /*service button*/
 .service-button a {
     font-weight: 500;
-    color: #dd1d26;
+    color: #0142a6;
     margin: 4px 0 0;
     display: inline-block;
 }
@@ -1738,8 +1741,12 @@ nav.print_shop_menu {
 }
 /*about icon*/
 .about-icon {
-    float: left;
+  color: #00d5d9;
+  float: left;
     margin-right: 19px;
+}
+.about-icon img{
+  filter: invert(13%) sepia(98%) saturate(4537%) hue-rotate(212deg) brightness(77%) contrast(99%) !important;
 }
 /*about content*/
 .about-item-content {
@@ -1768,7 +1775,7 @@ nav.print_shop_menu {
     line-height: 25px;
     border-radius: 20px 0px 20px 20px;
     text-align: center;
-    background-image: linear-gradient(-86deg, #dd1d25 0%, #fb9737 100%);
+    background-image: linear-gradient(-86deg, #00d5d9 0%, #0142a6 100%);
     color: #fff;
     display: inline-block;
     margin-right: 11px;
@@ -2241,7 +2248,7 @@ nav.print_shop_menu {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(-45deg, #dd1d25 0%, #fb9737 100%);
+    background-image: linear-gradient(-45deg, #00d5d9 0%, #0142a6 100%);
     border-radius: 5px;
     transform: scale(1, .2);
     opacity: 0;
@@ -2268,7 +2275,7 @@ nav.print_shop_menu {
     font-size: 50px;
     font-weight: 500;
     display: inline-block;
-    background: linear-gradient( to right, #fb9737, 50%, #dd1d25 75%);
+    background: linear-gradient( to right, #00d5d9 50%, #0142a6 75%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     transition: .5s;
@@ -2302,10 +2309,10 @@ nav.print_shop_menu {
     padding: 12px 38px;
     font-weight: 500;
     color: #fff;
-    background-image: linear-gradient(-86deg, #dd1d25 0%, #fb9737 100%);
+    background-image: linear-gradient(-86deg, #00d5d9 0%, #0142a6 100%);
     display: inline-block;
     border-radius: 4px;
-    border: 1px solid #fb9737;
+    border: 1px solid lightblue;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -2326,7 +2333,7 @@ nav.print_shop_menu {
     padding-left: 6px;
 }
 .print-button a:hover {
-   color: #FF3B00; 
+   color: #005d00; 
 }
 .print-button a:hover:before {
     width: 100%;
@@ -2448,7 +2455,7 @@ nav.print_shop_menu {
 }
 .shop-title h6 {
     font-size: 16px;
-    color: #dd1d26;
+    color: #0095D9;
     font-weight: 400;
     padding: 5px 0 0;
     transition: .5s;
@@ -2480,7 +2487,7 @@ nav.print_shop_menu {
     border-radius: 30px;
     filter: drop-shadow(0px 10px 20px rgba(35,50,83,0.07));
     background-color: #fff;
-    color: #dd1d25;
+    color: #0095D9;
     transition: .5s;
     margin-right: 6px;
     position: relative;
@@ -2506,7 +2513,7 @@ nav.print_shop_menu {
     padding: 5px 30px;
     font-size: 14px;
     background: #fff;
-    color: #dd1d26;
+    color: #0095D9;
     border-radius: 4px;
     display: inline-block;
     position: absolute;
@@ -3811,8 +3818,8 @@ span.month {
     position: relative;
     z-index: 1;
     margin-bottom: 30px;
-    border-left: 1px dashed #F06F30;
-    border-right: 1px dashed #F06F30;
+    border-left: 1px dashed #0095d9;
+    border-right: 1px dashed #0095d9;
 }
 /*single blog thumb*/
 .single-blog-thumb {
@@ -3828,7 +3835,7 @@ span.month {
     bottom: 0;
     width: 100%;
     height: 0%;
-    background-image: linear-gradient(0deg, #dd1d25 0%, rgba(221,29,37,0.63) 40%, rgba(0,0,0,0) 100%);
+    background-image: linear-gradient(0deg, #00d5d9 0%, rgba(1, 66, 166, 0.63) 40%, rgba(0,0,0,0) 100%);
     transition: .5s;
 }
 .single-blog-thumb img {
@@ -3846,7 +3853,7 @@ span.month {
     margin-bottom: 0;
 }
 .post-categories p i {
-    color: #E02D28;
+    color: #0095D9;
     padding-right: 5px;
 }
 span.post {
@@ -3867,7 +3874,7 @@ span.post {
 
 /*blog all hover*/
 .single-blog-box:hover .blog-title h2 a {
-    color: #E02D28;
+    color: #0095d9;
 }
 
 
@@ -4040,7 +4047,7 @@ ul.footer-widget-list li:hover a {
 
 /*footer bottom area*/
 .row.footer-bottom-bg {
-    border-top: 1px solid #F88935;
+    border-top: 1px solid #00d5d9;
     margin: 75px 0 0;
     padding-top: 32px;
 }
@@ -4869,7 +4876,7 @@ button.icon {
     text-align: center;
     border-radius: 20px;
     display: inline-block;
-    border: 1px solid #F68134;
+    border: 1px solid #00d5d9;
     color: #666;
     font-size: 20px;
     position: relative;
@@ -5661,7 +5668,7 @@ button.icons {
     color: #fff;
     top: 3px;
     z-index: 1;
-    background: linear-gradient(-86deg, #dd1d25 0%, #fb9737 100%);
+    background: linear-gradient(-86deg, #00d5d9 0%, #0142a6 100%);
 }
  .top-wrap .go-top-button i {
       font-size: 20px;
@@ -5733,6 +5740,12 @@ button.icons {
   -o-animation-duration: 2s;
   -o-animation-iteration-count: infinite;
   -o-animation-timing-function: linear; }
+  .bounce-animate{
+    filter: invert(69%) sepia(76%) saturate(2704%) hue-rotate(134deg) brightness(98%) contrast(101%) !important
+  }
+  .bounce-animate2{
+    filter: invert(10%) sepia(69%) saturate(5250%) hue-rotate(212deg) brightness(117%) contrast(99%) !important
+  }
 .bounce-animate2 {
   animation-name: float-bob2;
   animation-duration: 3s;
@@ -5767,6 +5780,18 @@ button.icons {
   -o-animation-duration: 3s;
   -o-animation-iteration-count: infinite;
   -o-animation-timing-function: linear; }
+  .bounce-animate3 img{
+    filter: invert(13%) sepia(98%) saturate(4537%) hue-rotate(212deg) brightness(77%) contrast(99%) !important
+  }
+  .bounce-animate4 img{
+    filter: invert(10%) sepia(69%) saturate(5250%) hue-rotate(212deg) brightness(117%) contrast(99%) !important
+  }
+  .print-logo{
+    width: 80px;
+    height: 50px;
+    position: relative;
+    bottom: 50px;
+  }
 .bounce-animate4 {
   animation-name: float-bob4;
   animation-duration: 5s;
@@ -5784,6 +5809,9 @@ button.icons {
   -o-animation-duration: 5s;
   -o-animation-iteration-count: infinite;
   -o-animation-timing-function: linear; }
+  .bounce-animate5 img{
+    filter: invert(10%) sepia(69%) saturate(5250%) hue-rotate(212deg) brightness(117%) contrast(99%) !important
+  }
  .bounce-animate5 {
   animation-name: float-bob5;
   animation-duration: 6s;
@@ -11948,7 +11976,7 @@ ul.list-style-one li a:hover span {
   .contact-us__area .contact-us__widget .contact-us__widget-list .contact-us__widget-list-item .icon {
     width: 60px;
     height: 60px;
-    background: #ffece5;
+    background: #0095D9;
     border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -11960,10 +11988,13 @@ ul.list-style-one li a:hover span {
         -ms-flex-align: center;
             align-items: center;
   }
+  .contact-us__area .contact-us__widget .contact-us__widget-list .contact-us__widget-list-item .icon svg{
+    color: #0142ac !important;
+  }
   .contact-us__area .contact-us__widget .contact-us__widget-list .contact-us__widget-list-item .large-hight {
     min-width: 60px;
     height: 60px;
-    background: #ffece5;
+    background: #0095D9;
     border-radius: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -12028,7 +12059,6 @@ ul.list-style-one li a:hover span {
     margin-bottom: 30px;
     padding: 13px 20px;
     border-radius: 4px;
-    border: 1px solid rgba(0, 29, 8, 0.1);
   }
   .contact-us__area .contact-us__form-wrapper .contact-us__form .contact-us__textarea textarea {
     height: 180px !important;
