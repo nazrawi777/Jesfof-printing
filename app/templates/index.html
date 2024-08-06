@@ -5,19 +5,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
     <!-- CSS here -->
-    <link rel="stylesheet" href="print/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css')}}">
 	<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 <!-- Swiper JS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
 
-    <link rel="stylesheet" href="print/assets/css/vendor/animate.min.css">
-     <link rel="stylesheet" href="print/assets/css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/fontawesome-pro.css"> 
-    <link rel="stylesheet" href="print/assets/css/vendor/spacing.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/custom-font.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/animate.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/plugins/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/fontawesome-pro.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/spacing.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/custom-font.css') }}">
     
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,31 +25,31 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" sizes="100%x100%" href="assets/images/nini.png">
+	<link rel="icon" type="image/png" sizes="100%x100%" href="{{ url_for('static', filename='assets/images/nini.png') }}">
 	<!-- bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" type="text/css" media="all" />
 	<!-- carousel CSS -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}" type="text/css" media="all" />	
 	<!-- animate CSS -->
-	<link rel="stylesheet" href="assets/css/animate.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}" type="text/css" media="all" />	
 	<!-- animated-text CSS -->
-	<link rel="stylesheet" href="assets/css/animated-text.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animated-text.css') }}" type="text/css" media="all" />	
 	<!-- font-awesome CSS -->
-	<link rel="stylesheet" href="assets/css/all.min.css" type="text/css" media="all" />		
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}" type="text/css" media="all" />		
 	<!-- theme-default CSS -->
-	<link rel="stylesheet" href="assets/css/theme-default.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default.css') }}" type="text/css" media="all" />	
 	<!-- meanmenu CSS -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.min.css') }}" type="text/css" media="all" />	
 	<!-- Main Style CSS -->
-	<link rel="stylesheet"  href="style.css" type="text/css" media="all" />
+	<link rel="stylesheet"  href="{{ url_for('static', filename='style.css') }}" type="text/css" media="all" />
 	<!-- transitions CSS -->
-	<link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.transitions.css') }}" type="text/css" media="all" />
 	<!-- venobox CSS -->
-	<link rel="stylesheet" href="venobox/venobox.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='venobox/venobox.css') }}" type="text/css" media="all" />
 	<!-- responsive CSS -->
-	<link rel="stylesheet" href="assets/css/responsive.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/responsive.css') }}" type="text/css" media="all" />
 	<!-- modernizr js -->	
-	<script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>		
+	<script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>		
 	<!-- bootstrap icons -->
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -112,31 +112,32 @@
 		<div class="row align-items-center">
 			<div class="col-lg-2">
 				<div class="logo">
-					<a class="logo_img" href="index.html" title="print_shop">
-						<img src="assets/images/nini.png" id="wiwi">
+					<a class="logo_img" href="{{ url_for('static', filename='/') }}" title="print_shop">
+						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
 					</a>
-					<a class="main_sticky" href="index.html" title="print_shop">
-						<img src="assets/images/nini.png" alt="astute"  id="wiwi1"/>
+					<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
+						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" alt="astute"  id="wiwi1"/>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-8">
 				<nav class="print_shop_menu">
 					<ul class="nav_scroll">
-						<li><a href="index.html">Home</a>		
+						<li>
+							<a href="/">Home</a>		
 						</li>
 						<li><a class="blog" href="#about">About </a></li>
 						<li><a href="#service">Services</a>
 						</li>
-						<li><a href="shop.html">Shop</a>
-						<li><a class="blog" href="contact.html">Contact</a></li>
-						<li><a class="blog" href="login.html"><i class="fas fa-user-tie"></i></a></li>
+						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+						<li><a class="blog" href="contact">Contact</a></li>
+						<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
 					</ul>		
 				</nav>
 			</div>
 			<div class="col-lg-2">
 				<div class="header-button text-right">
-					<a href="contact.html"> Contact Us <i class="bi bi-arrow-right"></i> </a>
+					<a href="{{ url_for('main.contact') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -147,14 +148,14 @@
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
 			<ul class="nav_scroll">
-				<li><a href="index.html">Home</a>		
+				<li><a href="/">Home</a>		
 				</li>
 				<li><a class="blog" href="#about">About </a></li>
 				<li><a href="#service">Services</a>
 				</li>
-				<li><a href="shop.html">Shop</a>
-				<li><a class="blog" href="contact.html">Contact</a></li>
-				<li><a class="blog" href="login.html"><i class="fas fa-user-tie"></i></a></li>
+				<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+				<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
+				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
 			</ul>
 		</nav>
 	</div>
@@ -169,10 +170,10 @@
 					<div class="container">
 						<div class="banner__space-shape-wrapper">
 							<div class="banner__space-shape-wrapper-top-black-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-top-black-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-top-black-shape.svg') }}" alt="img not found">
 							</div>
 							<div class="banner__space-shape-wrapper-bottom-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-botom-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-botom-shape.svg') }}" alt="img not found">
 							</div>
 						</div>
 						<div class="row">
@@ -183,7 +184,7 @@
 									<p class="h5 wow fade-in-bottom" data-wow-delay="400ms">There are many variations of passages orem psum available but the majority have suffered alteration in some form by injected humour or randomised words which don't look even.</p>
 
 									<div class="banner-home-2__btn__wrapper-2 d-flex flex-wrap mt-40 mt-md-35 mt-sm-30 mt-xs-25">
-										<a href="contact.html" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
+										<a href="{{ url_for('static', filename='contact.html') }}" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
 									</div>
 								</div>
 							</div>
@@ -197,10 +198,10 @@
 					<div class="container">
 						<div class="banner__space-shape-wrapper">
 							<div class="banner__space-shape-wrapper-top-black-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-top-black-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-top-black-shape.svg') }}" alt="img not found">
 							</div>
 							<div class="banner__space-shape-wrapper-bottom-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-botom-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-botom-shape.svg') }}" alt="img not found">
 							</div>
 						</div>
 						<div class="row">
@@ -211,7 +212,7 @@
 									<p class="h5">There are many variations of passages orem psum available but the majority have suffered alteration in some form by injected humour or randomised words which don't look even.</p>
 
 									<div class="banner-home-2__btn__wrapper-2 d-flex flex-wrap mt-40 mt-md-35 mt-sm-30 mt-xs-25">
-										<a href="contact.html" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
+										<a href="{{ url_for('static', filename='contact.html') }}" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
 									</div>
 								</div>
 							</div>
@@ -225,10 +226,10 @@
 					<div class="container">
 						<div class="banner__space-shape-wrapper">
 							<div class="banner__space-shape-wrapper-top-black-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-top-black-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-top-black-shape.svg') }}" alt="img not found">
 							</div>
 							<div class="banner__space-shape-wrapper-bottom-shape">
-								<img src="print/assets/imgs/banner-2/banner-2-botom-shape.svg" alt="img not found">
+								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-botom-shape.svg') }}" alt="img not found">
 							</div>
 						</div>
 						<div class="row">
@@ -239,7 +240,7 @@
 									<p class="h5">There are many variations of passages orem psum available but the majority have suffered alteration in some form by injected humour or randomised words which don't look even.</p>
 
 									<div class="banner-home-2__btn__wrapper-2 d-flex flex-wrap mt-40 mt-md-35 mt-sm-30 mt-xs-25">
-										<a href="contact.html" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
+										<a href="{{ url_for('static', filename='contact.html') }}" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
 									</div>
 								</div>
 							</div>
@@ -274,15 +275,15 @@
 				<div class="row align-items-center abouts">
 					<div class="col-lg-6 col-md-6">
 						<div class="thumb-items">
-							<img src="assets/images/resource/about1.png" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about1.png') }}" alt="">
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="thumb-items">
-							<img src="assets/images/resource/about-2.png" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about-2.png') }}" alt="">
 						</div>
 						<div class="thumb-items">
-							<img src="assets/images/resource/about-3.png" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about-3.png') }}" alt="">
 						</div>
 					</div>
 				</div>
@@ -298,7 +299,7 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="about-print-items">
 							<div class="about-icon">
-								<img src="assets/images/resource/about-icon1.png" alt="">
+								<img src="{{ url_for('static', filename='assets/images/resource/about-icon1.png') }}" alt="">
 							</div>
 							<div class="about-item-content">
 								<h4> Banners Printing </h4>
@@ -309,7 +310,7 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="about-print-items">
 							<div class="about-icon">
-								<img src="assets/images/resource/about-icon2.png" alt="">
+								<img src="{{ url_for('static', filename='assets/images/resource/about-icon2.png') }}" alt="">
 							</div>
 							<div class="about-item-content">
 								<h4> Business Card Design </h4>
@@ -352,28 +353,28 @@
 			</div>
 			<!-- service shape -->
 			<div class="service-shape bounce-animate3">
-				<img src="assets/images/slider/cross2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross2.png') }}" alt="">
 			</div>
 			<div class="service-shape2 dance2">
-				<img src="assets/images/slider/ball1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/ball1.png') }}" alt="">
 			</div>
 			<div class="service-shape3 bounce-animate">
-				<img src="assets/images/slider/cross1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross1.png') }}" alt="">
 			</div>
 			<div class="service-shape4 bounce-animate">
-				<img src="assets/images/resource/ball1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball1.png') }}" alt="">
 			</div>
 			<div class="service-shape5 bounce-animate4">
-				<img src="assets/images/resource/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball2.png') }}" alt="">
 			</div>
 		</div>
 		<div class="row">
-			<a href="service-details.html">
+			<a href="{{ url_for('static', filename='service-details.html') }}">
 			<div class="col-lg-3 col-md-6">
 				<div class="single-service-box">
 					<!-- service icon -->
 					<div class="service-icon">
-						<img src="assets/images/resource/service-icon1.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/service-icon1.png') }}" alt="">
 					</div>
 					<!-- service content -->
 					<div class="service-content">
@@ -381,20 +382,20 @@
 						<p>Professionally pursue economically sou services resource sucking pote services for your business. </p>
 					</div>
 					<!-- service button -->
-					<a href="service-details.html">
+					<a href="{{ url_for('static', filename='service-details.html') }}">
 					<div class="service-button">
-						<a href="service-details.html"> Read More <i class="bi bi-arrow-right"></i> </a>
+						<a href="{{ url_for('static', filename='service-details.html') }}"> Read More <i class="bi bi-arrow-right"></i> </a>
 					</div>
 				</a>
 				</div>
 			</div>
 			</a>
 			<div class="col-lg-3 col-md-6">
-				<a href="service-details.html">
+				<a href="{{ url_for('static', filename='service-details.html') }}">
 				<div class="single-service-box">
 					<!-- service icon -->
 					<div class="service-icon">
-						<img src="assets/images/resource/service-icon2.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/service-icon2.png') }}" alt="">
 					</div>
 					<!-- service content -->
 					<div class="service-content">
@@ -403,17 +404,17 @@
 					</div>
 					<!-- service button -->
 					<div class="service-button">
-						<a href="service-details.html"> Read More <i class="bi bi-arrow-right"></i> </a>
+						<a href="{{ url_for('static', filename='service-details.html') }}"> Read More <i class="bi bi-arrow-right"></i> </a>
 					</div>
 				</div>
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<a href="service-details.html"></a>
+				<a href="{{ url_for('static', filename='service-details.html') }}"></a>
 				<div class="single-service-box">
 					<!-- service icon -->
 					<div class="service-icon">
-						<img src="assets/images/resource/service-icon3.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/service-icon3.png') }}" alt="">
 					</div>
 					<!-- service content -->
 					<div class="service-content">
@@ -422,7 +423,7 @@
 					</div>
 					<!-- service button -->
 					<div class="service-button">
-						<a href="service-details.html"> Read More <i class="bi bi-arrow-right"></i> </a>
+						<a href="{{ url_for('static', filename='service-details.html') }}"> Read More <i class="bi bi-arrow-right"></i> </a>
 					</div>
 				</div>
 
@@ -433,7 +434,7 @@
 				<div class="single-service-box">
 					<!-- service icon -->
 					<div class="service-icon">
-						<img src="assets/images/resource/service-icon4.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/service-icon4.png') }}" alt="">
 					</div>
 					<!-- service content -->
 					<div class="service-content">
@@ -442,7 +443,7 @@
 					</div>
 					<!-- service button -->
 					<div class="service-button">
-						<a href="service-details.html"> Read More <i class="bi bi-arrow-right"></i> </a>
+						<a href="{{ url_for('static', filename='service-details.html') }}"> Read More <i class="bi bi-arrow-right"></i> </a>
 					</div>
 				</div>
 			</div>
@@ -462,7 +463,7 @@
 				</div>
 				<!-- counter button -->
 				<div class="print-button">
-					<a href="contact.html"> Contact Us <i class="bi bi-arrow-right"></i></a>
+					<a href="{{ url_for('static', filename='contact.html') }}"> Contact Us <i class="bi bi-arrow-right"></i></a>
 				</div>
 				<!-- counter video -->
 				<div class="video-icon2">
@@ -512,16 +513,16 @@
 			</div>
 			<!-- counter shape -->
 			<div class="counter-shape bounce-animate2">
-				<img src="assets/images/slider/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/ball2.png') }}" alt="">
 			</div>
 			<div class="counter-shape2 bounce-animate">
-				<img src="assets/images/resource/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball2.png') }}" alt="">
 			</div>
 			<div class="counter-shape3 bounce-animate3">
-				<img src="assets/images/slider/cross2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross2.png') }}" alt="">
 			</div>
 			<div class="counter-shape4 bounce-animate5">
-				<img src="assets/images/slider/cross1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross1.png') }}" alt="">
 			</div>
 		</div>
 	</div>
@@ -532,7 +533,7 @@
 	<div class="item"></div>
 	<div class="item"></div>
 	<div class="item">
-		<a href="shop.html">
+		<a href="{{ url_for('static', filename='shop.html') }}">
 		<div class="text-overlay">All products</div>
 	</a>
 		
@@ -555,7 +556,7 @@
 				<div class="single-blog-box">
 					<!-- blog thumb -->
 					<div class="single-blog-thumb">
-						<img src="assets/images/resource/blog1.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/blog1.png') }}" alt="">
 					</div>
 					<!-- blog content -->
 					<div class="blog-content">
@@ -565,7 +566,7 @@
 						</div>
 						<!-- blog title -->
 						<div class="blog-title">
-							<h2> <a href="blog-details.html"> Smashing Podcast Episode With Vitaly Friedman Jay </a> </h2>
+							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Smashing Podcast Episode With Vitaly Friedman Jay </a> </h2>
 						</div>
 						<!-- blog desc -->
 						<div class="blog-desc">
@@ -578,7 +579,7 @@
 				<div class="single-blog-box">
 					<!-- blog thumb -->
 					<div class="single-blog-thumb">
-						<img src="assets/images/resource/blog2.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/blog2.png') }}" alt="">
 					</div>
 					<!-- blog content -->
 					<div class="blog-content">
@@ -588,7 +589,7 @@
 						</div>
 						<!-- blog title -->
 						<div class="blog-title">
-							<h2> <a href="blog-details.html"> Modern Way To Create And See Host WordPress </a> </h2>
+							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Modern Way To Create And See Host WordPress </a> </h2>
 						</div>
 						<!-- blog desc -->
 						<div class="blog-desc">
@@ -601,7 +602,7 @@
 				<div class="single-blog-box">
 					<!-- blog thumb -->
 					<div class="single-blog-thumb">
-						<img src="assets/images/resource/blog3.png" alt="">
+						<img src="{{ url_for('static', filename='assets/images/resource/blog3.png') }}" alt="">
 					</div>
 					<!-- blog content -->
 					<div class="blog-content">
@@ -611,7 +612,7 @@
 						</div>
 						<!-- blog title -->
 						<div class="blog-title">
-							<h2> <a href="blog-details.html"> Rethinking Server-Timing As A Monitoring Tool </a> </h2>
+							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Rethinking Server-Timing As A Monitoring Tool </a> </h2>
 						</div>
 						<!-- blog desc -->
 						<div class="blog-desc">
@@ -638,8 +639,8 @@
 				<div class="widgets-company-info">
 					<!-- print logo -->
 					<div class="print-logo">
-						<a class="logo_img" href="index.html" title="techno">
-							<img src="/assets/images/nini.png" alt="" />
+						<a class="logo_img" href="{{ url_for('static', filename='index.html') }}" title="techno">
+							<img src="{{ url_for('static', filename='/assets/images/nini.png') }}" alt="" />
 						</a>
 					</div>
 					<!-- footer desc -->
@@ -649,10 +650,10 @@
 					<!-- company social info -->
 					<div class="company-social-info">
 						<ul>
-							<li><a href="index.html#"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="index.html#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="index.html#"><i class="fab fa-linkedin-in"></i></a></li>
-							<li><a href="index.html#"><i class="fab fa-pinterest-p"></i></a></li>	
+							<li><a href="{{ url_for('static', filename='index.html#') }}"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"><i class="fab fa-linkedin-in"></i></a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"><i class="fab fa-pinterest-p"></i></a></li>	
 						</ul>
 					</div>
 				</div>					
@@ -663,11 +664,11 @@
 					<h4 class="widget-title"> Get in touch </h4>
 					<div class="menu-quick-link-content">
 						<ul class="footer-widget-list">
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Shoping</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> product</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Services</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> About Us</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Contact Us</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Shoping</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> product</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Services</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> About Us</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Contact Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -678,11 +679,11 @@
 					<h4 class="widget-title"> Useful Links </h4>
 					<div class="menu-quick-link-content">
 						<ul class="footer-widget-list">
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Useful Links</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> 3d Printing</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Printing & Design</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> Upset Printing</a></li>
-							<li><a href="index.html#"> <i class="bi bi-arrow-right"></i> T-Shart printing</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Useful Links</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> 3d Printing</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Printing & Design</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> Upset Printing</a></li>
+							<li><a href="{{ url_for('static', filename='index.html#') }}"> <i class="bi bi-arrow-right"></i> T-Shart printing</a></li>
 						</ul>
 					</div>
 				</div>
@@ -701,28 +702,28 @@
 			</div>
 			<!-- footer shape -->
 			<div class="footer-shape bounce-animate">
-				<img src="assets/images/resource/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball2.png') }}" alt="">
 			</div>
 			<div class="footer-shape2 bounce-animate2">
-				<img src="assets/images/slider/cross1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross1.png') }}" alt="">
 			</div>
 			<div class="footer-shape3 bounce-animate3">
-				<img src="assets/images/slider/cross1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross1.png') }}" alt="">
 			</div>
 			<div class="footer-shape4 bounce-animate4">
-				<img src="assets/images/slider/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/ball2.png') }}" alt="">
 			</div>
 			<div class="footer-shape5 bounce-animate5">
-				<img src="assets/images/resource/ball3.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball3.png') }}" alt="">
 			</div>
 			<div class="footer-shape6 bounce-animate2">
-				<img src="assets/images/slider/cross2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross2.png') }}" alt="">
 			</div>
 			<div class="footer-shape7 bounce-animate2">
-				<img src="assets/images/slider/cross1.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/slider/cross1.png') }}" alt="">
 			</div>
 			<div class="footer-shape8 bounce-animate2">
-				<img src="assets/images/resource/ball2.png" alt="">
+				<img src="{{ url_for('static', filename='assets/images/resource/ball2.png') }}" alt="">
 			</div>
 		</div>
 		<div class="row footer-bottom-bg">
@@ -766,33 +767,33 @@
 <!--==================================================-->
 	
 	<!-- jquery js -->	
-	<script src="assets/js/vendor/jquery-3.6.2.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
 	<!-- bootstrap js -->	
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
 	<!-- carousel js -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
 	<!-- counterup js -->
-	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
 	<!-- waypoints js -->
-	<script src="assets/js/waypoints.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
 	<!-- wow js -->
-	<script src="assets/js/wow.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
 	<!-- venobox js -->
-	<script src="venobox/venobox.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.js') }}"></script>
 	<!-- ajax mail js -->
-	<script src="assets/js/ajax-mail.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/ajax-mail.js') }}"></script>
 	<!--  animated-text js -->	
-	<script src="assets/js/animated-text.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/animated-text.js') }}"></script>
 	<!-- venobox min js -->
-	<script src="venobox/venobox.min.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.min.js') }}"></script>
 	<!-- isotope js -->
-	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
 	<!-- jquery meanmenu js -->	
-	<script src="assets/js/jquery.meanmenu.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
 	<!-- jquery scrollup js -->	
-	<script src="assets/js/jquery.scrollUp.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.js') }}"></script>
 	<!-- theme js -->	
-	<script src="assets/js/theme.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 		  var swiper = new Swiper('.swiper', {
@@ -819,36 +820,36 @@
 	  </script>
 	  
 	<!-- testimonial js -->
-	<script src="assets/js/testimonial.js"></script>
-	<script src="print/assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<script src="print/assets/js/plugins/waypoints.min.js"></script>
-	<script src="print/assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<script src="print/assets/js/plugins/meanmenu.min.js"></script>
-	<script src="print/assets/js/plugins/swiper.min.js"></script>
-	<script src="print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js"></script>
-	<script src="print/assets/js/vendor/magnific-popup.min.js"></script>
-	<script src="print/assets/js/vendor/type.js"></script>
-	<script src="print/assets/js/plugins/counterup.js"></script>
-	<script src="print/assets/js/plugins/nice-select.min.js"></script>
-	<script src="print/assets/js/vendor/jquery-ui.min.js"></script>
-	<script src="print/assets/js/plugins/parallax-scroll.js"></script>
-	<script src="print/assets/js/plugins/jquery.countdown.min.js"></script>
-	<script src="print/assets/js/plugins/isotope-docs.min.js"></script>
-	<script src="print/assets/js/vendor/ajax-form.js"></script>
-	<script src="print/assets/js/plugins/slick.min.js"></script>
-	<script src="print/assets/js/main.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/testimonial.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/waypoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/meanmenu.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/swiper.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/magnific-popup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/type.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/counterup.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/nice-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/parallax-scroll.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/jquery.countdown.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/isotope-docs.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/ajax-form.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/slick.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/main.js') }}"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script defer src="main.js"></script>
+<script defer src="{{ url_for('static', filename='main.js') }}"></script>
 	<script>
         const items = document.querySelectorAll(".item");
         let imageURLs = [
-            "port1.jpg",
-            "port2.jpg",
-            "port3.jpg",
-            "port4.jpg",
-            "port5.jpg",
+            "images/port1.jpg",
+            "images/port2.jpg",
+            "images/port3.jpg",
+            "images/port4.jpg",
+            "images/port5.jpg",
         ];
         let deviceType = "";
         let events = {
@@ -871,10 +872,11 @@
                 return false;
             }
         };
+
         isTouchDevice();
         items.forEach((item, index) => {
             let img = document.createElement("img");
-            img.setAttribute("src", imageURLs[index]);
+            img.setAttribute("src", `{{ url_for('static', filename='${imageURLs[index]}') }}`)
             img.style.width = "100%";
             img.style.height = "100%";
             img.style.objectFit = "cover";

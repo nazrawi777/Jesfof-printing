@@ -5,19 +5,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
     <!-- CSS here -->
-    <link rel="stylesheet" href="print/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css') }}">
 	<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 <!-- Swiper JS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <link rel="stylesheet" href="print/assets/css/vendor/animate.min.css">
-     <link rel="stylesheet" href="print/assets/css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/fontawesome-pro.css"> 
-    <link rel="stylesheet" href="print/assets/css/vendor/spacing.css">
-    <link rel="stylesheet" href="print/assets/css/vendor/custom-font.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/animate.min.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/plugins/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/fontawesome-pro.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/spacing.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/custom-font.css') }}">
     
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,31 +25,31 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" sizes="100%x100%" href="assets/images/nini.png">
+	<link rel="icon" type="image/png" sizes="100%x100%" href="{{ url_for('static', filename='assets/images/nini.png') }}">
 	<!-- bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" type="text/css" media="all" />
 	<!-- carousel CSS -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}" type="text/css" media="all" />	
 	<!-- animate CSS -->
-	<link rel="stylesheet" href="assets/css/animate.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}" type="text/css" media="all" />	
 	<!-- animated-text CSS -->
-	<link rel="stylesheet" href="assets/css/animated-text.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animated-text.css') }}" type="text/css" media="all" />	
 	<!-- font-awesome CSS -->
-	<link rel="stylesheet" href="assets/css/all.min.css" type="text/css" media="all" />		
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}" type="text/css" media="all" />		
 	<!-- theme-default CSS -->
-	<link rel="stylesheet" href="assets/css/theme-default.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default.css') }}" type="text/css" media="all" />	
 	<!-- meanmenu CSS -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css" type="text/css" media="all" />	
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.min.css') }}" type="text/css" media="all" />	
 	<!-- Main Style CSS -->
-	<link rel="stylesheet"  href="style.css" type="text/css" media="all" />
+	<link rel="stylesheet"  href="{{ url_for('static', filename='style.css') }}" type="text/css" media="all" />
 	<!-- transitions CSS -->
-	<link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.transitions.css') }}" type="text/css" media="all" />
 	<!-- venobox CSS -->
-	<link rel="stylesheet" href="venobox/venobox.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='venobox/venobox.css') }}" type="text/css" media="all" />
 	<!-- responsive CSS -->
-	<link rel="stylesheet" href="assets/css/responsive.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/responsive.css') }}" type="text/css" media="all" />
 	<!-- modernizr js -->	
-	<script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>		
+	<script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>		
 	<!-- bootstrap icons -->
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -160,31 +160,31 @@
 		<div class="row align-items-center">
 			<div class="col-lg-2">
 				<div class="logo">
-					<a class="logo_img" href="index.html" title="print_shop">
-						<img src="assets/images/nini.png" id="wiwi">
+					<a class="logo_img" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
+						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
 					</a>
-					<a class="main_sticky" href="index.html" title="print_shop">
-						<img src="assets/images/nini.png" alt="astute"  id="wiwi1"/>
+					<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
+						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" alt="astute"  id="wiwi1"/>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-8">
 				<nav class="print_shop_menu">
 					<ul class="nav_scroll">
-						<li><a href="index.html">Home</a>		
+						<li><a href="{{ url_for('static', filename='index.html') }}">Home</a>		
 						</li>
-						<li><a class="blog" href="#about">About </a></li>
-						<li><a href="#service">Services</a>
+						<li><a class="blog" href="{{ url_for('static', filename='#about') }}">About </a></li>
+						<li><a href="{{ url_for('static', filename='#service') }}">Services</a>
 						</li>
-						<li><a href="shop.html">Shop</a>
-						<li><a class="blog" href="contact.html">Contact</a></li>
-						<li><a class="blog" href="login.html"><i class="fas fa-user-tie"></i></a></li>
+						<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
+						<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
+						<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
 					</ul>		
 				</nav>
 			</div>
 			<div class="col-lg-2">
 				<div class="header-button text-right">
-					<a href="contact.html"> Contact Us <i class="bi bi-arrow-right"></i> </a>
+					<a href="{{ url_for('static', filename='contact.html') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -195,14 +195,14 @@
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
 			<ul class="nav_scroll">
-				<li><a href="index.html">Home</a>		
+				<li><a href="{{ url_for('static', filename='index.html') }}">Home</a>		
 				</li>
-				<li><a class="blog" href="#about">About </a></li>
-				<li><a href="#service">Services</a>
+				<li><a class="blog" href="{{ url_for('static', filename='#about') }}">About </a></li>
+				<li><a href="{{ url_for('static', filename='#service') }}">Services</a>
 				</li>
-				<li><a href="shop.html">Shop</a>
-				<li><a class="blog" href="contact.html">Contact</a></li>
-				<li><a class="blog" href="login.html"><i class="fas fa-user-tie"></i></a></li>
+				<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
+				<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
+				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
 			</ul>
 		</nav>
 	</div>
@@ -216,7 +216,7 @@
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
-    <a href="/Dashboard/index.html" class="link-below">Forgot Password?</a>
+    <a href="{{ url_for('static', filename='/Dashboard/index.html') }}" class="link-below">Forgot Password?</a>
 </div>
 
 		
@@ -243,33 +243,33 @@
 <!--==================================================-->
 	
 	<!-- jquery js -->	
-	<script src="assets/js/vendor/jquery-3.6.2.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
 	<!-- bootstrap js -->	
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
 	<!-- carousel js -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
 	<!-- counterup js -->
-	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
 	<!-- waypoints js -->
-	<script src="assets/js/waypoints.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
 	<!-- wow js -->
-	<script src="assets/js/wow.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
 	<!-- venobox js -->
-	<script src="venobox/venobox.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.js') }}"></script>
 	<!-- ajax mail js -->
-	<script src="assets/js/ajax-mail.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/ajax-mail.js') }}"></script>
 	<!--  animated-text js -->	
-	<script src="assets/js/animated-text.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/animated-text.js') }}"></script>
 	<!-- venobox min js -->
-	<script src="venobox/venobox.min.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.min.js') }}"></script>
 	<!-- isotope js -->
-	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
 	<!-- jquery meanmenu js -->	
-	<script src="assets/js/jquery.meanmenu.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
 	<!-- jquery scrollup js -->	
-	<script src="assets/js/jquery.scrollUp.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.js') }}"></script>
 	<!-- theme js -->	
-	<script src="assets/js/theme.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 		  var swiper = new Swiper('.swiper', {
@@ -296,28 +296,28 @@
 	  </script>
 	  
 	<!-- testimonial js -->
-	<script src="assets/js/testimonial.js"></script>
-	<script src="print/assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<script src="print/assets/js/plugins/waypoints.min.js"></script>
-	<script src="print/assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<script src="print/assets/js/plugins/meanmenu.min.js"></script>
-	<script src="print/assets/js/plugins/swiper.min.js"></script>
-	<script src="print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js"></script>
-	<script src="print/assets/js/vendor/magnific-popup.min.js"></script>
-	<script src="print/assets/js/vendor/type.js"></script>
-	<script src="print/assets/js/plugins/counterup.js"></script>
-	<script src="print/assets/js/plugins/nice-select.min.js"></script>
-	<script src="print/assets/js/vendor/jquery-ui.min.js"></script>
-	<script src="print/assets/js/plugins/parallax-scroll.js"></script>
-	<script src="print/assets/js/plugins/jquery.countdown.min.js"></script>
-	<script src="print/assets/js/plugins/isotope-docs.min.js"></script>
-	<script src="print/assets/js/vendor/ajax-form.js"></script>
-	<script src="print/assets/js/plugins/slick.min.js"></script>
-	<script src="print/assets/js/main.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/testimonial.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/waypoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/meanmenu.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/swiper.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/magnific-popup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/type.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/counterup.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/nice-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/parallax-scroll.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/jquery.countdown.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/isotope-docs.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/ajax-form.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/slick.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/main.js') }}"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script defer src="main.js"></script>
+<script defer src="{{ url_for('static', filename='main.js') }}"></script>
 	<script>
         const items = document.querySelectorAll(".item");
         let imageURLs = [
