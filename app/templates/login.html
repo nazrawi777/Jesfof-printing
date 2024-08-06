@@ -1,390 +1,172 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css') }}">
-	<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login Page - Product Admin Template</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+    />
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+  </head>
 
-<!-- Swiper JS -->
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-xl">
+        <div class="container h-100">
+          <a class="navbar-brand" href="index.html">
+            <h1 class="tm-site-title mb-0">Product Admin</h1>
+          </a>
+          <button
+            class="navbar-toggler ml-auto mr-0"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars tm-nav-icon"></i>
+          </button>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/animate.min.css') }}">
-     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/plugins/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/fontawesome-pro.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/spacing.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/custom-font.css') }}">
-    
-	<meta charset="UTF-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>JESOFE-PRINTING</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" sizes="100%x100%" href="{{ url_for('static', filename='assets/images/nini.png') }}">
-	<!-- bootstrap CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" type="text/css" media="all" />
-	<!-- carousel CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}" type="text/css" media="all" />	
-	<!-- animate CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}" type="text/css" media="all" />	
-	<!-- animated-text CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animated-text.css') }}" type="text/css" media="all" />	
-	<!-- font-awesome CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.min.css') }}" type="text/css" media="all" />		
-	<!-- theme-default CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default.css') }}" type="text/css" media="all" />	
-	<!-- meanmenu CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/meanmenu.min.css') }}" type="text/css" media="all" />	
-	<!-- Main Style CSS -->
-	<link rel="stylesheet"  href="{{ url_for('static', filename='style.css') }}" type="text/css" media="all" />
-	<!-- transitions CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.transitions.css') }}" type="text/css" media="all" />
-	<!-- venobox CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='venobox/venobox.css') }}" type="text/css" media="all" />
-	<!-- responsive CSS -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/responsive.css') }}" type="text/css" media="all" />
-	<!-- modernizr js -->	
-	<script src="{{ url_for('static', filename='assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>		
-	<!-- bootstrap icons -->
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-<style>
-    body{
-        background: url("https://www.codingnepalweb.com/demos/create-glassmorphism-login-form-html-css/hero-bg.jpg"), #000;;
-    }
-	.gallery-container {
-		position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 80vh;
-}
-.item {
-  height: 100%;
-  cursor: pointer;
-}
-.text-overlay {
-            position: absolute;
-            bottom: 40%;
-            left: 50%;
-            color: #fff;
-    background-image: linear-gradient(-86deg,  #00d5d9 0%, #0142a6 100%);
-            padding: 5px;
-            border-radius: 3px;
-			border-radius: 4px;
-    border: 1px solid #fb9737;
-        }
-		.text-overlay:before {
-    position: absolute;
-    content: "";
-	bottom: 20%;
-	left: 20%;
-    z-index: -1;
-    height: 100%;
-    width: 0;
-    background: #fff;
-    border-radius: 4px;
-    transition: .5s;
-}
-.text-overlay:hover {
-   color: white; 
-}
-.text-overlay:hover:before {
-    width: 100%;
-    left: 0;
-}
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto h-100">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  <i class="fas fa-tachometer-alt"></i> Dashboard
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="far fa-file-alt"></i>
+                  <span> Reports <i class="fas fa-angle-down"></i> </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Daily Report</a>
+                  <a class="dropdown-item" href="#">Weekly Report</a>
+                  <a class="dropdown-item" href="#">Yearly Report</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">
+                  <i class="fas fa-shopping-cart"></i> Products
+                </a>
+              </li>
 
-.login-container {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-            border-radius: 16px;
-            position: relative;
-            margin-top: 100px;
-            width: 30%;
-            left: 35%;
-            padding: 40px;
-            text-align: center;
-        }
-        .login-container h2 {
-            color: #fff;
-            margin-bottom: 20px;
-        }
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            font-size: 16px;
-        }
-        .login-container input[type="submit"]  {
-  background: #fff;
-  color: #000;
-  font-weight: 600;
-  border: none;
-  padding: 12px 30px;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 16px;
-  border: 2px solid transparent;
-  transition: 0.3s ease;
-}
-.login-container input[type="submit"]:hover {
-  color: #fff;
-  border-color: #fff;
-  background: black;
-}
-</style>
-</head>
-<body>
-	<!-- loder -->
-	<div class="loader-wrapper">
-	  <div class="loader"></div>
-	  <div class="loder-section left-section"></div>
-	  <div class="loder-section right-section"></div>
-	</div>
-<!--==================================================-->
-<!-- Start print shop Main Menu -->
-<!--==================================================-->
-<div id="sticky-header" class="print_shop_nav_manu">
-	<div class="container-fluid">
-		<div class="row align-items-center">
-			<div class="col-lg-2">
-				<div class="logo">
-					<a class="logo_img" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
-						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
-					</a>
-					<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
-						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" alt="astute"  id="wiwi1"/>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-8">
-				<nav class="print_shop_menu">
-					<ul class="nav_scroll">
-						<li><a href="{{ url_for('static', filename='index.html') }}">Home</a>		
-						</li>
-						<li><a class="blog" href="{{ url_for('static', filename='#about') }}">About </a></li>
-						<li><a href="{{ url_for('static', filename='#service') }}">Services</a>
-						</li>
-						<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
-						<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
-						<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
-					</ul>		
-				</nav>
-			</div>
-			<div class="col-lg-2">
-				<div class="header-button text-right">
-					<a href="{{ url_for('static', filename='contact.html') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- print_shop Mobile Menu  -->
-<div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
-	<div class="mobile-menu">
-		<nav class="print_shop_menu">
-			<ul class="nav_scroll">
-				<li><a href="{{ url_for('static', filename='index.html') }}">Home</a>		
-				</li>
-				<li><a class="blog" href="{{ url_for('static', filename='#about') }}">About </a></li>
-				<li><a href="{{ url_for('static', filename='#service') }}">Services</a>
-				</li>
-				<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
-				<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
-				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
+              <li class="nav-item">
+                <a class="nav-link" href="accounts.html">
+                  <i class="far fa-user"></i> Accounts
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-cog"></i>
+                  <span> Settings <i class="fas fa-angle-down"></i> </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">Billing</a>
+                  <a class="dropdown-item" href="#">Customize</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
-
-<div class="login-container">
-    <h2>Login</h2>
-	<form id="loginForm">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
-    <a href="{{ url_for('static', filename='/Dashboard/index.html') }}" class="link-below">Forgot Password?</a>
-</div>
-
-		
-<!--==================================================-->
-<!-- End print_shop Footer Section  -->
-<!--==================================================-->
-
-<!--==================================================-->
-<!-- Start scrollup section  -->
-<!--==================================================-->
-<!-- scrollup section -->
-<div class="scroll-area">
-	<div class="top-wrap">
-		<div class="go-top-btn-wraper">
-			<div class="go-top go-top-button">
-				<i class="fas fa-arrow-up"></i>
-				<i class="fas fa-arrow-up"></i>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- Start scrollup section Area -->
-<!--==================================================-->
-	
-	<!-- jquery js -->	
-	<script src="{{ url_for('static', filename='assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
-	<!-- bootstrap js -->	
-	<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
-	<!-- carousel js -->
-	<script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
-	<!-- counterup js -->
-	<script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
-	<!-- waypoints js -->
-	<script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
-	<!-- wow js -->
-	<script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
-	<!-- venobox js -->
-	<script src="{{ url_for('static', filename='venobox/venobox.js') }}"></script>
-	<!-- ajax mail js -->
-	<script src="{{ url_for('static', filename='assets/js/ajax-mail.js') }}"></script>
-	<!--  animated-text js -->	
-	<script src="{{ url_for('static', filename='assets/js/animated-text.js') }}"></script>
-	<!-- venobox min js -->
-	<script src="{{ url_for('static', filename='venobox/venobox.min.js') }}"></script>
-	<!-- isotope js -->
-	<script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
-	<!-- jquery meanmenu js -->	
-	<script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
-	<!-- jquery scrollup js -->	
-	<script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.js') }}"></script>
-	<!-- theme js -->	
-	<script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-		  var swiper = new Swiper('.swiper', {
-			loop: true,
-			autoplay: {
-			  delay: 5000,
-			  disableOnInteraction: false,
-			},
-			navigation: {
-			  nextEl: '.banner__button-next',
-			  prevEl: '.banner__button-prev',
-			},
-			speed: 1200, // Adjust this value for smoother transitions
-		  });
-	  
-		  // Set background images
-		  document.querySelectorAll('.banner__thumb-bg').forEach((element) => {
-			const bg = element.getAttribute('data-background');
-			if (bg) {
-			  element.style.backgroundImage = `url(${bg})`;
-			}
-		  });
-		});
-	  </script>
-	  
-	<!-- testimonial js -->
-	<script src="{{ url_for('static', filename='assets/js/testimonial.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/waypoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/meanmenu.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/swiper.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/magnific-popup.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/type.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/counterup.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/nice-select.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-ui.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/parallax-scroll.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/jquery.countdown.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/isotope-docs.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/vendor/ajax-form.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/plugins/slick.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='print/assets/js/main.js') }}"></script>
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script defer src="{{ url_for('static', filename='main.js') }}"></script>
-	<script>
-        const items = document.querySelectorAll(".item");
-        let imageURLs = [
-            "port1.jpg",
-            "port2.jpg",
-            "port3.jpg",
-            "port4.jpg",
-            "port5.jpg",
-        ];
-        let deviceType = "";
-        let events = {
-            mouse: {
-                start: "mouseover",
-                end: "mouseout",
-            },
-            touch: {
-                start: "click",  // Use click event for touch devices
-                end: "click",    // Use click event for touch devices
-            },
-        };
-        const isTouchDevice = () => {
-            try {
-                document.createEvent("TouchEvent");
-                deviceType = "touch";
-                return true;
-            } catch (e) {
-                deviceType = "mouse";
-                return false;
-            }
-        };
-        isTouchDevice();
-        items.forEach((item, index) => {
-            let img = document.createElement("img");
-            img.setAttribute("src", imageURLs[index]);
-            img.style.width = "100%";
-            img.style.height = "100%";
-            img.style.objectFit = "cover";
-            item.appendChild(img);
-            //Initial CSS properties for all items
-            item.style.flex = "1";
-            item.style.transition = "flex 0.8s ease";
-            
-            let isZoomedIn = false;
-            item.addEventListener(events[deviceType].start, () => {
-                if (deviceType === "touch") {
-                    isZoomedIn = !isZoomedIn;
-                    item.style.flex = isZoomedIn ? "3" : "1"; // Toggle zoom
-                } else {
-                    item.style.flex = "3"; //Expand the item
-                }
-            });
-            if (deviceType === "mouse") {
-                item.addEventListener(events[deviceType].end, () => {
-                    item.style.flex = "1"; //Contract the item
-                });
-            }
-        });
-    </script>
-	<script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // You can add validation or authentication logic here if needed
-
-            // Redirect to the Dashboard page
-            window.location.href = '/Dashboard/index.html';
-        });
-    </script>
-</body>
+    <div class="container tm-mt-big tm-mb-big">
+      <div class="row">
+        <div class="col-12 mx-auto tm-login-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h2 class="tm-block-title mb-4">Welcome to Dashboard, Login</h2>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <form action="index.html" method="post" class="tm-login-form">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                      name="username"
+                      type="text"
+                      class="form-control validate"
+                      id="username"
+                      value=""
+                      required
+                    />
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="password">Password</label>
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control validate"
+                      id="password"
+                      value=""
+                      required
+                    />
+                  </div>
+                  <div class="form-group mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block text-uppercase"
+                    >
+                      Login
+                    </button>
+                  </div>
+                  <button class="mt-5 btn btn-primary btn-block text-uppercase">
+                    Forgot your password?
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="tm-footer row tm-mt-small">
+      <div class="col-12 font-weight-light">
+        <p class="text-center text-white mb-0 px-4 small">
+          Copyright &copy; <b>2018</b> All rights reserved. 
+          
+          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+        </p>
+      </div>
+    </footer>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+  </body>
 </html>
