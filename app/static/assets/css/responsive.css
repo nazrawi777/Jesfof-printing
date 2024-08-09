@@ -2088,6 +2088,9 @@ h4.widget-title {
 .hero-thumb img {
     width: 100%;
 }
+.p-relative{
+    position: relative;
+}
 .hero-content h1 {
     font-size: 30px;
     line-height: 25px;
@@ -2645,6 +2648,7 @@ span.tk {
 }
 .footer-section .col-lg-3.col-md-6.pl-20.pr-40 {
     padding-right: 0;
+    height: 180px;
 }
 h4.widget-title {
     padding: 10px 0 25px;

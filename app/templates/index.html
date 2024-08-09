@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css')}}">
 	<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <!-- Swiper JS -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
@@ -61,6 +62,89 @@
   width: 100%;
   height: 80vh;
 }
+#bsd {
+	position: relative;
+	bottom: 100px;
+	text-align: center;
+}
+#bsd h5{
+	text-align: center;
+	align-items: center;
+	align-self: center;
+}
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    #bsd h5 {
+        font-size: 10px;
+    }
+	#bsd h1{
+		font-size: 25px;
+	}
+	.text-overlay {
+		font-size: 12px;
+            position: absolute;
+            bottom: 40%;
+            left: 10% !important;
+            color: #fff;
+    background-image: linear-gradient(-86deg,  #00d5d9 0%, #0142a6 100%);
+            padding: 5px;
+            border-radius: 3px;
+			border-radius: 4px;
+    border: 1px solid #fb9737;
+        }
+		.text-overlay:before {
+    position: absolute;
+    content: "";
+	bottom: 20%;
+	left: 0% !important;
+    z-index: -1;
+	width: 70% !important;
+    height: 100%;
+    width: 0;
+    background: #fff;
+    border-radius: 4px;
+    transition: .5s;
+}
+.text-overlay:hover {
+   color: white; 
+}
+.text-overlay:hover:before {
+    width: 50% !important;
+    left: 0;
+}
+.print-logo{
+	height: auto;
+}
+.widgets-company-info{
+	height: auto;
+}
+.logo_img img{
+	width: 100px;
+	height: 100px;
+}
+.company-desc-info,
+.company-social-info{
+	position: relative;
+	bottom: 110px;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 1024px) {
+	.logo_img img{
+	width: 200px;
+	height: 200px;
+}
+
+
+}
+@media only screen and (min-width: 1025px) and (max-width: 1199px) {
+	.print-logo{
+	width: 150px;
+	height: 80px;
+	position: relative;
+	top: 10px;
+}
+
+}
+
 .item {
   height: 100%;
   cursor: pointer;
@@ -95,6 +179,30 @@
     width: 100%;
     left: 0;
 }
+.slide img {
+  width: 150px;
+  height: 150px;
+  animation: scroll 60s linear infinite;
+}
+
+.slide-track {
+  width: 100%;
+  display: flex;
+  gap: 7em;
+  overflow: hidden;
+}
+
+.slider {
+  margin-top: 70px;
+  background-color: white;
+  padding: 8em 2em;
+}
+
+@keyframes scroll {
+  0% {transform: translateX(0);}
+  100% {transform: translatex(-1000%)}
+}
+
 </style>
 </head>
 <body>
@@ -126,7 +234,12 @@
 						<li>
 							<a href="/">Home</a>		
 						</li>
-						<li><a class="blog" href="#about">About </a></li>
+						<li> About ⬇️
+							<ul class="sub-menu">
+								<li><a href="{{ url_for('main.about') }}">About Us</a></li>
+
+							</ul>
+						</li>
 						<li><a href="#service">Services</a>
 						</li>
 						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
@@ -145,8 +258,10 @@
 </div>
 <!-- print_shop Mobile Menu  -->
 <div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
+
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
+			
 			<ul class="nav_scroll">
 				<li><a href="/">Home</a>		
 				</li>
@@ -170,7 +285,7 @@
 					<div class="container">
 						<div class="banner__space-shape-wrapper">
 							<div class="banner__space-shape-wrapper-top-black-shape">
-								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-top-black-shape.svg') }}" alt="img not found">
+								<img src="{{ url_for('static', filename='images/port1.jpg') }}" alt="img not found">
 							</div>
 							<div class="banner__space-shape-wrapper-bottom-shape">
 								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-botom-shape.svg') }}" alt="img not found">
@@ -273,69 +388,32 @@
 		<div class="row align-items-center">
 			<div class="col-lg-6 col-md-6">
 				<div class="row align-items-center abouts">
-					<div class="col-lg-6 col-md-6">
-						<div class="thumb-items">
-							<img src="{{ url_for('static', filename='assets/images/resource/about1.png') }}" alt="">
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<div class="thumb-items">
-							<img src="{{ url_for('static', filename='assets/images/resource/about-2.png') }}" alt="">
-						</div>
-						<div class="thumb-items">
+					<div class="wrapper10">
+						<i class="fa-solid fa-arrow-left button" id="prev"></i>
+						<div class="image-container1">
+						  <div class="carousel">
 							<img src="{{ url_for('static', filename='assets/images/resource/about-3.png') }}" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about-2.png') }}" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about1.png') }}" alt="">
+						  </div>
+						  <i class="fa-solid fa-arrow-right button" id="next"></i>
 						</div>
-					</div>
+				  
+					  </div>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 pl-40 pr-0">
 				<div class="print_shop-section-title">
 					<h5> ABOUT PRINTING SERVICES </h5>
-					<h1> Produce Stuning <span>Printing</span></h1>
-					<h1> For Your Business </h1>
-					<p> Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing. </p>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-6">
-						<div class="about-print-items">
-							<div class="about-icon">
-								<img src="{{ url_for('static', filename='assets/images/resource/about-icon1.png') }}" alt="">
-							</div>
-							<div class="about-item-content">
-								<h4> Banners Printing </h4>
-								<p> services resource potentialities awesome services you. </p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<div class="about-print-items">
-							<div class="about-icon">
-								<img src="{{ url_for('static', filename='assets/images/resource/about-icon2.png') }}" alt="">
-							</div>
-							<div class="about-item-content">
-								<h4> Business Card Design </h4>
-								<p> services resource potentialities awesome services you. </p>
-							</div>
-						</div>
-					</div>
+					<h1><span>About Us</span></h1>
+					<p> Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing.
+						Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing.
+						Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing.
+						Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing.
+						Fast print, flyer, and pamphlet printing organization.
+						Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing. </p>
 				</div>
 				<!-- about check -->
-				<div class="about-check">
-					<p><i class="bi bi-check-lg"></i> Large paper & stock selection & Unique Print </p>
-				</div>
-				<!-- about check -->
-				<div class="about-check">
-					<p><i class="bi bi-check-lg"></i> Printing programs tailored to your company needs </p>
-				</div>
-				<div class="print-shop-artist">
-					<!-- Artist name -->
-					<div class="artist-name">
-						<h5>Md. Al- Amin Hossain</h5>
-					</div>
-					<div class="artist-categories">
-						<p>Senior Artist Designer</p>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -382,16 +460,16 @@
 						<p>Professionally pursue economically sou services resource sucking pote services for your business. </p>
 					</div>
 					<!-- service button -->
-					<a href="{{ url_for('static', filename='service-details.html') }}">
+					<a href="/service-details.html">
 					<div class="service-button">
-						<a href="{{ url_for('static', filename='service-details.html') }}"> Read More <i class="bi bi-arrow-right"></i> </a>
+						<a href=""> Read More <i class="bi bi-arrow-right"></i> </a>
 					</div>
 				</a>
 				</div>
 			</div>
 			</a>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ url_for('static', filename='service-details.html') }}">
+				<a href="{{ url_for('static',filename='service-details.html') }}">
 				<div class="single-service-box">
 					<!-- service icon -->
 					<div class="service-icon">
@@ -449,6 +527,8 @@
 	</div>
 </div>
 
+
+<!--
 <div class="counter-section">
 	<div class="container">
 		<div class="row counter-bg">
@@ -459,11 +539,11 @@
 					<h1> You’ll Get Gigher <span>Quality</span> </h1>
 					<p> Professionally pursue economically sound services resource sucking potentialitie offer Authoritat morph with premier catalysts for change awesome services for you sound services resource sucking potentialitie quality.  </p>
 				</div>
-				<!-- counter button -->
+				
 				<div class="print-button">
 					<a href="{{ url_for('static', filename='contact.html') }}"> Contact Us <i class="bi bi-arrow-right"></i></a>
 				</div>
-				<!-- counter video -->
+				
 				<div class="video-icon2">
 					<a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true" href="https://youtu.be/BS4TUd7FJSg"><i class="bi bi-play-fill"></i></a>
 					<span>How We Work</span>
@@ -473,7 +553,7 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
 						<div class="single-counter-box up">
-							<!-- counter content -->
+							
 							<div class="counter-content">
 								<h2>$59M</h2>
 								<p> Sold by customers trust Print King </p>
@@ -482,7 +562,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="single-counter-box">
-							<!-- counter content -->
+							
 							<div class="counter-content">
 								<h2>1.400</h2>
 								<p> Person team Invested of North America </p>
@@ -491,7 +571,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="single-counter-box up">
-							<!-- counter content -->
+							
 							<div class="counter-content">
 								<h2>$67M</h2>
 								<p> Invested in printing equipment </p>
@@ -500,7 +580,7 @@
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="single-counter-box">
-							<!-- counter content -->
+							
 							<div class="counter-content">
 								<h2>$45M</h2>
 								<p> items trusted to deliver Europe </p>
@@ -509,7 +589,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- counter shape -->
+			
 			<div class="counter-shape bounce-animate2">
 				<img src="{{ url_for('static', filename='assets/images/slider/ball2.png') }}" alt="">
 			</div>
@@ -525,111 +605,111 @@
 		</div>
 	</div>
 </div>
-<div class="gallery-container">
-	<div class="item"></div>
-	<div class="item"></div>
-	<div class="item"></div>
-	<div class="item"></div>
-	<div class="item">
-		<a href="{{ url_for('static', filename='shop.html') }}">
-		<div class="text-overlay">All products</div>
-	</a>
-		
+-->
+<div class="container1">
+	<div class="slide-container1 active">
+	  <div class="slide11">
+		<video src="{{ url_for('static', filename='images/t3.mp4') }}" muted autoplay loop></video>
+	  </div>
 	</div>
+	<div class="slide-container1 active">
+	  <div class="slide11">
+		<video src="{{ url_for('static', filename='images/1.mp4') }}" muted autoplay loop></video>
+	  </div>
+	</div>
+	<div class="slide-container1 active">
+	  <div class="slide11">
+		<video src="{{ url_for('static', filename='images/t2.mp4') }}" muted autoplay loop></video>
+	  </div>
+	</div>
+	<div id="pre1" class="nav-button"><i class="fas fa-arrow-circle-left"></i></div>
+	<div id="nex1" class="nav-button"><i class="fas fa-arrow-circle-right"></i></div>
   </div>
-
-<div class="blog-section">
-	<div class="container">
-		<div class="row align-items-center mb-40">
-			<div class="col-lg-12">
-				<div class="print_shop-section-title text-center">
-					<h5> WE ARE Professional </h5>
-					<h1> Choose The Best Package For </h1>
-					<h1> <span>your Business</span> </h1>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box">
-					<!-- blog thumb -->
-					<div class="single-blog-thumb">
-						<img src="{{ url_for('static', filename='assets/images/resource/blog1.png') }}" alt="">
-					</div>
-					<!-- blog content -->
-					<div class="blog-content">
-						<!-- post categories -->
-						<div class="post-categories">
-							<p><i class="bi bi-person-fill"></i> Fred Hyman <span class="post"> <i class="bi bi-chat-dots-fill"></i> Comments </span> </p>
-						</div>
-						<!-- blog title -->
-						<div class="blog-title">
-							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Smashing Podcast Episode With Vitaly Friedman Jay </a> </h2>
-						</div>
-						<!-- blog desc -->
-						<div class="blog-desc">
-							<p>Lorem ipsum dolor consecttur adipiscing eaxm elit aenean pharetra mollis pretium.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box">
-					<!-- blog thumb -->
-					<div class="single-blog-thumb">
-						<img src="{{ url_for('static', filename='assets/images/resource/blog2.png') }}" alt="">
-					</div>
-					<!-- blog content -->
-					<div class="blog-content">
-						<!-- post categories -->
-						<div class="post-categories">
-							<p><i class="bi bi-person-fill"></i> Fred Hyman <span class="post"> <i class="bi bi-chat-dots-fill"></i> Comments </span> </p>
-						</div>
-						<!-- blog title -->
-						<div class="blog-title">
-							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Modern Way To Create And See Host WordPress </a> </h2>
-						</div>
-						<!-- blog desc -->
-						<div class="blog-desc">
-							<p>Lorem ipsum dolor consecttur adipiscing eaxm elit aenean pharetra mollis pretium.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box">
-					<!-- blog thumb -->
-					<div class="single-blog-thumb">
-						<img src="{{ url_for('static', filename='assets/images/resource/blog3.png') }}" alt="">
-					</div>
-					<!-- blog content -->
-					<div class="blog-content">
-						<!-- post categories -->
-						<div class="post-categories">
-							<p><i class="bi bi-person-fill"></i> Fred Hyman <span class="post"> <i class="bi bi-chat-dots-fill"></i> Comments </span> </p>
-						</div>
-						<!-- blog title -->
-						<div class="blog-title">
-							<h2> <a href="{{ url_for('static', filename='blog-details.html') }}"> Rethinking Server-Timing As A Monitoring Tool </a> </h2>
-						</div>
-						<!-- blog desc -->
-						<div class="blog-desc">
-							<p>Lorem ipsum dolor consecttur adipiscing eaxm elit aenean pharetra mollis pretium.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  
+<div class="gallery-container">
+    <div class="item">
+        <img src="{{ url_for('static', filename='images/port1.jpg') }}" alt="Image 1" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='images/port2.jpg') }}" alt="Image 2" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='images/port3.jpg') }}" alt="Image 3" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='images/port4.jpg') }}" alt="Image 4" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+	
+    <div class="item">
+			<img src="{{ url_for('static', filename='images/port3.jpg') }}" alt="Image 3" style="width: 100%; height: 100%; object-fit: cover;">
+        <a href="{{ url_for('shop.shop') }}">
+            <div class="text-overlay">All products</div>
+        </a>
+    </div>
 </div>
-<!--==================================================-->
-<!-- End print shop Blog Section -->
-<!--==================================================-->
 
-<!--==================================================-->
-<!-- Start print shop Footer Section  -->
-<!--==================================================-->
-
+<div class="slider">
+	<div class="print_shop-section-title" id="bsd">
+		<h1><span>Our partners</span></h1>
+		<h5> our satisfied partners, impressed by our exceptional work </h5>
+	</div>
+		<div class="slide-track">
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
+		  </div>
+		  <div class="slide">
+			<img src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
+		  </div>
+		</div>
+	  </div>
 <div class="footer-section"> 
 	<div class="container">
 		<div class="row footer-bg">
@@ -840,64 +920,131 @@
 	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script defer src="{{ url_for('static', filename='main.js') }}"></script>
-	<script>
-        const items = document.querySelectorAll(".item");
-        let imageURLs = [
-            "images/port1.jpg",
-            "images/port2.jpg",
-            "images/port3.jpg",
-            "images/port4.jpg",
-            "images/port5.jpg",
-        ];
-        let deviceType = "";
-        let events = {
-            mouse: {
-                start: "mouseover",
-                end: "mouseout",
-            },
-            touch: {
-                start: "click",  // Use click event for touch devices
-                end: "click",    // Use click event for touch devices
-            },
-        };
-        const isTouchDevice = () => {
-            try {
-                document.createEvent("TouchEvent");
-                deviceType = "touch";
-                return true;
-            } catch (e) {
-                deviceType = "mouse";
-                return false;
-            }
-        };
+<script>
+    const items = document.querySelectorAll(".item");
 
-        isTouchDevice();
-        items.forEach((item, index) => {
-            let img = document.createElement("img");
-            img.setAttribute("src", `{{ url_for('static', filename='${imageURLs[index]}') }}`)
-            img.style.width = "100%";
-            img.style.height = "100%";
-            img.style.objectFit = "cover";
-            item.appendChild(img);
-            //Initial CSS properties for all items
-            item.style.flex = "1";
-            item.style.transition = "flex 0.8s ease";
-            
-            let isZoomedIn = false;
-            item.addEventListener(events[deviceType].start, () => {
-                if (deviceType === "touch") {
-                    isZoomedIn = !isZoomedIn;
-                    item.style.flex = isZoomedIn ? "3" : "1"; // Toggle zoom
-                } else {
-                    item.style.flex = "3"; //Expand the item
-                }
-            });
-            if (deviceType === "mouse") {
-                item.addEventListener(events[deviceType].end, () => {
-                    item.style.flex = "1"; //Contract the item
-                });
+    let deviceType = "";
+    let events = {
+        mouse: {
+            start: "mouseover",
+            end: "mouseout",
+        },
+        touch: {
+            start: "click",  // Use click event for touch devices
+            end: "click",    // Use click event for touch devices
+        },
+    };
+
+    const isTouchDevice = () => {
+        try {
+            document.createEvent("TouchEvent");
+            deviceType = "touch";
+            return true;
+        } catch (e) {
+            deviceType = "mouse";
+            return false;
+        }
+    };
+
+    isTouchDevice();
+
+    items.forEach((item) => {
+        // Initial CSS properties for all items
+        item.style.flex = "1";
+        item.style.transition = "flex 0.8s ease";
+        
+        let isZoomedIn = false;
+        item.addEventListener(events[deviceType].start, () => {
+            if (deviceType === "touch") {
+                isZoomedIn = !isZoomedIn;
+                item.style.flex = isZoomedIn ? "2.2" : "1"; // Toggle zoom
+            } else {
+                item.style.flex = "2.2"; // Expand the item
             }
         });
-    </script>
+
+        if (deviceType === "mouse") {
+            item.addEventListener(events[deviceType].end, () => {
+                item.style.flex = "1"; // Contract the item
+            });
+        }
+    });
+</script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  const slides = document.querySelectorAll('.slide-container1');
+	  let currentSlide = 0;
+  
+	  function showSlide(index) {
+		slides.forEach((slide, i) => {
+		  slide.classList.remove('active');
+		  // Only add active class to the current slide
+		  if (i === index) {
+			slide.classList.add('active');
+		  }
+		});
+	  }
+  
+	  document.querySelector('#nex1').addEventListener('click', () => {
+		currentSlide = (currentSlide + 1) % slides.length; // Loop to the start
+		showSlide(currentSlide); // Show the next slide
+	  });
+  
+	  document.querySelector('#pre1').addEventListener('click', () => {
+		currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Loop to the end
+		showSlide(currentSlide); // Show the previous slide
+	  });
+  
+	  showSlide(currentSlide); // Initial call to display the first slide
+	});
+  </script>
+  <script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const carousel = document.querySelector('.carousel');
+		const images = carousel.querySelectorAll('img');
+		const prevButton = document.getElementById('prev');
+		const nextButton = document.getElementById('next');
+		let currentIndex = 0;
+		const intervalTime = 3000; // 3 seconds for autoplay
+	
+		// Function to update the carousel to show the current image
+		function updateCarousel() {
+			images.forEach((img, index) => {
+				img.style.display = (index === currentIndex) ? 'block' : 'none';
+			});
+		}
+	
+		// Show the first image initially
+		updateCarousel();
+	
+		// Function to move to the next image
+		function nextImage() {
+			currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+			updateCarousel();
+		}
+	
+		// Event listener for the previous button
+		prevButton.addEventListener('click', function() {
+			currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+			updateCarousel();
+		});
+	
+		// Event listener for the next button
+		nextButton.addEventListener('click', function() {
+			nextImage();
+		});
+	
+		// Autoplay functionality
+		const autoplay = setInterval(nextImage, intervalTime);
+	
+		// Pause autoplay on arrow click
+		prevButton.addEventListener('click', () => clearInterval(autoplay));
+		nextButton.addEventListener('click', () => clearInterval(autoplay));
+	});
+	</script>
+	
+  
+
+  
 </body>
 </html>

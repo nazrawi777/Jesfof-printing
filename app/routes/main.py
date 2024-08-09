@@ -1,44 +1,57 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
-'''from werkzeug.utils import secure_filename
-from app import db
-import os'''
+from werkzeug.utils import secure_filename
+import os
 
+# Create a blueprint for the main application
 main_bp = Blueprint('main', __name__)
+
+# Define the upload folder (make sure this directory exists)
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')  # Default to 'uploads' folder
+
+# Function to check allowed file extensions
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @main_bp.route('/')
 def home():
     return render_template('index.html')
 
-
 @main_bp.route('/contact')
 def contact():
     return render_template('contact.html')
 
-@main_bp.route('/hero-upload')
-def upload_hero(request):
-    '''if request.method == 'POST':
-        description = request.form['description']
+@main_bp.route('/hero-upload', methods=['GET', 'POST'])
+def upload_hero():
+    if request.method == 'POST':
+        description = request.form.get('description')
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
-            image_path = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
+            image_path = os.path.join(UPLOAD_FOLDER, filename)
             image_file.save(image_path)
-            image = filename
-        db.session.commit()
-        flash('Product Add successfully.', 'success')
-        return redirect(url_for('admin.admin'))'''
-    return render_template('index.html')
+            # Save the image path to the database or perform other actions here
+            flash('Hero image uploaded successfully.', 'success')
+            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+        else:
+            flash('Invalid file type. Please upload an image.', 'danger')
+    return render_template('upload_hero.html')  # Create this template
 
-@main_bp.route('/home-about-uplaod')
-def home_about():
-    '''if request.method == 'POST':
+@main_bp.route('/home-about-upload', methods=['GET', 'POST'])
+def home_about_upload():
+    if request.method == 'POST':
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
-            image_path = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
+            image_path = os.path.join(UPLOAD_FOLDER, filename)
             image_file.save(image_path)
-            image = filename
-        db.session.commit()
-        flash('Product Add successfully.', 'success')
-        return redirect(url_for('admin.admin'))'''
-    return render_template('index.html')
+            # Save the image path to the database or perform other actions here
+            flash('About image uploaded successfully.', 'success')
+            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+        else:
+            flash('Invalid file type. Please upload an image.', 'danger')
+    return render_template('upload_home_about.html')  # Create this template
+
+@main_bp.route('/about')
+def about():
+    return render_template('about.html')
