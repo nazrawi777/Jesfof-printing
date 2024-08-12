@@ -67,7 +67,7 @@
 		<div class="row align-items-center">
 			<div class="col-lg-2">
 				<div class="logo">
-					<a class="logo_img" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
+					<a class="logo_img" href="{{ url_for('static', filename='/') }}" title="print_shop">
 						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
 					</a>
 					<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
@@ -78,20 +78,26 @@
 			<div class="col-lg-8">
 				<nav class="print_shop_menu">
 					<ul class="nav_scroll">
-						<li><a href="/index.html">Home</a>		
+						<li>
+							<a href="/">Home</a>		
 						</li>
-						<li><a class="blog" href="{{ url_for('static', filename='index.html') }}">About </a></li>
-						<li><a href="{{ url_for('static', filename='index.html') }}">Services</a>
+						<li> About ⬇️
+							<ul class="sub-menu">
+								<li><a href="{{ url_for('main.about') }}">About Us</a></li>
+
+							</ul>
 						</li>
-						<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
-						<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
-						<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
+						<li><a href="/">Services</a>
+						</li>
+						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+						<li><a class="blog" href="contact">Contact</a></li>
+						<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
 					</ul>		
 				</nav>
 			</div>
 			<div class="col-lg-2">
 				<div class="header-button text-right">
-					<a href="{{ url_for('static', filename='contact.html') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
+					<a href="{{ url_for('main.contact') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
 				</div>
 			</div>
 		</div>
@@ -102,28 +108,22 @@
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
 			<ul class="nav_scroll">
-				<li><a href="{{ url_for('static', filename='index.html') }}">Home</a>		
+				<li><a href="/">Home</a>		
 				</li>
-				<li><a class="blog" href="{{ url_for('static', filename='index.html') }}">About </a></li>
-				<li><a href="{{ url_for('static', filename='index.html') }}">Services</a>
+				<li><a href="#">About </a>
+					<ul class="sub-menu">
+						<li><a href="{{ url_for('main.about') }}">About Us</a></li>
+					</ul>
 				</li>
-				<li><a href="{{ url_for('static', filename='shop.html') }}">Shop</a>
-				<li><a class="blog" href="{{ url_for('static', filename='contact.html') }}">Contact</a></li>
+				<li><a href="/">Services</a>
+				</li>
+				<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+				<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
 				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
 			</ul>
 		</nav>
 	</div>
 </div>
-
-<!-- print_shop Mobile Menu  -->
-
-<!--==================================================-->
-<!-- End print shop Main Menu -->
-<!--==================================================-->
-
-<!--==================================================-->
-<!-- Start print shop breatcam section  -->
-<!--==================================================-->
 <div class="breatcam-section d-flex align-items-center">
 	<div class="container">
 		<div class="row">
@@ -223,7 +223,7 @@
 							</div>
 							<div class="col-12">
 								<div class="contact-us__textarea ">
-									<textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="Massage"></textarea>
+									<textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="message"></textarea>
 								</div>
 							</div>
 							<div class="col-12">
