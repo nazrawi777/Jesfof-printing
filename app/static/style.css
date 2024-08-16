@@ -4577,6 +4577,10 @@ ul.footer-widget-list li:hover a {
   z-index: 100;
   cursor: pointer;
 }
+.wrapper10 i.button:hover{
+  background-color: white;
+  color: lightslategray;
+}
 i.button:active {
   transform: scale(0.94) translateY(-50%);
 }
