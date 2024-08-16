@@ -272,6 +272,7 @@
 		</nav>
 	</div>
 </div>
+
 <div class="breatcam-section d-flex align-items-center">
 	<div class="container">
 		<div class="row">
@@ -562,7 +563,7 @@
 			</div>
 		</div>
 	</div>
-</div>	
+</div>		
 <div class="scroll-area">
 	<div class="top-wrap">
 		<div class="go-top-btn-wraper">
@@ -573,38 +574,35 @@
 		</div>
 	</div>
 </div>
-<!--==================================================-->
-<!-- Start scrollup section Area -->
-<!--==================================================-->
 	
 	<!-- jquery js -->	
-	<script src="assets/js/vendor/jquery-3.6.2.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
 	<!-- bootstrap js -->	
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
 	<!-- carousel js -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
 	<!-- counterup js -->
-	<script src="assets/js/jquery.counterup.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
 	<!-- waypoints js -->
-	<script src="assets/js/waypoints.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
 	<!-- wow js -->
-	<script src="assets/js/wow.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
 	<!-- venobox js -->
-	<script src="venobox/venobox.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.js') }}"></script>
 	<!-- ajax mail js -->
-	<script src="assets/js/ajax-mail.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/ajax-mail.js') }}"></script>
 	<!--  animated-text js -->	
-	<script src="assets/js/animated-text.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/animated-text.js') }}"></script>
 	<!-- venobox min js -->
-	<script src="venobox/venobox.min.js"></script>
+	<script src="{{ url_for('static', filename='venobox/venobox.min.js') }}"></script>
 	<!-- isotope js -->
-	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
 	<!-- jquery meanmenu js -->	
-	<script src="assets/js/jquery.meanmenu.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.meanmenu.js') }}"></script>
 	<!-- jquery scrollup js -->	
-	<script src="assets/js/jquery.scrollUp.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/jquery.scrollUp.js') }}"></script>
 	<!-- theme js -->	
-	<script src="assets/js/theme.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 		  var swiper = new Swiper('.swiper', {
@@ -631,85 +629,82 @@
 	  </script>
 	  
 	<!-- testimonial js -->
-	<script src="assets/js/testimonial.js"></script>
-	<script src="print/assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<script src="print/assets/js/plugins/waypoints.min.js"></script>
-	<script src="print/assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<script src="print/assets/js/plugins/meanmenu.min.js"></script>
-	<script src="print/assets/js/plugins/swiper.min.js"></script>
-	<script src="print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js"></script>
-	<script src="print/assets/js/vendor/magnific-popup.min.js"></script>
-	<script src="print/assets/js/vendor/type.js"></script>
-	<script src="print/assets/js/plugins/counterup.js"></script>
-	<script src="print/assets/js/plugins/nice-select.min.js"></script>
-	<script src="print/assets/js/vendor/jquery-ui.min.js"></script>
-	<script src="print/assets/js/plugins/parallax-scroll.js"></script>
-	<script src="print/assets/js/plugins/jquery.countdown.min.js"></script>
-	<script src="print/assets/js/plugins/isotope-docs.min.js"></script>
-	<script src="print/assets/js/vendor/ajax-form.js"></script>
-	<script src="print/assets/js/plugins/slick.min.js"></script>
-	<script src="print/assets/js/main.js"></script>
+	<script src="{{ url_for('static', filename='assets/js/testimonial.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/waypoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/meanmenu.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/swiper.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/https://html.rrdevs.net/printfix/assets/js/plugins/wow.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/magnific-popup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/type.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/counterup.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/nice-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/parallax-scroll.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/jquery.countdown.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/isotope-docs.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/vendor/ajax-form.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/plugins/slick.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='print/assets/js/main.js') }}"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script defer src="main.js"></script>
-	<script>
-        const items = document.querySelectorAll(".item");
-        let imageURLs = [
-            "port1.jpg",
-            "port2.jpg",
-            "port3.jpg",
-            "port4.jpg",
-            "port5.jpg",
-        ];
-        let deviceType = "";
-        let events = {
-            mouse: {
-                start: "mouseover",
-                end: "mouseout",
-            },
-            touch: {
-                start: "click",  // Use click event for touch devices
-                end: "click",    // Use click event for touch devices
-            },
-        };
-        const isTouchDevice = () => {
-            try {
-                document.createEvent("TouchEvent");
-                deviceType = "touch";
-                return true;
-            } catch (e) {
-                deviceType = "mouse";
-                return false;
-            }
-        };
-        isTouchDevice();
-        items.forEach((item, index) => {
-            let img = document.createElement("img");
-            img.setAttribute("src", imageURLs[index]);
-            img.style.width = "100%";
-            img.style.height = "100%";
-            img.style.objectFit = "cover";
-            item.appendChild(img);
-            //Initial CSS properties for all items
-            item.style.flex = "1";
-            item.style.transition = "flex 0.8s ease";
-            
-            let isZoomedIn = false;
-            item.addEventListener(events[deviceType].start, () => {
-                if (deviceType === "touch") {
-                    isZoomedIn = !isZoomedIn;
-                    item.style.flex = isZoomedIn ? "3" : "1"; // Toggle zoom
-                } else {
-                    item.style.flex = "3"; //Expand the item
+<script defer src="{{ url_for('static', filename='main.js') }}"></script>
+
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const skillBars = document.querySelectorAll('.skills_main .bar span');
+    const percentages = document.querySelectorAll('.percentage');
+
+    function animateBars() {
+        skillBars.forEach((bar, index) => {
+            const percentage = percentages[index];
+            const targetWidth = percentage.getAttribute('data-percent') + '%';
+
+            // Animate bar
+            bar.style.width = '0%'; // Start from 0%
+            setTimeout(() => {
+                bar.style.width = targetWidth; // Set the target width
+            }, 100); // Delay to allow the initial width to take effect
+
+            // Animate percentage
+            let start = 0;
+            const end = parseInt(percentage.getAttribute('data-percent'));
+            const step = Math.ceil(end / 100); // Decrease the step value for slower increments
+
+            const interval = setInterval(() => {
+                start += step;
+                if (start >= end) {
+                    start = end;
+                    clearInterval(interval);
                 }
-            });
-            if (deviceType === "mouse") {
-                item.addEventListener(events[deviceType].end, () => {
-                    item.style.flex = "1"; //Contract the item
-                });
-            }
+                percentage.textContent = start + '%';
+            }, 70); // Increase the interval duration for slower updates
         });
-    </script>
+    }
+
+    // Trigger animation when the section is in view
+    function handleScroll() {
+        const skillsSection = document.querySelector('.skills_section');
+        const sectionPosition = skillsSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition) {
+            animateBars();
+            window.removeEventListener('scroll', handleScroll); // Remove the event listener after animation
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+
+</script>
+
+	
+  
+
+  
 </body>
 </html>
