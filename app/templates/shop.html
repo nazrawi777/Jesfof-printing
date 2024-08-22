@@ -223,78 +223,59 @@
 }
 </style>
 <body>
-	<!-- loder -->
 	<div class="loader-wrapper">
 	  <div class="loader"></div>
 	  <div class="loder-section left-section"></div>
 	  <div class="loder-section right-section"></div>
 	</div>
-<!--==================================================-->
-<!-- Start print shop Main Menu -->
-<!--==================================================-->
-<div id="sticky-header" class="print_shop_nav_manu">
-	<div class="container-fluid">
-		<div class="row align-items-center">
-			<div class="col-lg-2">
-				<div class="logo">
-					<a class="logo_img" href="{{ url_for('static', filename='/') }}" title="print_shop">
-						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
-					</a>
-					<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
-						<img src="{{ url_for('static', filename='assets/images/nini.png') }}" alt="astute"  id="wiwi1"/>
-					</a>
+	<div id="sticky-header" class="print_shop_nav_manu">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-lg-2">
+					<div class="logo">
+						<a class="logo_img" href="{{ url_for('static', filename='/') }}" title="print_shop">
+							<img src="{{ url_for('static', filename='assets/images/nini.png') }}" id="wiwi">
+						</a>
+						<a class="main_sticky" href="{{ url_for('static', filename='index.html') }}" title="print_shop">
+							<img src="{{ url_for('static', filename='assets/images/nini.png') }}" alt="astute"  id="wiwi1"/>
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-8">
-				<nav class="print_shop_menu">
-					<ul class="nav_scroll">
-						<li>
-							<a href="/">Home</a>		
-						</li>
-						<li> About ⬇️
-							<ul class="sub-menu">
-								<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-
-							</ul>
-						</li>
-						<li><a href="/">Services</a>
-						</li>
-						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
-						<li><a class="blog" href="contact">Contact</a></li>
-						<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
-					</ul>		
-				</nav>
-			</div>
-			<div class="col-lg-2">
-				<div class="header-button text-right">
-					<a href="{{ url_for('main.contact') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
+				<div class="col-lg-8">
+					<nav class="print_shop_menu">
+						<ul class="nav_scroll">
+							<li><a href="/">Home</a></li>
+							<li><a href="/">About Us</a></li>
+							<li><a href="/">Services</a></li>
+							<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+							<li><a class="blog" href="contact">Contact</a></li>
+							<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
+						</ul>		
+					</nav>
+				</div>
+				<div class="col-lg-2">
+					<div class="header-button text-right">
+						<a href="{{ url_for('main.contact') }}"> Contact Us <i class="bi bi-arrow-right"></i> </a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- print_shop Mobile Menu  -->
-<div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
-	<div class="mobile-menu">
-		<nav class="print_shop_menu">
-			<ul class="nav_scroll">
-				<li><a href="/">Home</a>		
-				</li>
-				<li><a href="#">About </a>
-					<ul class="sub-menu">
-						<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-					</ul>
-				</li>
-				<li><a href="/">Services</a>
-				</li>
-				<li><a href="{{ url_for('shop.shop') }}">Shop</a>
-				<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
-				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
-			</ul>
-		</nav>
+	<div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
+		<div class="mobile-menu">
+			<nav class="print_shop_menu">
+				<ul class="nav_scroll">
+					<li><a href="/">Home</a>		
+					</li>
+					<li><a href="/">About Us</a></li>
+					<li><a href="/">Services</a></li>
+					<li><a href="{{ url_for('shop.shop') }}">Shop</a>
+					<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
+					<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
+				</ul>
+			</nav>
+		</div>
 	</div>
-</div>
-
 <div class="breatcam-section d-flex align-items-center">
 	<div class="container">
 		<div class="row">
@@ -365,18 +346,19 @@
 					<!-- widget categories menu -->
 					<div class="widget-categories-menu">
 						<ul id="category-list">
+							<li><a href="javascript:void(0)" data-category="all">All</a></li> <!-- Added All -->
 							<li><a href="javascript:void(0)" data-category="banner">Banner</a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">T Shirts</a></li><li><a href="{{ url_for('static', filename='shop.html#') }}">Bug  </a></li>
-							<li><a href="javascript:void(0)" data-category="banner">Invitations</a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">Design</a></li>
-							<li><a href="javascript:void(0)" data-category="banner">Decoration</a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">Business Cart</a></li>
-							<li><a href="javascript:void(0)" data-category="banner">Squarebok </a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">Shoping Bug</a></li>
-							<li><a href="javascript:void(0)" data-category="banner">Bodu Lotion</a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">Calender</a></li>	
-							<li><a href="javascript:void(0)" data-category="banner">Cup</a></li>
-							<li><a href="javascript:void(0)" data-category="t-shirt">Tickets</a></li>	
+							<li><a href="javascript:void(0)" data-category="t-shirt">T-Shirts</a></li>
+							<li><a href="javascript:void(0)" data-category="invitations">Invitations</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="design">Design</a></li>
+							<li><a href="javascript:void(0)" data-category="decoration">Decoration</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="business-card">Business Cards</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="squarebook">Square Book</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="shopping-bag">Shopping Bag</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="body-lotion">Body Lotion</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="calendar">Calendar</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="cup">Cup</a></li> <!-- Updated category name -->
+							<li><a href="javascript:void(0)" data-category="tickets">Tickets</a></li>
 						</ul>
 					</div>
 				</div>
@@ -390,10 +372,7 @@
 					<li><a href="{{ url_for('static', filename='shop.html#') }}"> <i class="bi bi-x-diamond"></i> </a></li>
 					<li><a href="{{ url_for('static', filename='shop.html#') }}"> <i class="bi bi-text-left"></i> </a></li>
 				</ul> 
-
-				<!-- tab content -->
 				<div class="tab_content">
-					<!-- / tabs_item -->
 					<div class="tabs_item">
 						<div class="row">
 							<div class="col-lg-4 col-md-6">
@@ -408,16 +387,13 @@
 												<a href="#" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg">Add To Cart</a>
 											</div>
 										</div>
-										<!-- SHOP content -->
 										<div class="shop-content">
-											<!-- shop social list -->
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="#" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="detail.html"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
-											<!-- shop title -->
 											<div class="shop-title">
 												<h4> Shoping Bag Pack </h4>
 												<h6>$ 35.00 <span>$ 80.00</span></h6>
@@ -437,16 +413,13 @@
 												<a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg">Add To Cart</a>
 											</div>
 										</div>
-										<!-- SHOP content -->
 										<div class="shop-content">
-											<!-- shop social list -->
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="detail.html"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
-											<!-- shop title -->
 											<div class="shop-title">
 												<h4> Plastic Soup Container </h4>
 												<h6>$ 39.00 <span>$ 49.00</span></h6>
@@ -472,7 +445,7 @@
 												<div class="shop-social-list">
 													<ul>
 														<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-														<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+														<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 													</ul>
 												</div>
 												<!-- shop title -->
@@ -502,7 +475,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -531,7 +504,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='detail.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -560,7 +533,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -589,7 +562,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -618,7 +591,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -647,7 +620,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="shopdetails.html"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails.html"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -676,7 +649,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -705,10 +678,9 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
-											<!-- shop title -->
 											<div class="shop-title">
 												<h4> Brand Shoping mug </h4>
 												<h6>$ 35.00 <span>$ 55.00</span></h6>
@@ -734,7 +706,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -763,7 +735,7 @@
 											<div class="shop-social-list">
 												<ul>
 													<li><a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Shoping Bag Pack" data-price="35.00" data-image="assets/images/resource/shop4.jpg"><i class="bi bi-cart3"></i></a></li>
-													<li><a href="{{ url_for('static', filename='shop-details.html') }}"><i class="bi bi-search"></i></a></li>
+													<li><a href="/shopdetails"><i class="bi bi-search"></i></a></li>
 												</ul>
 											</div>
 											<!-- shop title -->
@@ -1376,100 +1348,101 @@
 	<script src="{{ url_for('static', filename='assets/js/price-ranger.js') }}"></script>
 	<!-- testimonial js -->
 	<script src="{{ url_for('static', filename='assets/js/testimonial.js') }}"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			// Search Functionality
-			document.getElementById('search-form').addEventListener('submit', function(event) {
-				event.preventDefault();
-				const query = document.getElementById('search-input').value.toLowerCase();
-				filterProducts(query);
-			});
-	
-			function filterProducts(query) {
-				const products = document.querySelectorAll('.shop-single-box');
-				products.forEach(product => {
-					const title = product.querySelector('.shop-title h4').textContent.toLowerCase();
-					if (title.includes(query)) {
-						product.style.display = 'block';
-					} else {
-						product.style.display = 'none';
-					}
-				});
-			}
-	
-			// Price Filter
-			document.getElementById('price-range').addEventListener('input', function() {
-				const minPrice = 0; // Adjust as needed
-				const maxPrice = this.value;
-				document.getElementById('slider-range-value2').textContent = maxPrice;
-				filterByPrice(minPrice, maxPrice);
-			});
-	
-			function filterByPrice(min, max) {
-				const products = document.querySelectorAll('.shop-single-box');
-				products.forEach(product => {
-					const price = parseFloat(product.querySelector('.shop-title h6').textContent.replace('$', ''));
-					if (price >= min && price <= max) {
-						product.style.display = 'block';
-					} else {
-						product.style.display = 'none';
-					}
-				});
-			}
-	
-			// Categories Filter
-			document.querySelectorAll('#category-list a').forEach(link => {
-				link.addEventListener('click', function() {
-					const category = this.getAttribute('data-category');
-					filterByCategory(category);
-				});
-			});
-	
-			function filterByCategory(category) {
-				const products = document.querySelectorAll('.shop-single-box');
-				products.forEach(product => {
-					const categories = product.getAttribute('data-categories').split(',');
-					if (categories.includes(category)) {
-						product.style.display = 'block';
-					} else {
-						product.style.display = 'none';
-					}
-				});
-			}
-	
-			// Default Sorting
-			document.getElementById('sort-options').addEventListener('change', function() {
-				const sortBy = this.value;
-				sortProducts(sortBy);
-			});
-	
-			function sortProducts(sortBy) {
-				const products = Array.from(document.querySelectorAll('.shop-single-box'));
-				let sortedProducts;
-				
-				switch (sortBy) {
-					case 'popularity':
-						sortedProducts = products.sort((a, b) => b.getAttribute('data-popularity') - a.getAttribute('data-popularity'));
-						break;
-					case 'price-asc':
-						sortedProducts = products.sort((a, b) => parseFloat(a.querySelector('.shop-title h6').textContent.replace('$', '')) - parseFloat(b.querySelector('.shop-title h6').textContent.replace('$', '')));
-						break;
-					case 'price-desc':
-						sortedProducts = products.sort((a, b) => parseFloat(b.querySelector('.shop-title h6').textContent.replace('$', '')) - parseFloat(a.querySelector('.shop-title h6').textContent.replace('$', '')));
-						break;
-					default:
-						sortedProducts = products;
-				}
-				
-				const container = document.querySelector('.tab_content .tabs_item .row');
-				container.innerHTML = '';
-				sortedProducts.forEach(product => {
-					const clonedProduct = product.cloneNode(true);
-					container.appendChild(clonedProduct);
-				});
-			}
-		});
-	</script>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+    // Search Functionality
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('search-input').value.toLowerCase();
+        filterProducts(query);
+    });
+
+    function filterProducts(query) {
+        const products = document.querySelectorAll('.shop-single-box');
+        products.forEach(product => {
+            const title = product.querySelector('.shop-title h4').textContent.toLowerCase();
+            if (title.includes(query)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // Price Filter
+    document.getElementById('price-range').addEventListener('input', function() {
+        const minPrice = 0; // Adjust as needed
+        const maxPrice = this.value;
+        document.getElementById('slider-range-value2').textContent = maxPrice;
+        filterByPrice(minPrice, maxPrice);
+    });
+
+    function filterByPrice(min, max) {
+        const products = document.querySelectorAll('.shop-single-box');
+        products.forEach(product => {
+            const price = parseFloat(product.querySelector('.shop-title h6').textContent.replace('$', ''));
+            if (price >= min && price <= max) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // Categories Filter
+    document.querySelectorAll('#category-list a').forEach(link => {
+        link.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            filterByCategory(category);
+        });
+    });
+
+    function filterByCategory(category) {
+        const products = document.querySelectorAll('.shop-single-box');
+        products.forEach(product => {
+            const categories = product.getAttribute('data-categories').split(',');
+            if (category === 'all' || categories.includes(category)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // Default Sorting
+    document.getElementById('sort-options').addEventListener('change', function() {
+        const sortBy = this.value;
+        sortProducts(sortBy);
+    });
+
+    function sortProducts(sortBy) {
+        const products = Array.from(document.querySelectorAll('.shop-single-box'));
+        let sortedProducts;
+        
+        switch (sortBy) {
+            case 'popularity':
+                sortedProducts = products.sort((a, b) => b.getAttribute('data-popularity') - a.getAttribute('data-popularity'));
+                break;
+            case 'price-asc':
+                sortedProducts = products.sort((a, b) => parseFloat(a.querySelector('.shop-title h6').textContent.replace('$', '')) - parseFloat(b.querySelector('.shop-title h6').textContent.replace('$', '')));
+                break;
+            case 'price-desc':
+                sortedProducts = products.sort((a, b) => parseFloat(b.querySelector('.shop-title h6').textContent.replace('$', '')) - parseFloat(a.querySelector('.shop-title h6').textContent.replace('$', '')));
+                break;
+            default:
+                sortedProducts = products;
+        }
+        
+        const container = document.querySelector('.tab_content .tabs_item .row');
+        container.innerHTML = '';
+        sortedProducts.forEach(product => {
+            const clonedProduct = product.cloneNode(true);
+            container.appendChild(clonedProduct);
+        });
+    }
+});
+
+</script>
 	<script>
 document.addEventListener("DOMContentLoaded", function () {
     const cartIcon = document.getElementById("cart-icon");

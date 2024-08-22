@@ -53,12 +53,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <style>
-	.nav_scroll li a{
-		color: gray !important;
-	}
-	.nav_scroll li a:hover{
-		color: #00d5d9 !important;
-	}
+	
 	 @media only screen and (min-width: 1200px) and (max-width: 1441px) {
 		#cart-icon{
 		position: relative;
@@ -210,9 +205,6 @@
 	  <div class="loder-section left-section"></div>
 	  <div class="loder-section right-section"></div>
 	</div>
-<!--==================================================-->
-<!-- Start print shop Main Menu -->
-<!--==================================================-->
 <div id="sticky-header" class="print_shop_nav_manu">
 	<div class="container-fluid">
 		<div class="row align-items-center">
@@ -229,17 +221,9 @@
 			<div class="col-lg-8">
 				<nav class="print_shop_menu">
 					<ul class="nav_scroll">
-						<li>
-							<a href="/">Home</a>		
-						</li>
-						<li> About ⬇️
-							<ul class="sub-menu">
-								<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-
-							</ul>
-						</li>
-						<li><a href="/">Services</a>
-						</li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/">About Us</a></li>
+						<li><a href="/">Services</a></li>
 						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
 						<li><a class="blog" href="contact">Contact</a></li>
 						<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
@@ -254,20 +238,14 @@
 		</div>
 	</div>
 </div>
-<!-- print_shop Mobile Menu  -->
 <div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
 			<ul class="nav_scroll">
 				<li><a href="/">Home</a>		
 				</li>
-				<li><a href="#">About </a>
-					<ul class="sub-menu">
-						<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-					</ul>
-				</li>
-				<li><a href="/">Services</a>
-				</li>
+				<li><a href="/">About Us</a></li>
+				<li><a href="/">Services</a></li>
 				<li><a href="{{ url_for('shop.shop') }}">Shop</a>
 				<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
 				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>
@@ -275,15 +253,14 @@
 		</nav>
 	</div>
 </div>
-
-<div class="breatcam2-section d-flex align-items-center">
+<div class="breatcam-section d-flex align-items-center">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="breatcam-content text-center">
 					<!-- breadcumb title -->
 					<div class="breatcam-title">
-						<h1> Shop Details</h1>
+						<h1> Shop </h1>
 					</div>
 					<!-- breatcam menu -->
 					<div class="breatcam-menu">
@@ -298,43 +275,26 @@
 		</div>
 	</div>
 </div>
-<!--==================================================-->
-<!-- End print shop breatcam section -->
-<!--==================================================--> 
-
-<!--==================================================-->
-<!-- Start print shop  Section  -->
-<!--==================================================-->
 <div class="shop-detials">
 	<div class="container">		
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
-				<!-- / tab -->
 			  	<div class="tab style-three">
 					<div class="tab_content">
-
 						<div class="tabs_item">
 							<img src="{{ url_for('static', filename='assets/images/resource/mug1.jpg') }}">
-							<!-- tab icon -->
-								<div class="tab-icon">
-									<a href="{{ url_for('static', filename='shop-details.html#') }}"> <i class="bi bi-heart"></i> </a>
-								</div>
-						</div> <!-- / tabs_item -->
-
+								
+						</div> 
 						<div class="tabs_item">
 							<img src="{{ url_for('static', filename='assets/images/resource/mug2.jpg') }}">
 							<!-- tab icon -->
-								<div class="tab-icon">
-									<a href="{{ url_for('static', filename='shop-details.html#') }}"> <i class="bi bi-heart"></i> </a>
-								</div>
+								
 						</div> <!-- / tabs_item -->
 
 						<div class="tabs_item">
 							<img src="{{ url_for('static', filename='assets/images/resource/mug3.jpg') }}">
 							<!-- tab icon -->
-								<div class="tab-icon">
-									<a href="{{ url_for('static', filename='shop-details.html#') }}"> <i class="bi bi-heart"></i> </a>
-								</div>
+								
 						</div> <!-- / tabs_item -->
 					 </div> <!-- / tab_content -->
 
@@ -383,24 +343,24 @@
 					    <td class="table-title"> Categories </td>
 					    <td class="table-text">  Decoration, Documents </td>
 					  </tr>
-					  <tr>
-					  	<!-- table data -->
-					    <td class="table-title"> Tags </td>
-					    <td class="table-text"> Calendar, Cup, Invitation, Magazine </td>
-					  </tr>
+					  
 				</table> <!-- category table End -->
 				<div class="shop-social-icon-list">
 					<ul>
-						<li><strong>Share :</strong></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="fab fa-pinterest-p"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-instagram"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-dribbble"></i></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-behance"></i></a></li>
+						<!-- Share Button -->
+						<li><a href="#" id="share-button"><i class="bi bi-share"></i></a></li>
+						<!-- Social Media Icons (Initially Hidden) -->
+						<div id="social-icons" style="display: none;">
+							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-tiktok"></i></a></li>
+							<!-- Copy Link Button -->
+							<li><a href="#" id="copy-link" data-clipboard-text="{{ request.url }}"><i class="bi bi-clipboard"></i></a></li>
+						</div>
 					</ul>
 				</div>
+				
+				
 			</div>
 			<div class="col-lg-12">
 				<div class="appoinment-tab">
@@ -413,71 +373,44 @@
 						</ul> 
 						<div class="tab_content">
 							<!-- / tabs_item -->
-							<div class="tabs_item">
-								<!-- post comment -->
-								<div class="post-comment-description">
-									<p>Leverage existing competitive e-tailers for clicks-and-mortar materials. Continually pursue long-term high-impact innovation vis-a-vis low high-yield markets. Efficiently incentiv superior infrastructures without future-proof communities. Credibly whiteboard transparent resources before distinctive alignments. Progressively scale plug-and meta-services whereas standardized niches. Globally incentivize effective e-markets via intuitive architectures. Compellingly facilitate next-generation experiences vis-a-vis business core are in competencies. Globally enable synergistic platforms rather than high-payoff convergence. Progressively enhance low-risk high-yield scenarios without 24/365 imperatives. Top compellingly incentivize out-of-the-box</p>
-									<p class="pt-2">Meta-services whereas standardized niches. Globally incentivize effective e-markets via intuitive architectures. Compellingly facilitate next-generation experiences vis-a-vis business core are in competencies. Globally enable synergistic platforms rather than high-payoff convergence. Progressively enhance low-risk high-yield scenarios without 24/365 imperatives. Top compellingly incentivize out-of-the-box convergence for synergistic benefits.</p>
-								</div>
-							</div> 
 							<!-- / tabs_item -->
 							<div class="tabs_item">
 								<!-- post comment -->
 								<table class="tab-items-table">
-									 <tr>
-									  	<!-- table data -->
-									    <td class="table-title"> Stand Up </td>
-									    <td class="table-text"> : KKAL </td>
-									  </tr>
+									<tr class="tabs-bg">
+										<!-- table data -->
+									  <td class="table-title"> Brand </td>
+									  <td class="table-text"> : JESOFE-PRINTING </td>
+									</tr>
 									  <tr class="tabs-bg">
-									  	<!-- table data -->
+									  	
 									    <td class="table-title"> Colors </td>
 									    <td class="table-text"> : Black, Blue, Purple </td>
 									  </tr>
-									  <tr>
-									  	<!-- table data -->
-									    <td class="table-title"> Weight </td>
-									    <td class="table-text"> : 35 KG </td>
-									  </tr>
 									  <tr class="tabs-bg">
-									  	<!-- table data -->
-									    <td class="table-title"> Wheels </td>
-									    <td class="table-text"> : 12” air/ Wide Truck Sleek Trade </td>
-									  </tr>
-									  <tr class="tabs-bg">
-									  	<!-- table data -->
-									    <td class="table-title"> Address </td>
-									    <td class="table-text"> : 18F Keangnam Landmark 72, PhamHung Str Hanoi, FL 100000 </td>
-									  </tr>
-									  
-								</table> <!-- widget table End -->
+									    <td class="table-title"> Size </td>
+									    <td class="table-text"> : Small,Midium,Large </td>
+									  </tr>  
+								</table> 
 							</div> 
-							<!-- / tabs_item -->
 							<div class="tabs_item">
-								<!-- post comment -->
-								<div class="post-comment">
-									<div class="post-comment-thumb">
-										<a href="{{ url_for('static', filename='blog-details.html') }}"><img src="{{ url_for('static', filename='assets/images/resource/test5.png') }}" alt=""></a>
+								<div class="rating-box">
+									<header>How Was the Quality of Your Printed Product?</header>
+									<div class="stars">
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
 									</div>
-									<!-- comment icon -->
-									<div class="comment-icon-list">
-										<ul>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star"></i></li>
-										</ul>
-									</div>
-									<div class="post-title"><h4>David Alexon <span class="left-date">October 01, 2022</span></h4></div>
-									<div class="posts-reply">
-										<p>Appropriately syndicate integrated niches with virtual methods of emporeffective process improvements with high.</p>
-										<span class="rights-reply"> <i class="bi bi-reply-fill"></i>Reply</span>
-									</div>
-								</div>
+									<button class="submit-rating">Submit</button>
+								  </div>
+								  
+								  <div class="rating-alert" id="rating-alert"></div>
+								
 								
 							</div> 
-						</div> <!-- / tab_content -->
+						</div> 
 					</div> 
 				</div>
             </div>
@@ -505,9 +438,9 @@
 						<!-- shop thumb -->
 						<div class="shop-thumb">
 							<img src="{{ url_for('static', filename='assets/images/resource/shop5.jpg') }}" alt="">
-							<!-- add to card -->
+							<!-- Add To Cart -->
 							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Card</a>
+								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
 							</div>
 						</div>
 						<!-- SHOP content -->
@@ -515,10 +448,8 @@
 							<!-- shop social list -->
 							<div class="shop-social-list">
 								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-suit-heart"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-arrow-down-up"></i></a></li>	
 								</ul>
 							</div>
 							<!-- shop title -->
@@ -536,9 +467,9 @@
 						<!-- shop thumb -->
 						<div class="shop-thumb">
 							<img src="{{ url_for('static', filename='assets/images/resource/shop6.jpg') }}" alt="">
-							<!-- add to card -->
+							<!-- Add To Cart -->
 							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Card</a>
+								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
 							</div>
 						</div>
 						<!-- SHOP content -->
@@ -546,10 +477,8 @@
 							<!-- shop social list -->
 							<div class="shop-social-list">
 								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-suit-heart"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-arrow-down-up"></i></a></li>	
 								</ul>
 							</div>
 							<!-- shop title -->
@@ -567,9 +496,9 @@
 						<!-- shop thumb -->
 						<div class="shop-thumb">
 							<img src="{{ url_for('static', filename='assets/images/resource/shop7.jpg') }}" alt="">
-							<!-- add to card -->
+							<!-- Add To Cart -->
 							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Card</a>
+								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
 							</div>
 						</div>
 						<!-- SHOP content -->
@@ -577,10 +506,8 @@
 							<!-- shop social list -->
 							<div class="shop-social-list">
 								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-suit-heart"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-arrow-down-up"></i></a></li>	
 								</ul>
 							</div>
 							<!-- shop title -->
@@ -598,9 +525,9 @@
 						<!-- shop thumb -->
 						<div class="shop-thumb">
 							<img src="{{ url_for('static', filename='assets/images/resource/shop8.jpg') }}" alt="">
-							<!-- add to card -->
+							<!-- Add To Cart -->
 							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Card</a>
+								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
 							</div>
 						</div>
 						<!-- SHOP content -->
@@ -608,10 +535,8 @@
 							<!-- shop social list -->
 							<div class="shop-social-list">
 								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-suit-heart"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
 									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-arrow-down-up"></i></a></li>	
 								</ul>
 							</div>
 							<!-- shop title -->
@@ -897,5 +822,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 			</script>
+<script>
+	const stars = document.querySelectorAll(".stars i");
+	let rating = 0;
+  
+	stars.forEach((star, index1) => {
+	  star.addEventListener("click", () => {
+		rating = index1 + 1; // Store the selected rating
+		stars.forEach((star, index2) => {
+		  index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+		});
+	  });
+	});
+  
+	// Submit button event listener
+	document.querySelector(".submit-rating").addEventListener("click", () => {
+	  if (rating > 0) {
+		alert(`You rated this ${rating} out of 5 stars.`);
+	  } else {
+		alert("Please select a rating.");
+	  }
+	});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  <script>
+	  document.addEventListener('DOMContentLoaded', function () {
+		  var shareButton = document.getElementById('share-button');
+		  var socialIcons = document.getElementById('social-icons');
+		  var clipboard = new ClipboardJS('#copy-link');
+		  
+		  // Toggle social media icons visibility
+		  shareButton.addEventListener('click', function (e) {
+			  e.preventDefault();
+			  if (socialIcons.style.display === 'none') {
+				  socialIcons.style.display = 'block';
+			  } else {
+				  socialIcons.style.display = 'none';
+			  }
+		  });
+		  
+		  clipboard.on('success', function (e) {
+			  alert('Link copied to clipboard!');
+		  });
+  
+		  clipboard.on('error', function (e) {
+			  alert('Failed to copy link.');
+		  });
+	  });
+  </script>
+  
+  
 </body>
 </html>

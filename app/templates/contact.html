@@ -59,9 +59,6 @@
 	  <div class="loder-section left-section"></div>
 	  <div class="loder-section right-section"></div>
 	</div>
-<!--==================================================-->
-<!-- Start print shop Main Menu -->
-<!--==================================================-->
 <div id="sticky-header" class="print_shop_nav_manu">
 	<div class="container-fluid">
 		<div class="row align-items-center">
@@ -78,17 +75,9 @@
 			<div class="col-lg-8">
 				<nav class="print_shop_menu">
 					<ul class="nav_scroll">
-						<li>
-							<a href="/">Home</a>		
-						</li>
-						<li> About ⬇️
-							<ul class="sub-menu">
-								<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-
-							</ul>
-						</li>
-						<li><a href="/">Services</a>
-						</li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/">About Us</a></li>
+						<li><a href="/">Services</a></li>
 						<li><a href="{{ url_for('shop.shop') }}">Shop</a>
 						<li><a class="blog" href="contact">Contact</a></li>
 						<li><a class="blog" href="login"><i class="fas fa-user-tie"></i></a></li>
@@ -103,20 +92,14 @@
 		</div>
 	</div>
 </div>
-<!-- print_shop Mobile Menu  -->
 <div class="mobile-menu-area sticky d-sm-block d-md-block d-lg-none ">
 	<div class="mobile-menu">
 		<nav class="print_shop_menu">
 			<ul class="nav_scroll">
 				<li><a href="/">Home</a>		
 				</li>
-				<li><a href="#">About </a>
-					<ul class="sub-menu">
-						<li><a href="{{ url_for('main.about') }}">About Us</a></li>
-					</ul>
-				</li>
-				<li><a href="/">Services</a>
-				</li>
+				<li><a href="/">About Us</a></li>
+				<li><a href="/">Services</a></li>
 				<li><a href="{{ url_for('shop.shop') }}">Shop</a>
 				<li><a class="blog" href="{{ url_for('main.contact') }}">Contact</a></li>
 				<li><a class="blog" href="{{ url_for('static', filename='login.html') }}"><i class="fas fa-user-tie"></i></a></li>

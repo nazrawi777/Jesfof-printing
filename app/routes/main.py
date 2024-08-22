@@ -52,7 +52,7 @@ def home_about_upload():
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_home_about.html')  # Create this template
 
-@main_bp.route('/about')
-def about():
-    return render_template('about.html')
+@main_bp.route('/shopdetails')
+def shopdetails():
+    return render_template('shopdetails.html')
 
