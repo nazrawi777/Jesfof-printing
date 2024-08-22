@@ -10,15 +10,13 @@ def admin():
   """if 'admin_logged_in' not in session or not session['admin_logged_in']:
         return render_template('admin/login.html')"""
   
-  return render_template("admin/admin.html", data={
+  return render_template("admin/new_admin.html", data={
       "products":[],
       "slidImg":[],
       "slideVideo":[],
       "links":[],
       "linclient_list":[],
-      "about_img":[],
-      
-       
+      "about_img":[], 
   })
 
 @admin_bp.route('/login', methods=['GET', 'POST'])

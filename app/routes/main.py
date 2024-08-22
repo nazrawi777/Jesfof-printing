@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, session, request, flash
+from flask import Blueprint, render_template, redirect, send_from_directory, url_for, session, request, flash
 from werkzeug.utils import secure_filename
 import os
 from app import db
@@ -26,8 +26,9 @@ def contact():
 
 @main_bp.route('/hero-upload', methods=['GET', 'POST'])
 def upload_hero():
+    print("Herrr GetSS")
     if request.method == 'POST':
-        description = request.form.get('description')
+        description = request.form.get('image-caption')
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
@@ -58,4 +59,11 @@ def home_about_upload():
 @main_bp.route('/shopdetails')
 def shopdetails():
     return render_template('shopdetails.html')
+
+@main_bp.route("/serve/<filename>")
+def serve_imgs(filename):
+    try:
+        return send_from_directory(UPLOAD_FOLDER,filename)
+    except Exception:
+        print(Exception.with_traceback)
 

@@ -12,9 +12,8 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    #app.config.from_object(Config)
-    app.config["DATABASE_URL"]="sqlite:///app.db"
-    app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///app.db"
+    app.config.from_object(Config)
+    
     
     db.init_app(app)
     migrate.init_app(app, db)
