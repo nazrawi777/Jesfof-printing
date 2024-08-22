@@ -1,23 +1,36 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
-'''from werkzeug.utils import secure_filename
-from app import db
-from app.models.model import Product
-import os'''
+from werkzeug.utils import secure_filename
+from app.__init__ import db
+from app.models.model import Product,User
+from app.utils import allowed_file
+import os
 
 product_bp = Blueprint('product',__name__)
 
-@product_bp.routes("")
+@product_bp.route("/product")
 def product():
-    pass
+    #products = Product.query.all()
+    
+    return render_template('admin/products.html')
 
-@product_bp.routes("admin/add_product" , methods=["POST"])
+@product_bp.route('/product/<int:product_id>')
+def product_detail(product_id):
+    product = Product.query.get_or_404(product_id)
+    related_products = Product.query.filter(
+        Product.id != product.id,
+        Product.name.like(f'%{product.name.split()[0]}%')
+    ).limit(4).all()
+    return render_template('product_detail.html', product=product, related_products=related_products)
+
+
+@product_bp.route("/admin/add_product" , methods=["POST"])
 def add_product():
-    """if request.method == 'POST':
+    if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
         description = request.form['description']
         image_file = request.files.get('image')
-        if image_file and True:#allowed_file(image_file.filename):
+        if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
             image_path = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
             image_file.save(image_path)
@@ -31,11 +44,12 @@ def add_product():
             return redirect(url_for('admin.admin'))
         else:
             flash('No image selected or invalid file type.', 'error')
-            return redirect(request.url)"""
+            return redirect(request.url)
 
-@product_bp.routes('/admin/edit_product/<int:product_id>', methods=['GET', 'POST'])
+
+@product_bp.route('/admin/edit_product/<int:product_id>', methods=['GET', 'POST'])
 def edite_product(product_id):
-    """product = Product.query.get_or_404(product_id)
+    product = Product.query.get_or_404(product_id)
     if request.method == 'POST':
         product.name = request.form['name']
         product.price = request.form['price']
@@ -49,16 +63,17 @@ def edite_product(product_id):
         db.session.commit()
         product.log_action('Edited',f"Product '{product.name}' edited successfully.")
         flash('Product updated successfully.', 'success')
-        return redirect(url_for('admin.admin'))"""
+        return redirect(url_for('admin.admin'))
 
-@product_bp.routes('/admin/delete_product/<int:product_id>', methods=['POST'])
+
+@product_bp.route('/admin/delete_product/<int:product_id>', methods=['POST'])
 def delete_product(product_id):
-    """if 'admin_logged_in' not in session or not session['admin_logged_in']:
+    if 'admin_logged_in' not in session or not session['admin_logged_in']:
         return redirect(url_for('admin.login'))
     product = Product.query.get_or_404(product_id)
     db.session.delete(product)
     db.session.commit()
     product.log_action('Deleted',f"Product '{product.name}' deleted successfully")
     flash('Product deleted successfully.', 'success')
-    return redirect(url_for('admin.admin'))"""
+    return redirect(url_for('admin.admin'))
 

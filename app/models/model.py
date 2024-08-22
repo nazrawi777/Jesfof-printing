@@ -1,14 +1,14 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 
-from app import db
+from app.__init__ import db
 from datetime import datetime
 
-class HeroSlider(db.models):
+class HeroSlider(db.Model):
     id= db.Column(Integer,primary_key=True)
     text = db.Column(String(500),nullable=False)
     bg_image_url = db.Column(String(500),nullable=False) 
 
-class AboutImges(db.models):
+class AboutImges(db.Model):
     id= db.Column(Integer,primary_key=True)
     img_url = db.Column(String(400) )
 
@@ -39,3 +39,10 @@ class Product(db.Model):
     weight= db.Column(Integer)
     product_categorys = db.relationship('ProductCategory', backref='product', lazy=True)
     product_colors = db.relationship('ProductColor', backref='product', lazy=True)
+    
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.Text, nullable=False)
+    role = db.Column(db.String(250), default="user", nullable=False)
+  
