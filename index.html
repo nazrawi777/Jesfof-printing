@@ -235,7 +235,11 @@
 						</li>
 						<li> About ⬇️
 							<ul class="sub-menu">
+<<<<<<< HEAD
 								<li><a href="about.html">About Us</a></li>
+=======
+								<li><a href="about1.html">About Us</a></li>
+>>>>>>> master
 
 							</ul>
 						</li>
@@ -389,7 +393,11 @@
 						<i class="fa-solid fa-arrow-left button" id="prev"></i>
 						<div class="image-container1">
 						  <div class="carousel">
+<<<<<<< HEAD
 							<img src="assets/images/resource/about-2.png" alt="">
+=======
+							<img src="assets/images/resource/about1.png" alt="">
+>>>>>>> master
 							<img src="assets/images/resource/about1.png" alt="">
 						  </div>
 						  <i class="fa-solid fa-arrow-right button" id="next"></i>
@@ -984,5 +992,81 @@
             }
         });
     </script>
-</body>
-</html>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		  const slides = document.querySelectorAll('.slide-container1');
+		  let currentSlide = 0;
+	  
+		  function showSlide(index) {
+			slides.forEach((slide, i) => {
+			  slide.classList.remove('active');
+			  // Only add active class to the current slide
+			  if (i === index) {
+				slide.classList.add('active');
+			  }
+			});
+		  }
+	  
+		  document.querySelector('#nex1').addEventListener('click', () => {
+			currentSlide = (currentSlide + 1) % slides.length; // Loop to the start
+			showSlide(currentSlide); // Show the next slide
+		  });
+	  
+		  document.querySelector('#pre1').addEventListener('click', () => {
+			currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Loop to the end
+			showSlide(currentSlide); // Show the previous slide
+		  });
+	  
+		  showSlide(currentSlide); // Initial call to display the first slide
+		});
+	  </script>
+	  <script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const carousel = document.querySelector('.carousel');
+			const images = carousel.querySelectorAll('img');
+			const prevButton = document.getElementById('prev');
+			const nextButton = document.getElementById('next');
+			let currentIndex = 0;
+			const intervalTime = 3000; // 3 seconds for autoplay
+		
+			// Function to update the carousel to show the current image
+			function updateCarousel() {
+				images.forEach((img, index) => {
+					img.style.display = (index === currentIndex) ? 'block' : 'none';
+				});
+			}
+		
+			// Show the first image initially
+			updateCarousel();
+		
+			// Function to move to the next image
+			function nextImage() {
+				currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+				updateCarousel();
+			}
+		
+			// Event listener for the previous button
+			prevButton.addEventListener('click', function() {
+				currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+				updateCarousel();
+			});
+		
+			// Event listener for the next button
+			nextButton.addEventListener('click', function() {
+				nextImage();
+			});
+		
+			// Autoplay functionality
+			const autoplay = setInterval(nextImage, intervalTime);
+		
+			// Pause autoplay on arrow click
+			prevButton.addEventListener('click', () => clearInterval(autoplay));
+			nextButton.addEventListener('click', () => clearInterval(autoplay));
+		});
+		</script>
+		
+	  
+	
+	  
+	</body>
+	</html>
