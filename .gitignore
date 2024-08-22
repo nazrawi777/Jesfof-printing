@@ -1,0 +1,78 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+ENV/
+env/
+*.env
+
+# IDE/editor-specific files
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Flask-specific files
+instance/
+*.pyc
+
+# Log files
+*.log
+
+# Database files
+*.sqlite3
+*.db
+*.db3
+
+# Migrations folder (if using Flask-Migrate)
+migrations/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+*.cover
+*.py,cover
+
+# pytest cache
+.cache/
+
+# Environment variable files
+.env
+*.env
+
+# Application specific
+run.py
+config.py
+
+# IDE and OS-specific files
+*.sublime-workspace
+*.sublime-project
+.idea/
+.vscode/
+*.iml
+
+# Mac OS X Finder files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Backup files
+*~
+*.bak
+
+# Other
+*.sqlite
+*.db
+
+# Exclude if you're using Docker
+docker-compose.override.yml
+Dockerfile
