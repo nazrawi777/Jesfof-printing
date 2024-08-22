@@ -1029,7 +1029,7 @@
       </div>
     </div>
 
-    <img src="{{ url_for('main.serve_imgs',filename='blog-2.jpg') }}" alt="" srcset="">
+    <img src="{{request.url_root}}{{  url_for('main.serve_imgs',filename=image_url) }}" alt="" srcset="">
     <script>
       const toast = document.querySelector(".toast");
       const toastMessage = document.querySelector(".toast-message");

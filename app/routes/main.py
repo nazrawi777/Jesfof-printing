@@ -9,7 +9,7 @@ from app.models.model import User
 main_bp = Blueprint('main', __name__)
 
 # Define the upload folder (make sure this directory exists)
-UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')  # Default to 'uploads' folder
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER')  # Default to 'uploads' folder
 
 # Function to check allowed file extensions
 def allowed_file(filename):
@@ -63,7 +63,8 @@ def shopdetails():
 @main_bp.route("/serve/<filename>")
 def serve_imgs(filename):
     try:
-        return send_from_directory(UPLOAD_FOLDER,filename)
+        return send_from_directory("upload_folder",filename)
     except Exception:
-        print(Exception.with_traceback)
+        print("error")
+        return "Error"
 

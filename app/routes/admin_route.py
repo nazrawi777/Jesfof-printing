@@ -9,7 +9,7 @@ admin_bp = Blueprint("admin",__name__)
 def admin():
   """if 'admin_logged_in' not in session or not session['admin_logged_in']:
         return render_template('admin/login.html')"""
-  
+  image_url =  'blog-2.jpg'
   return render_template("admin/new_admin.html", data={
       "products":[],
       "slidImg":[],
@@ -17,7 +17,7 @@ def admin():
       "links":[],
       "linclient_list":[],
       "about_img":[], 
-  })
+  },image_url=image_url)
 
 @admin_bp.route('/login', methods=['GET', 'POST'])
 def login():
