@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
 from werkzeug.utils import secure_filename
 import os
-from app.__init__ import db
+from app import db
 
 from app.models.model import User
 
@@ -18,9 +18,6 @@ def allowed_file(filename):
 
 @main_bp.route('/')
 def home():
-    new_user = User(username="kal",password="9866544",role="Admin")
-    db.session.add(new_user)
-    db.session.commit()
     return render_template('index.html')
 
 @main_bp.route('/contact')

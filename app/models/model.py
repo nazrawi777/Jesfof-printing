@@ -1,7 +1,6 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Integer, String, Boolean, DateTime
 
-from app.__init__ import db
-from datetime import datetime
+from app import db
 
 class HeroSlider(db.Model):
     id= db.Column(Integer,primary_key=True)

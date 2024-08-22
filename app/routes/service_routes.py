@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
-'''from werkzeug.utils import secure_filename
-from app import db
+from werkzeug.utils import secure_filename
 from app.models.model import ServiceCard
-import os'''
+import os
 
 service_bp = Blueprint('service',__name__)
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
 from werkzeug.utils import secure_filename
-from app.__init__ import db
+from app import db
 from app.models.model import Product,User
 from app.utils import allowed_file
 import os
