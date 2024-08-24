@@ -215,29 +215,76 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="small_size"
+                    for="image"
                     >Image</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="small_size"
+                    id="image"
                     required
                     name="image"
                     type="file"
                   />
 
+                  <div>
+                    <label
+                      for="sub_title"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Hero Sub Title</label
+                    >
+                    <input
+                      type="text"
+                      id="sub_title"
+                      name="sub_title"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Doe"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="title"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Hero Title</label
+                    >
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Doe"
+                      required
+                    />
+                  </div>
+
                   <label
-                    for="image-caption"
+                    for="image_caption"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Image Caption</label
+                    >Hero body</label
                   >
                   <textarea
-                    id="image-caption"
-                    name="image-caption"
+                    id="image_caption"
+                    name="image_caption"
                     rows="4"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Write image caption here..."
                   ></textarea>
+
+                  <div>
+                    <label
+                      for="btn_text"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >btn Text</label
+                    >
+                    <input
+                      type="text"
+                      id="btn_text"
+                      name="btn_text"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Doe"
+                      required
+                    />
+                  </div>
 
                   <div>
                     <button
@@ -611,16 +658,30 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="small_size"
+                    for="home_image"
                     >image input</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="small_size"
+                    id="home_image"
                     required
-                    name="file"
+                    name="home_image"
                     type="file"
                   />
+
+                  <label
+                    for="about_text"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >About Description</label
+                  >
+                  <textarea
+                    id="about_text"
+                    name="about_text"
+                    rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Write image caption here..."
+                  ></textarea>
+
                   <div>
                     <button
                       type="submit"
@@ -803,14 +864,14 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="small_size"
-                    >image input</label
+                    for="lofo"
+                    >Select Logo</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="small_size"
+                    id="log"
                     required
-                    name="file"
+                    name="logo"
                     type="file"
                   />
                   <div>
@@ -1029,7 +1090,11 @@
       </div>
     </div>
 
-    <img src="{{request.url_root}}{{  url_for('main.serve_imgs',filename=image_url) }}" alt="" srcset="">
+    <img
+      src="{{request.url_root}}{{  url_for('main.serve_imgs',filename=image_url) }}"
+      alt=""
+      srcset=""
+    />
     <script>
       const toast = document.querySelector(".toast");
       const toastMessage = document.querySelector(".toast-message");

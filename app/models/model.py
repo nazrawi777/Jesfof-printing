@@ -4,13 +4,33 @@ from app import db
 
 class HeroSlider(db.Model):
     id= db.Column(Integer,primary_key=True)
-    text = db.Column(String(500),nullable=False)
-    bg_image_url = db.Column(String(500),nullable=False) 
+    sub_title = db.Column(String(500),nullable=False)
+    title = db.Column(String(500),nullable=False)
+    body = db.Column(String(500),nullable=False)
+    btn_text = db.Column(String(500),nullable=False)
+    bg_image_url = db.Column(String(500),nullable=False)
+
+
+class Clients(db.Model):
+     id= db.Column(Integer,primary_key=True)
+     image_url = db.Column(String(500),nullable=False)
+
+class HeroVideos(db.Model):
+     id= db.Column(Integer,primary_key=True)
+     video_url = db.Column(String(500),nullable=False)
+
+class YoutubeVideos(db.Model):
+     id= db.Column(Integer,primary_key=True)
+     youtube_url = db.Column(String(300),nullable=False)     
 
 class AboutImges(db.Model):
     id= db.Column(Integer,primary_key=True)
+    about_text= db.Column(String(800))
     img_url = db.Column(String(400) )
 
+class HeroExpandImage(db.Model):
+     id= db.Column(Integer,primary_key=True)
+     img_url = db.Column(String(500),nullable=False)
 
 class ServiceCard(db.Model):
     id= db.Column(Integer,primary_key=True)

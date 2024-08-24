@@ -28,13 +28,17 @@ def contact():
 def upload_hero():
     print("Herrr GetSS")
     if request.method == 'POST':
-        description = request.form.get('image-caption')
+        description = request.form.get('image_caption')
+        sub_title = request.form.get("sub_title")
+        title = request.form.get("sub_title")
+        btn_text = request.form.get("btn_text")
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
             filename = secure_filename(image_file.filename)
             image_path = os.path.join(UPLOAD_FOLDER, filename)
             image_file.save(image_path)
-            # Save the image path to the database or perform other actions here
+
+            
             flash('Hero image uploaded successfully.', 'success')
             return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
@@ -43,6 +47,23 @@ def upload_hero():
 
 @main_bp.route('/home-about-upload', methods=['GET', 'POST'])
 def home_about_upload():
+    if request.method == 'POST':
+        image_file = request.files.get('image')
+        about_text = request.files.get('about_text')
+        if image_file and allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            image_path = os.path.join(UPLOAD_FOLDER, filename)
+            image_file.save(image_path)
+            # Save the image path to the database or perform other actions here
+            flash('About image uploaded successfully.', 'success')
+            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+        else:
+            flash('Invalid file type. Please upload an image.', 'danger')
+    return render_template('upload_home_about.html')  # Create this template
+
+
+@main_bp.route("/ ")
+def home_expand_images():
     if request.method == 'POST':
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
@@ -55,6 +76,45 @@ def home_about_upload():
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_home_about.html')  # Create this template
+
+
+@main_bp.route("/ ")
+def home_client_log():
+    if request.method == 'POST':
+        image_file = request.files.get('logo')
+        if image_file and allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            image_path = os.path.join(UPLOAD_FOLDER, filename)
+            image_file.save(image_path)
+            # Save the image path to the database or perform other actions here
+            flash('About image uploaded successfully.', 'success')
+            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+        else:
+            flash('Invalid file type. Please upload an image.', 'danger')
+    return render_template('upload_home_about.html')  # Create this template
+
+@main_bp.route("/ ")
+def home_vedio_slider():
+    if request.method == 'POST':
+        image_file = request.files.get('video')
+        if image_file and allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            image_path = os.path.join(UPLOAD_FOLDER, filename)
+            image_file.save(image_path)
+            # Save the image path to the database or perform other actions here
+            flash('About image uploaded successfully.', 'success')
+            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+        else:
+            flash('Invalid file type. Please upload an image.', 'danger')
+    return render_template('upload_home_about.html')  # Create this template
+
+@main_bp.route("/ ")
+def home_youtube_vedio():
+    if request.method == 'POST':
+        link = request.files.get('link')
+
+    return render_template('upload_home_about.html')  # Create this template
+
 
 @main_bp.route('/shopdetails')
 def shopdetails():
