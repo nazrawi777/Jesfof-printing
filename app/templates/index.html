@@ -5,6 +5,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css')}}">
@@ -1306,7 +1308,7 @@
 	const createChatLi = (message, className) => {
 	    const chatLi = document.createElement("li");
 	    chatLi.classList.add("chat", `${className}`);
-	    let chatContent = className === "outgoing" ? `<p>${message}</p>` : `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+	    let chatContent = className === "outgoing" ? `<p>${message}</p>` : `<span class="fa fa-brain"></span><p>${message}</p>`;
 	    chatLi.innerHTML = chatContent;
 	    return chatLi;
 	};

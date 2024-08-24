@@ -4,6 +4,9 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ url_for('static', filename='print/assets/css/vendor/bootstrap.min.css') }}">
 	<!-- Swiper CSS -->
@@ -355,6 +358,21 @@
 <!--==================================================-->
 <!-- Start scrollup section  -->
 <!--==================================================-->
+<button class="chatbot-toggler">
+	<span class="material-symbols-rounded">mode_comment</span>
+	<span class="material-symbols-outlined">close</span>
+  </button>
+<div class="chatbot">
+    <header>
+        <h2>Chat with Us!</h2>
+        <span class="close-btn">&#x2716;</span>
+    </header>
+    <ul class="chatbox"></ul>
+    <div class="chat-input">
+        <textarea placeholder="Type your message here..."></textarea>
+        <span>&#x27A4;</span>
+    </div>
+</div>
 <!-- scrollup section -->
 <div class="scroll-area">
 	<div class="top-wrap">
@@ -419,5 +437,118 @@
 	<script src="{{ url_for('static', filename='print/assets/js/plugins/slick.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='print/assets/js/main.js') }}"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script>
+		const chatbotToggler = document.querySelector(".chatbot-toggler");
+		const closeBtn = document.querySelector(".close-btn");
+		const chatbox = document.querySelector(".chatbox");
+		const chatInput = document.querySelector(".chat-input textarea");
+		const sendChatBtn = document.querySelector(".chat-input span");
+	
+		let userMessage = null;
+		const inputInitHeight = chatInput.scrollHeight;
+	
+		const predefinedQA = {
+			"What are your printing services?": "We offer a wide range of printing services including brochures, business cards, banners, and more. 📇",
+			"What is your pricing?": "Our pricing varies depending on the service. Please visit our pricing page for more details. 💰",
+			"What is your turnaround time?": "Our standard turnaround time is 3-5 business days, but we offer expedited options. ⏳",
+			"What is a chatbot?": "A chatbot is an AI-based tool that interacts with users through text or voice, simulating a conversation. 🤖",
+			"Are you a chatbot?": "Yes, I am a chatbot here to assist you! 🤖",
+			"What is your company name?": "We are XYZ Printing Solutions. 🏢",
+			// Add more predefined questions and answers here
+		};
+	
+		const greetings = {
+			"hi": "Hello! How can I help you today? 😊",
+			"hello": "Hi there! How can I assist you? 😊",
+			"hey": "Hey! How can I help? 😊",
+			"good morning": "Good morning! How can I assist you today? ☀️",
+			"good afternoon": "Good afternoon! What can I do for you? 🌞",
+			"good evening": "Good evening! How can I help you tonight? 🌙",
+			// Add more greetings here
+		};
+	
+		const fuzzyMatch = (userInput) => {
+			userInput = userInput.toLowerCase();
+			const allKeys = Object.keys(predefinedQA).concat(Object.keys(greetings));
+			
+			for (let key of allKeys) {
+				if (userInput.includes(key.toLowerCase())) {
+					return predefinedQA[key] || greetings[key];
+				}
+			}
+			return "For detailed information call 0902641704. ☎️";
+		};
+	
+		const createChatLi = (message, className) => {
+			const chatLi = document.createElement("li");
+			chatLi.classList.add("chat", `${className}`);
+			let chatContent = className === "outgoing" ? `<p>${message}</p>` : `<span class="fa fa-brain"></span><p>${message}</p>`;
+			chatLi.innerHTML = chatContent;
+			return chatLi;
+		};
+	
+		const generateResponse = (chatElement) => {
+			const messageElement = chatElement.querySelector("p");
+			
+			// Use fuzzy matching to find the best response
+			const response = fuzzyMatch(userMessage);
+			
+			// Update the message element with the response
+			setTimeout(() => {
+				messageElement.textContent = response;
+				chatbox.scrollTo(0, chatbox.scrollHeight);
+			}, 1000); // Simulate a "thinking" delay of 1 second
+		};
+	
+		const handleChat = () => {
+			userMessage = chatInput.value.trim(); // Get user input and trim any whitespace
+			
+			if (userMessage) {
+				chatInput.value = ""; // Clear the input field
+	
+				// Create outgoing chat element and append it to the chatbox
+				const outgoingChatLi = createChatLi(userMessage, "outgoing");
+				chatbox.appendChild(outgoingChatLi);
+				chatbox.scrollTo(0, chatbox.scrollHeight);
+	
+				// Create incoming "thinking" chat element and append it to the chatbox
+				const incomingChatLi = createChatLi("...", "incoming");
+				chatbox.appendChild(incomingChatLi);
+				chatbox.scrollTo(0, chatbox.scrollHeight);
+	
+				// Generate the response after a short delay
+				generateResponse(incomingChatLi);
+			}
+		};
+	
+		chatInput.addEventListener("input", () => {
+			chatInput.style.height = `${inputInitHeight}px`;
+			chatInput.style.height = `${chatInput.scrollHeight}px`;
+		});
+	
+		chatInput.addEventListener("keyup", (e) => {
+			if (e.key === "Enter" && !e.shiftKey) {
+				handleChat();
+			}
+		});
+	
+		sendChatBtn.addEventListener("click", handleChat);
+	
+		chatbotToggler.addEventListener("click", () => {
+			document.body.classList.toggle("show-chatbot");
+		});
+	
+		closeBtn.addEventListener("click", () => {
+			document.body.classList.remove("show-chatbot");
+		});
+	
+		// Initialize chat with a welcome message when the page loads
+		document.addEventListener("DOMContentLoaded", () => {
+			const welcomeMessage = "Hello there!👋 How can I assist you today?";
+			const welcomeChatLi = createChatLi(welcomeMessage, "incoming");
+			chatbox.appendChild(welcomeChatLi);
+			chatbox.scrollTo(0, chatbox.scrollHeight);
+		});
+	</script>
 </body>
 </html>
