@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, redirect, send_from_directory, url
 from werkzeug.utils import secure_filename
 import os
 from app import db
-
-from app.models.model import User
+import cloudinary.uploader
+from app.models.model import User,HeroSlider,AboutImges,HeroExpandImage,Clients,HeroVideos,YoutubeVideos
 
 # Create a blueprint for the main application
 main_bp = Blueprint('main', __name__)
@@ -34,11 +34,15 @@ def upload_hero():
         btn_text = request.form.get("btn_text")
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
+            # Upload image to Cloudinary
+            upload_result = cloudinary.uploader.upload(
+                image_file, resource_type='auto')
+            new_slide = HeroSlider(title=title,sub_title=sub_title,body=description,bg_image_url=upload_result["secure_url"],btn_text=btn_text,public_id=upload_result["public_id"])    
+            """filename = secure_filename(image_file.filename)
             image_path = os.path.join(UPLOAD_FOLDER, filename)
-            image_file.save(image_path)
-
-            
+            image_file.save(image_path)"""
+            db.session.add(new_slide)
+            db.session.commit()
             flash('Hero image uploaded successfully.', 'success')
             return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
@@ -49,14 +53,16 @@ def upload_hero():
 def home_about_upload():
     if request.method == 'POST':
         image_file = request.files.get('image')
-        about_text = request.files.get('about_text')
+        #about_text = request.files.get('about_text')
         if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(UPLOAD_FOLDER, filename)
-            image_file.save(image_path)
-            # Save the image path to the database or perform other actions here
+            # Upload image to Cloudinary
+            upload_result = cloudinary.uploader.upload(
+                image_file, resource_type='auto')
+            new_about_image = AboutImges(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
+            db.session.add(new_about_image)
+            db.session.commit()
             flash('About image uploaded successfully.', 'success')
-            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+            return redirect(url_for('main.home')) 
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_home_about.html')  # Create this template
@@ -67,10 +73,11 @@ def home_expand_images():
     if request.method == 'POST':
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(UPLOAD_FOLDER, filename)
-            image_file.save(image_path)
-            # Save the image path to the database or perform other actions here
+            upload_result = cloudinary.uploader.upload(
+                image_file, resource_type='auto')
+            new_about = HeroExpandImage(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
+            db.session.add(new_about)
+            db.session.commit()
             flash('About image uploaded successfully.', 'success')
             return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
@@ -83,10 +90,11 @@ def home_client_log():
     if request.method == 'POST':
         image_file = request.files.get('logo')
         if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(UPLOAD_FOLDER, filename)
-            image_file.save(image_path)
-            # Save the image path to the database or perform other actions here
+            upload_result = cloudinary.uploader.upload(
+                image_file, resource_type='auto')
+            new_about_image = Clients(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
+            db.session.add(new_about_image)
+            db.session.commit()
             flash('About image uploaded successfully.', 'success')
             return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
@@ -94,15 +102,17 @@ def home_client_log():
     return render_template('upload_home_about.html')  # Create this template
 
 @main_bp.route("/ ")
-def home_vedio_slider():
+def home_video_slider():
     if request.method == 'POST':
-        image_file = request.files.get('video')
-        if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(UPLOAD_FOLDER, filename)
-            image_file.save(image_path)
-            # Save the image path to the database or perform other actions here
-            flash('About image uploaded successfully.', 'success')
+        video_file = request.files.get('video')
+        if video_file:
+            # Upload video to Cloudinary
+            upload_result = cloudinary.uploader.upload(
+                video_file, resource_type='auto')
+            home_video = HeroVideos(public_id=upload_result["public_id"],video_url=upload_result["secure_url"])
+            db.session.add(home_video)
+            db.session.commit()
+            flash('home video uploaded successfully.', 'success')
             return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
@@ -112,7 +122,11 @@ def home_vedio_slider():
 def home_youtube_vedio():
     if request.method == 'POST':
         link = request.files.get('link')
-
+        new_url = YoutubeVideos(youtube_url=link)
+        
+        db.session.add(new_url)
+        db.session.commit()
+        flash('File successfully uploaded')
     return render_template('upload_home_about.html')  # Create this template
 
 

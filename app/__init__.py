@@ -3,7 +3,7 @@ from .config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
-
+import cloudinary
 
 
 
@@ -17,6 +17,13 @@ def create_app():
     
     db.init_app(app)
     migrate.init_app(app, db)
+    
+    # Set up Cloudinary using the config values
+    cloudinary.config(
+        cloud_name=app.config.get('CLOUDINARY_CLOUD_NAME'),
+        api_key=app.config.get('CLOUDINARY_API_KEY'),
+        api_secret=app.config.get('CLOUDINARY_API_SECRET')
+    )
     
     """if not os.path.exists(Config.UPLOAD_FOLDER):
         os.makedirs(Config.UPLOAD_FOLDER)"""

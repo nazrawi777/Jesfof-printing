@@ -8,15 +8,18 @@ class HeroSlider(db.Model):
     title = db.Column(String(500),nullable=False)
     body = db.Column(String(500),nullable=False)
     btn_text = db.Column(String(500),nullable=False)
+    public_id = db.Column(String(200),nullable=False)
     bg_image_url = db.Column(String(500),nullable=False)
 
 
 class Clients(db.Model):
      id= db.Column(Integer,primary_key=True)
+     public_id = db.Column(String(200),nullable=False)
      image_url = db.Column(String(500),nullable=False)
 
 class HeroVideos(db.Model):
      id= db.Column(Integer,primary_key=True)
+     public_id = db.Column(String(200),nullable=False)
      video_url = db.Column(String(500),nullable=False)
 
 class YoutubeVideos(db.Model):
@@ -25,16 +28,19 @@ class YoutubeVideos(db.Model):
 
 class AboutImges(db.Model):
     id= db.Column(Integer,primary_key=True)
-    about_text= db.Column(String(800))
-    img_url = db.Column(String(400) )
+    #about_text= db.Column(String(800))
+    public_id = db.Column(String(200),nullable=False)
+    img_url = db.Column(String(400),nullable=False)
 
 class HeroExpandImage(db.Model):
      id= db.Column(Integer,primary_key=True)
+     public_id = db.Column(String(200),nullable=False)
      img_url = db.Column(String(500),nullable=False)
 
 class ServiceCard(db.Model):
     id= db.Column(Integer,primary_key=True)
     text = db.Column(String(200))
+    public_id = db.Column(String(200),nullable=False)
     card_img_url = db.Column(String(200))
 
 class ProductColor(db.Model):
