@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
 
-from app.models.model import User
+from app.models.model import User,HeroSlider
 
 
 admin_bp = Blueprint("admin",__name__)
@@ -10,6 +10,8 @@ def admin():
   """if 'admin_logged_in' not in session or not session['admin_logged_in']:
         return render_template('admin/login.html')"""
   image_url =  'blog-2.jpg'
+  hero_slides = HeroSlider.query.all()
+  print(hero_slides)
   return render_template("admin/new_admin.html", data={
       "products":[],
       "slidImg":[],

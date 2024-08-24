@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, send_from_directory, url
 from werkzeug.utils import secure_filename
 import os
 from app import db
-import cloudinary.uploader
+import cloudinary.uploader # type: ignore
 from app.models.model import User,HeroSlider,AboutImges,HeroExpandImage,Clients,HeroVideos,YoutubeVideos
 
 # Create a blueprint for the main application
@@ -36,7 +36,7 @@ def upload_hero():
         if image_file and allowed_file(image_file.filename):
             # Upload image to Cloudinary
             upload_result = cloudinary.uploader.upload(
-                image_file, resource_type='auto')
+                image_file, resource_type='auto') 
             new_slide = HeroSlider(title=title,sub_title=sub_title,body=description,bg_image_url=upload_result["secure_url"],btn_text=btn_text,public_id=upload_result["public_id"])    
             """filename = secure_filename(image_file.filename)
             image_path = os.path.join(UPLOAD_FOLDER, filename)
@@ -48,6 +48,7 @@ def upload_hero():
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_hero.html')  # Create this template
+
 
 @main_bp.route('/home-about-upload', methods=['GET', 'POST'])
 def home_about_upload():
@@ -68,7 +69,7 @@ def home_about_upload():
     return render_template('upload_home_about.html')  # Create this template
 
 
-@main_bp.route("/ ")
+@main_bp.route("/",methods=['GET', 'POST'])
 def home_expand_images():
     if request.method == 'POST':
         image_file = request.files.get('image')
@@ -85,14 +86,14 @@ def home_expand_images():
     return render_template('upload_home_about.html')  # Create this template
 
 
-@main_bp.route("/ ")
+@main_bp.route("/upload/client-log",methods=['GET', 'POST'])
 def home_client_log():
     if request.method == 'POST':
         image_file = request.files.get('logo')
         if image_file and allowed_file(image_file.filename):
             upload_result = cloudinary.uploader.upload(
                 image_file, resource_type='auto')
-            new_about_image = Clients(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
+            new_about_image = Clients(public_id=upload_result["public_id"],image_url=upload_result["secure_url"])
             db.session.add(new_about_image)
             db.session.commit()
             flash('About image uploaded successfully.', 'success')
@@ -101,7 +102,7 @@ def home_client_log():
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_home_about.html')  # Create this template
 
-@main_bp.route("/ ")
+@main_bp.route("/upload/video_slider",methods=['GET', 'POST'])
 def home_video_slider():
     if request.method == 'POST':
         video_file = request.files.get('video')
@@ -118,16 +119,16 @@ def home_video_slider():
             flash('Invalid file type. Please upload an image.', 'danger')
     return render_template('upload_home_about.html')  # Create this template
 
-@main_bp.route("/ ")
-def home_youtube_vedio():
+@main_bp.route("/upload/youtube-link",methods=['GET', 'POST'])
+def home_youtube_video():
     if request.method == 'POST':
-        link = request.files.get('link')
+        link = request.form.get('link')
         new_url = YoutubeVideos(youtube_url=link)
         
         db.session.add(new_url)
         db.session.commit()
         flash('File successfully uploaded')
-    return render_template('upload_home_about.html')  # Create this template
+    return url_for(request.url)  # Create this template
 
 
 @main_bp.route('/shopdetails')

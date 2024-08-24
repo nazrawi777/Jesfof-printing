@@ -462,18 +462,19 @@
                   id="uploadVideoForm"
                   class="space-y-4"
                   method="post"
+                  action="{{ url_for('main.home_video_slider')}}"
                   enctype="multipart/form-data"
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="small_size"
+                    for="video"
                     >Small file input</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="small_size"
+                    id="video"
                     required
-                    name="file"
+                    name="video"
                     type="file"
                   />
                   <div>
@@ -860,11 +861,12 @@
                   id="uploadclientLogo"
                   class="space-y-4"
                   method="post"
+                  action="{{ url_for('main.home_client_log')}}"
                   enctype="multipart/form-data"
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="lofo"
+                    for="log"
                     >Select Logo</label
                   >
                   <input
@@ -1046,7 +1048,7 @@
               </div>
               <!-- Modal body -->
               <div class="p-4 md:p-5">
-                <form id="uploadVideoLink" class="space-y-4" method="post">
+                <form id="uploadVideoLink" class="space-y-4" method="post"  action="{{ url_for('main.home_youtube_video')}}">
                   <div class="mb-6">
                     <label
                       for="link"
