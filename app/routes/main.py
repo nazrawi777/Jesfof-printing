@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, send_from_directory, url
 from werkzeug.utils import secure_filename
 import os
 from app import db
-import cloudinary.uploader
+import cloudinary.uploader # type: ignore
 from app.models.model import User,HeroSlider,AboutImges,HeroExpandImage,Clients,HeroVideos,YoutubeVideos
 
 # Create a blueprint for the main application
@@ -18,15 +18,22 @@ def allowed_file(filename):
 
 @main_bp.route('/')
 def home():
-    banner = HeroSlider.query.all()
-    return render_template('index.html',data={
-      "banner": banner,
-      "about_imgs":[],
-      "client_logos":[],
-      "youtube_videos":[],
-      "gallery_images":[],
-      "videos":[],
-    })
+    hero_slides = HeroSlider.query.all()
+    about_imgs = AboutImges.query.all()
+    client_logos = Clients.query.all()
+    gallery_images = HeroExpandImage.query.all()
+    videos = HeroVideos.query.all()
+    youtube_links = YoutubeVideos.query.all()
+  
+ 
+    return render_template('index.html', data={
+      "banners":hero_slides,
+       "about_imgs":about_imgs,
+      "client_logos":client_logos,
+      "gallery_images":gallery_images,
+      "videos":videos,
+      "youtube_videos":youtube_links,
+  })
 
 @main_bp.route('/contact')
 def contact():
