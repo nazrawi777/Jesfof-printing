@@ -18,9 +18,7 @@ def allowed_file(filename):
 
 @main_bp.route('/')
 def home():
-    HeroSlider.query.delete()
-    db.session.commit()
-    banner =[]# HeroSlider.query.all()
+    banner = HeroSlider.query.all()
     return render_template('index.html',data={
       "banner": banner,
       "about_imgs":[],
@@ -36,7 +34,6 @@ def contact():
 
 @main_bp.route('/hero-upload', methods=['GET', 'POST'])
 def upload_hero():
-    print("Herrr GetSS")
     if request.method == 'POST':
         description = request.form.get('image_caption')
         sub_title = request.form.get("sub_title")
@@ -54,10 +51,9 @@ def upload_hero():
             db.session.add(new_slide)
             db.session.commit()
             flash('Hero image uploaded successfully.', 'success')
-            return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
-    return render_template('upload_hero.html')  # Create this template
+    return redirect(url_for("admin.admin"))
 
 @main_bp.route('/home-about-upload', methods=['GET', 'POST'])
 def home_about_upload():
@@ -65,6 +61,7 @@ def home_about_upload():
         image_file = request.files.get('image')
         #about_text = request.files.get('about_text')
         if image_file and allowed_file(image_file.filename):
+            print("Upload About")
             # Upload image to Cloudinary
             upload_result = cloudinary.uploader.upload(
                 image_file, resource_type='auto')
@@ -72,30 +69,30 @@ def home_about_upload():
             db.session.add(new_about_image)
             db.session.commit()
             flash('About image uploaded successfully.', 'success')
-            return redirect(url_for('main.home')) 
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
-    return render_template('upload_home_about.html')  # Create this template
+    return redirect(url_for("admin.admin"))
 
 
-@main_bp.route("/upload/home-expand-images")
+@main_bp.route("/upload/home-expand-images", methods=['GET', 'POST'])
 def home_expand_images():
     if request.method == 'POST':
         image_file = request.files.get('image')
         if image_file and allowed_file(image_file.filename):
+            print("Test Home")
             upload_result = cloudinary.uploader.upload(
                 image_file, resource_type='auto')
             new_about = HeroExpandImage(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
             db.session.add(new_about)
             db.session.commit()
             flash('About image uploaded successfully.', 'success')
-            return redirect(url_for('main.home'))  # Change redirect to a suitable route
+            print('About image uploaded successfully.', 'success')
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
-    return render_template('upload_home_about.html')  # Create this template
+    return redirect(url_for("admin.admin"))
 
 
-@main_bp.route("/ ")
+@main_bp.route("/upload/client-logos", methods=['GET', 'POST'])
 def home_client_log():
     if request.method == 'POST':
         image_file = request.files.get('logo')
@@ -105,13 +102,13 @@ def home_client_log():
             new_about_image = Clients(public_id=upload_result["public_id"],img_url=upload_result["secure_url"])
             db.session.add(new_about_image)
             db.session.commit()
+            
             flash('About image uploaded successfully.', 'success')
-            return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
-    return render_template('upload_home_about.html')  # Create this template
+    return redirect(url_for("admin.admin"))
 
-@main_bp.route("/ ")
+@main_bp.route("/upload/video-slider", methods=['GET', 'POST'])
 def home_video_slider():
     if request.method == 'POST':
         video_file = request.files.get('video')
@@ -123,27 +120,28 @@ def home_video_slider():
             db.session.add(home_video)
             db.session.commit()
             flash('home video uploaded successfully.', 'success')
-            return redirect(url_for('main.home'))  # Change redirect to a suitable route
         else:
             flash('Invalid file type. Please upload an image.', 'danger')
-    return render_template('upload_home_about.html')  # Create this template
+    return redirect(url_for("admin.admin"))
 
-@main_bp.route("/ ")
-def home_youtube_vedio():
+@main_bp.route("/upload/youtube-video", methods=['GET', 'POST'])
+def home_youtube_video():
     if request.method == 'POST':
-        link = request.files.get('link')
-        new_url = YoutubeVideos(youtube_url=link)
-        
-        db.session.add(new_url)
-        db.session.commit()
-        flash('File successfully uploaded')
-    return render_template('upload_home_about.html')  # Create this template
+        link = request.form.get('link')
+        if link:
+            new_url = YoutubeVideos(youtube_url=link)
+            db.session.add(new_url)
+            db.session.commit()
+            flash('File successfully uploaded')
+        else:
+            flash('error Input Required', 'danger')
+    return redirect(url_for("admin.admin"))
 
 
 @main_bp.route('/shopdetails')
 def shopdetails():
     return render_template('shopdetails.html')
-
+    
 @main_bp.route("/serve/<filename>")
 def serve_imgs(filename):
     try:

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
 
-from app.models.model import User,HeroSlider
+from app.models.model import User,HeroSlider,HeroVideos,YoutubeVideos,AboutImges,Clients,HeroExpandImage
 
 
 admin_bp = Blueprint("admin",__name__)
@@ -11,14 +11,31 @@ def admin():
         return render_template('admin/login.html')"""
   image_url =  'blog-2.jpg'
   hero_slides = HeroSlider.query.all()
-  print(hero_slides)
+  about_imgs = AboutImges.query.all()
+  client_logos = Clients.query.all()
+  gallery_images = HeroExpandImage.query.all()
+  videos = HeroVideos.query.all()
+  youtube_links = YoutubeVideos.query.all()
+  
+  data={
+      "banners":hero_slides,
+       "about_imgs":about_imgs,
+      "client_logos":client_logos,
+      "gallery_images":gallery_images,
+      "videos":videos,
+      "youtube_videos":youtube_links,
+  }
+
+  print(data)
+
+
   return render_template("admin/new_admin.html", data={
-      "products":[],
-      "slidImg":[],
-      "slideVideo":[],
-      "links":[],
-      "linclient_list":[],
-      "about_img":[], 
+      "banners":hero_slides,
+       "about_imgs":about_imgs,
+      "client_logos":client_logos,
+      "gallery_images":gallery_images,
+      "videos":videos,
+      "youtube_videos":youtube_links,
   },image_url=image_url)
 
 @admin_bp.route('/login', methods=['GET', 'POST'])

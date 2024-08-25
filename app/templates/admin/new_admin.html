@@ -94,8 +94,8 @@
                     Preview
                   </button>
                   <div
-                    id="popup-modal-{{ slide.id }}"
-                    tabindex="{{ slide.id }}"
+                    id="popup-modal-{{ banner.id }}"
+                    tabindex="{{ banner.id }}"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
                   >
                     <div class="relative p-4 w-full max-w-2xl max-h-full">
@@ -136,7 +136,7 @@
                     id="uploadedImage"
                     style="width: 70px; height: 70px; border: 1px solid #ccc"
                     src="{{ banner.bg_image_url }}"
-                    alt="{{ bg_image_url.public_id }}"
+                    alt="{{ banner.public_id }}"
                   />
                 </td>
                 <td class="px-6 py-4">
@@ -579,7 +579,7 @@
                   <img
                     id="uploadedImage"
                     style="width: 70px; height: 70px; border: 1px solid #ccc"
-                    src="{{ about.url }}"
+                    src="{{ about.img_url }}"
                     alt="{{ about.public_id }}"
                   />
                 </td>
@@ -658,14 +658,14 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="home_image"
+                    for="image"
                     >image input</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="home_image"
+                    id="image"
                     required
-                    name="home_image"
+                    name="image"
                     type="file"
                   />
 
@@ -865,7 +865,7 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="log"
+                    for="image"
                     >Select image</label
                   >
                   <input
@@ -1001,8 +1001,8 @@
         </div>
         <!-- Modal toggle -->
         <button
-          data-modal-target="upload-client"
-          data-modal-toggle="upload-client"
+          data-modal-target="upload-expand-image"
+          data-modal-toggle="upload-expand-image"
           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="button"
         >
@@ -1010,7 +1010,7 @@
         </button>
         <!-- Main modal -->
         <div
-          id="upload-client"
+          id="upload-expand-image"
           tabindex="-1"
           aria-hidden="true"
           class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -1028,7 +1028,7 @@
                 <button
                   type="button"
                   class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                  data-modal-hide="upload-client"
+                  data-modal-hide="upload-expand-image"
                 >
                   <svg
                     class="w-3 h-3"
@@ -1059,14 +1059,14 @@
                 >
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    for="log"
-                    >Select Logo</label
+                    for="image"
+                    >Image</label
                   >
                   <input
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     id="log"
                     required
-                    name="logo"
+                    name="image"
                     type="file"
                   />
                   <div>
@@ -1077,7 +1077,7 @@
                       submit
                     </button>
                     <button
-                      data-modal-hide="upload-client"
+                      data-modal-hide="upload-expand-image"
                       type="button"
                       class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     >
@@ -1112,7 +1112,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for link in data["links"] %}
+              {% for link in data["youtube_videos"] %}
               <tr class="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
@@ -1290,6 +1290,8 @@
       alt=""
       srcset=""
     />
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <!-- https://jquery.com/download/ -->
     <script>
       const toast = document.querySelector(".toast");
       const toastMessage = document.querySelector(".toast-message");
