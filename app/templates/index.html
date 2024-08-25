@@ -274,27 +274,29 @@
 <div class="banner__area p-relative z-1">
 	<div class="swiper banner_parallax-slider p-relative">
 		<div class="swiper-wrapper">
+		  
+		  {% for banner in data["banner"] %}
 			<div class="swiper-slide">
 				<div class="banner banner__space">
-					<div class="banner__thumb-bg" data-background="print/assets/imgs/banner-2/banner-2-bg-img.png"></div>
+					<div class="banner__thumb-bg" data-background="{{ banner.bg_image_url }}"></div>
 					<div class="container">
 						<div class="banner__space-shape-wrapper">
 							<div class="banner__space-shape-wrapper-top-black-shape">
-								<img src="{{ url_for('static', filename='images/port1.jpg') }}" alt="img not found">
+								<img src="{{ banner.bg_image_url  }}" alt="img">
 							</div>
 							<div class="banner__space-shape-wrapper-bottom-shape">
-								<img src="{{ url_for('static', filename='print/assets/imgs/banner-2/banner-2-botom-shape.svg') }}" alt="img not found">
+								<img src="{{ banner.bg_image_url  }}" alt="img">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xxl-9 col-xl-9 col-lg-10">
 								<div class="banner__content p-relative z-index-1">
-									<span class="banner__sub-title wow fade-in-bottom" data-wow-delay="200ms">Dedicated To Excellence</span>
-									<h2 class="banner__title wow fade-in-bottom" data-wow-delay="400ms">For All Your Printing Requirements</h2>
-									<p class="h5 wow fade-in-bottom" data-wow-delay="400ms">There are many variations of passages orem psum available but the majority have suffered alteration in some form by injected humour or randomised words which don't look even.</p>
+									<span class="banner__sub-title wow fade-in-bottom" data-wow-delay="200ms">{{banner.sub_title}}</span>
+									<h2 class="banner__title wow fade-in-bottom" data-wow-delay="400ms">{{banner.title}}</h2>
+									<p class="h5 wow fade-in-bottom" data-wow-delay="400ms">{{banner.body}}</p>
 
 									<div class="banner-home-2__btn__wrapper-2 d-flex flex-wrap mt-40 mt-md-35 mt-sm-30 mt-xs-25">
-										<a href="{{ url_for('static', filename='contact.html') }}" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">Start Your Project</a>
+										<a href="{{ url_for('static', filename='contact.html') }}" class="rr-btn btn-hover-white wow fadeInLeft animated" data-wow-delay="1s">{{banner.btn_text}}</a>
 									</div>
 								</div>
 							</div>
@@ -302,7 +304,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="swiper-slide">
+		  {% endfor %}
+			<!--<div class="swiper-slide">
 				<div class="banner banner__space">
 					<div class="banner__thumb-bg" data-background="print/assets/imgs/banner-2/banner-2-bg-img-2.png"></div>
 					<div class="container">
@@ -357,7 +360,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 
 		<!-- If we need navigation buttons -->
@@ -387,9 +390,13 @@
 						<i class="fa-solid fa-arrow-left button" id="prev"></i>
 						<div class="image-container1">
 						  <div class="carousel">
+						    {% for imgsrc in data["about_imgs"]%}
+						    		<img src="{{ imgsrc.img_url  }}" alt="img">
+						    {% endfor %}
+					<!--	
 							<img src="{{ url_for('static', filename='assets/images/resource/about-3.png') }}" alt="">
-							<img src="{{ url_for('static', filename='assets/images/resource/about-2.png') }}" alt="">
-							<img src="{{ url_for('static', filename='assets/images/resource/about1.png') }}" alt="">
+					<img src="{{ url_for('static', filename='assets/images/resource/about-2.png') }}" alt="">
+							<img src="{{ url_for('static', filename='assets/images/resource/about1.png') }}" alt="">-->
 						  </div>
 						  <i class="fa-solid fa-arrow-right button" id="next"></i>
 						</div>
@@ -513,27 +520,44 @@
 
 
 <div class="container1">
-	<div class="slide-container1 active">
+  
+  {% for video in data["videos"] %}
+  <div class="slide-container1 active">
 	  <div class="slide11">
-		<video src="{{ url_for('static', filename='images/t3.mp4') }}" muted autoplay loop></video>
+	  <video src="{{ video.video_url  }}" muted autoplay loop></video>
+	  </div>
+	</div>
+  
+  {% endfor %}
+  
+	<!-- <div class="slide-container1 active">
+	  <div class="slide11">
+	  <video src="{{ url_for('static', filename='images/t3.mp4') }}" muted autoplay loop></video>
 	  </div>
 	</div>
 	<div class="slide-container1 active">
 	  <div class="slide11">
-		<video src="{{ url_for('static', filename='images/1.mp4') }}" muted autoplay loop></video>
+	  <video src="{{ url_for('static', filename='images/1.mp4') }}" muted autoplay loop></video>
 	  </div>
 	</div>
 	<div class="slide-container1 active">
 	  <div class="slide11">
-		<video src="{{ url_for('static', filename='images/t2.mp4') }}" muted autoplay loop></video>
+	  <video src="{{ url_for('static', filename='images/t2.mp4') }}" muted autoplay loop></video>
 	  </div>
-	</div>
+	</div> -->
+	
+	
 	<div id="pre1" class="nav-button"><i class="fas fa-arrow-circle-left"></i></div>
 	<div id="nex1" class="nav-button"><i class="fas fa-arrow-circle-right"></i></div>
   </div>
   
 <div class="gallery-container">
-    <div class="item">
+    {% for gallery in data["gallery_images"] %}
+   <div class="item">
+        <img src="{{ gallery.img_url }}" alt="Image 1" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    {% endfor %}
+<!--    <div class="item">
         <img src="{{ url_for('static', filename='images/port1.jpg') }}" alt="Image 1" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div class="item">
@@ -551,14 +575,22 @@
         <a href="{{ url_for('shop.shop') }}">
             <div class="text-overlay">All products</div>
         </a>
-    </div>
+    </div>-->
 </div>
 <div class="custom-slider-container11">
 	<div class="slides22">
-
+    {% for youtube_video in data["youtube_videos"] %}
+	 <div class="slide21">
+	
+		  <iframe  src="{{ youtube_video.youtube_url }}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	 
+	  </div>
+    
+    {% endfor %}
 	  
 
-	  <div class="slide21">
+	 <!-- 
+	 <div class="slide21">
 	
 		  <iframe  src="https://www.youtube.com/embed/jL2G3fEs-g0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	 
@@ -572,7 +604,7 @@
 	
 		<iframe  src="https://www.youtube.com/embed/jL2G3fEs-g0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    
-	</div>
+	</div>-->
 	 
 	  <div class="arrow-container">
 		<div class="arrowh arrow-left" onclick="changeSlide(-1)">&#10094;</div>
@@ -587,7 +619,15 @@
 		<h5> our satisfied partners, impressed by our exceptional work </h5>
 	</div>
 		<div class="slide-track">
-		  <div class="slide">
+	 
+	  {% for client_logo in data["client_logos"] %}
+    
+		 <div class="slide">
+			<img src="{{ client_logo.image_url }}" alt="">
+		  </div>
+    {% endfor %}
+		 <!-- 
+		 <div class="slide">
 			<img src="{{ url_for('static', filename='images/port1.jpg') }}" alt="">
 		  </div>
 		  <div class="slide">
@@ -640,7 +680,7 @@
 		  </div>
 		  <div class="slide">
 			<img src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-		  </div>
+		  </div>-->
 		</div>
 </div>
 	  <div class="skills_section">

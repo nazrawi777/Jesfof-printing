@@ -75,19 +75,19 @@
               </tr>
             </thead>
             <tbody>
-              {% for slide in data["slideImg"] %}
+              {% for banner in data["banners"] %}
               <tr class="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
                   class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {{ slide.id }}
+                  {{ banner.id }}
                 </th>
-                <td class="px-6 py-4">{{ slide.name }}</td>
+                <td class="px-6 py-4">{{ banner.title }}</td>
                 <td class="px-6 py-4">
                   <button
-                    data-modal-target="popup-modal-{{ slide.id }}"
-                    data-modal-toggle="popup-modal-{{ slide.id }}"
+                    data-modal-target="popup-modal-{{ banner.id }}"
+                    data-modal-toggle="popup-modal-{{ banner.id }}"
                     class="block text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-black-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
                   >
@@ -105,7 +105,7 @@
                         <button
                           type="button"
                           class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                          data-modal-hide="popup-modal-{{ slide.id }}"
+                          data-modal-hide="popup-modal-{{ banner.id }}"
                         >
                           <svg
                             class="w-3 h-3"
@@ -125,7 +125,7 @@
                           <span class="sr-only">Close modal</span>
                         </button>
                         <div class="p-4 text-center">
-                          <img src="{{ slide.url }}" alt="" />
+                          <img src="{{ banner.bg_image_url }}" alt="" />
                         </div>
                       </div>
                     </div>
@@ -135,15 +135,15 @@
                   <img
                     id="uploadedImage"
                     style="width: 70px; height: 70px; border: 1px solid #ccc"
-                    src="{{ slide.url }}"
-                    alt="{{ slide.name }}"
+                    src="{{ banner.bg_image_url }}"
+                    alt="{{ bg_image_url.public_id }}"
                   />
                 </td>
                 <td class="px-6 py-4">
                   <button
                     type="button"
                     class="deleteBtn focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                    data-id="{{ slide.public_id }}"
+                    data-id="{{ banner.public_id }}"
                     data-type="image"
                     data-catagory="slider-1"
                   >
@@ -324,13 +324,13 @@
             >
               <tr>
                 <th scope="col" class="px-6 py-3">id</th>
-                <th scope="col" class="px-6 py-3">name</th>
+             <!--   <th scope="col" class="px-6 py-3">name</th>-->
                 <th scope="col" class="px-6 py-3">preview</th>
                 <th scope="col" class="px-6 py-3">action</th>
               </tr>
             </thead>
             <tbody>
-              {% for slidevideo in data["slideVideo"] %}
+              {% for slidevideo in data["videos"] %}
               <tr class="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
@@ -338,7 +338,7 @@
                 >
                   {{ slidevideo.id }}
                 </th>
-                <td class="px-6 py-4">{{ slidevideo.name }}</td>
+            <!--     <td class="px-6 py-4">{{ slidevideo.public_id }}</td> -->
                 <td class="px-6 py-4">
                   <button
                     data-modal-target="popup-modal-{{ slidevideo.public_id }}"
@@ -384,7 +384,7 @@
                             class="w-full h-96 max-w-full border border-gray-200 rounded-lg dark:border-gray-700"
                             controls
                           >
-                            <source src=" {{ slidevideo.url }}" />
+                            <source src=" {{ slidevideo.video_url }}" />
                             Your browser does not support the video tag.
                           </video>
                         </div>
@@ -515,13 +515,12 @@
             >
               <tr>
                 <th scope="col" class="px-6 py-3">id</th>
-                <th scope="col" class="px-6 py-3">name</th>
                 <th scope="col" class="px-6 py-3">preview</th>
                 <th scope="col" class="px-6 py-3">action</th>
               </tr>
             </thead>
             <tbody>
-              {% for about in data["about_img"] %}
+              {% for about in data["about_imgs"] %}
               <tr class="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
@@ -529,7 +528,6 @@
                 >
                   {{ about.id }}
                 </th>
-                <td class="px-6 py-4">{{ about.name }}</td>
                 <td class="px-6 py-4">
                   <button
                     data-modal-target="popup-modal-{{ about.public_id }}"
@@ -571,7 +569,7 @@
                           <span class="sr-only">Close modal</span>
                         </button>
                         <div class="p-4 text-center">
-                          <img src="{{ about.url }}" alt="" />
+                          <img src="{{ about.img_url }}" alt="" />
                         </div>
                       </div>
                     </div>
@@ -582,7 +580,7 @@
                     id="uploadedImage"
                     style="width: 70px; height: 70px; border: 1px solid #ccc"
                     src="{{ about.url }}"
-                    alt="{{ about.name }}"
+                    alt="{{ about.public_id }}"
                   />
                 </td>
                 <td class="px-6 py-4">
@@ -654,6 +652,7 @@
                 <form
                   id="uploadabout"
                   class="space-y-4"
+                  action="{{ url_for('main.home_about_upload')}}"
                   method="post"
                   enctype="multipart/form-data"
                 >
@@ -705,12 +704,14 @@
           </div>
         </div>
       </div>
-      <div>
+      
+      
+       <div>
         <h3
           style="margin-top: 50px; margin-bottom: 20px"
           class="text-xl font-blanck"
         >
-          Client Slide
+          client logos
         </h3>
         <div class="relative overflow-x-auto">
           <table
@@ -721,13 +722,12 @@
             >
               <tr>
                 <th scope="col" class="px-6 py-3">id</th>
-                <th scope="col" class="px-6 py-3">name</th>
                 <th scope="col" class="px-6 py-3">preview</th>
                 <th scope="col" class="px-6 py-3">action</th>
               </tr>
             </thead>
             <tbody>
-              {% for client_log in data["client_list"] %}
+              {% for client_log in data["client_logos"] %}
               <tr class="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
@@ -735,7 +735,6 @@
                 >
                   {{ client_log.id }}
                 </th>
-                <td class="px-6 py-4">{{ client_log.name }}</td>
                 <td class="px-6 py-4">
                   <button
                     data-modal-target="popup-modal-{{ client_log.public_id }}"
@@ -777,7 +776,7 @@
                           <span class="sr-only">Close modal</span>
                         </button>
                         <div class="p-4 text-center">
-                          <img src="{{ client_log.url }}" alt="" />
+                          <img src="{{ client_log.image_url }}" alt="" />
                         </div>
                       </div>
                     </div>
@@ -787,8 +786,8 @@
                   <img
                     id="uploadedImage"
                     style="width: 70px; height: 70px; border: 1px solid #ccc"
-                    src="{{ client_log.url }}"
-                    alt="{{ client_log.name }}"
+                    src="{{ client_log.image_url }}"
+                    alt="{{ client_log.public_id }}"
                   />
                 </td>
                 <td class="px-6 py-4">
@@ -813,7 +812,7 @@
           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="button"
         >
-          <i class="fas fa-plus"></i> Add Clinet Logo
+          <i class="fas fa-plus"></i>Home image Logo
         </button>
         <!-- Main modal -->
         <div
@@ -830,7 +829,7 @@
                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
               >
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  select Clinet Logo
+                  select Clinet logo image
                 </h3>
                 <button
                   type="button"
@@ -862,6 +861,200 @@
                   class="space-y-4"
                   method="post"
                   action="{{ url_for('main.home_client_log')}}"
+                  enctype="multipart/form-data"
+                >
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    for="log"
+                    >Select image</label
+                  >
+                  <input
+                    class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    id="log"
+                    required
+                    name="image"
+                    type="file"
+                  />
+                  <div>
+                    <button
+                      type="submit"
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      submit
+                    </button>
+                    <button
+                      data-modal-hide="upload-client"
+                      type="button"
+                      class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                    >
+                      cancle
+                    </button>
+                  </div>
+                </form>
+                <ul id="messages-client"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <div>
+        <h3
+          style="margin-top: 50px; margin-bottom: 20px"
+          class="text-xl font-blanck"
+        >
+         gallery image
+        </h3>
+        <div class="relative overflow-x-auto">
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">id</th>
+                <th scope="col" class="px-6 py-3">preview</th>
+                <th scope="col" class="px-6 py-3">action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for gallery_image in data["gallery_images"] %}
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {{ gallery_image.id }}
+                </th>
+                <td class="px-6 py-4">
+                  <button
+                    data-modal-target="popup-modal-{{ gallery_image.public_id }}"
+                    data-modal-toggle="popup-modal-{{ gallery_image.public_id }}"
+                    class="block text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-black-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                  >
+                    Preview
+                  </button>
+                  <div
+                    id="popup-modal-{{ gallery_image.public_id }}"
+                    tabindex="{{ gallery_image.public_id }}"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                  >
+                    <div class="relative p-4 w-full max-w-2xl max-h-full">
+                      <div
+                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                      >
+                        <button
+                          type="button"
+                          class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                          data-modal-hide="popup-modal-{{ gallery_image.public_id }}"
+                        >
+                          <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                        <div class="p-4 text-center">
+                          <img src="{{ gallery_image.img_url }}" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <img
+                    id="uploadedImage"
+                    style="width: 70px; height: 70px; border: 1px solid #ccc"
+                    src="{{ gallery_image.img_url }}"
+                    alt="{{ gallery_image.public_id }}"
+                  />
+                </td>
+                <td class="px-6 py-4">
+                  <button
+                    type="button"
+                    class="deleteBtn focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                    data-id="{{ gallery_image.public_id }}"
+                    data-type="logo"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- Modal toggle -->
+        <button
+          data-modal-target="upload-client"
+          data-modal-toggle="upload-client"
+          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="button"
+        >
+          <i class="fas fa-plus"></i> Add gallery image
+        </button>
+        <!-- Main modal -->
+        <div
+          id="upload-client"
+          tabindex="-1"
+          aria-hidden="true"
+          class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        >
+          <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div
+                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+              >
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                  select gallery image
+                </h3>
+                <button
+                  type="button"
+                  class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  data-modal-hide="upload-client"
+                >
+                  <svg
+                    class="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-4 md:p-5">
+                <form
+                  id="uploadclientLogo"
+                  class="space-y-4"
+                  method="post"
+                  action="{{ url_for('main.home_expand_images')}}"
                   enctype="multipart/form-data"
                 >
                   <label
