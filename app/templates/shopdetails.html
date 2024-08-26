@@ -273,7 +273,7 @@
 						<ul>
 							<li><a href="{{ url_for('static', filename='index.html') }}"> Home </a></li>
 							<li> <a href="{{ url_for('static', filename='shop.html') }}">Shop</a> </li>
-							<li> Ceramic Mug Cup </li>
+							<li> {{ product.name }} </li>
 						</ul>
 					</div>
 				</div>
@@ -287,48 +287,45 @@
 			<div class="col-lg-6 col-md-6">
 			  	<div class="tab style-three">
 					<div class="tab_content">
+						{% for img in product.images%}
 						<div class="tabs_item">
-							<img src="{{ url_for('static', filename='assets/images/resource/mug1.jpg') }}">
-								
+							<img src="{{ img.image_url }}">	
 						</div> 
-						<div class="tabs_item">
-							<img src="{{ url_for('static', filename='assets/images/resource/mug2.jpg') }}">
-							<!-- tab icon -->
-								
-						</div> <!-- / tabs_item -->
-
-						<div class="tabs_item">
-							<img src="{{ url_for('static', filename='assets/images/resource/mug3.jpg') }}">
-							<!-- tab icon -->
-								
-						</div> <!-- / tabs_item -->
+						{% endfor %}
 					 </div> <!-- / tab_content -->
 
 					 <ul class="tabs">
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><img src="{{ url_for('static', filename='assets/images/resource/mug-1.jpg') }}" alt=""></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><img src="{{ url_for('static', filename='assets/images/resource/mug-2.jpg') }}" alt=""></a></li>
-						<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><img src="{{ url_for('static', filename='assets/images/resource/mug-3.jpg') }}" alt=""></a></li>
+						{% for img in product.images%}
+						<li ><a href="{{ url_for('static', filename='shop-details.html#') }}">
+							<img src="{{  img.image_url }}" alt="" style="width: 100px;height: 100px;" >
+						</a>
+					    </li>
+						{% endfor %}
 					 </ul> <!-- / tabs -->
 				</div> 
 			</div>	
 			<div class="col-lg-6 col-md-6">
 				<!-- category title -->
 				<div class="category-title">
-					<h2>Ceramic Mug Cup</h2>
+					<h2>{{ product.name }}</h2>
 				</div>
 				<!-- category icon -->
 
 				<!-- category price -->
 				<div class="category-price">
-					<h1> $15.98 <span>$20.98</span></h1>
+					price <h1> {{ product.price - product.discount_percent }} <span> {{ product.price }}</span></h1>
 				</div>
 				<!-- description -->
 				<div class="category-description">
-					<p>Dramatically reinvent adaptive bandwidth vis reliable infrastructures to the progressively iterate distributed interfaces for client-based. Intrinsicly are a plagiarize one-to-one value after adaptive initiatives via equity invested filds manufactured productsconvergence.</p>
+					<p>{{ product.description }}</p>
 				</div>
 				<!-- category color -->
 				<div class="category-color">
-					<p> Colors <span>Black</span></p>
+					<p> Colors <div>
+						{% for color in product.colors.split(",") %}
+                         <span>{{color}}</span>
+						{% endfor %}
+					</div></p>
 				</div>
 				<div class="category-count-button">
 					<!-- product count -->
@@ -391,7 +388,9 @@
 									  <tr class="tabs-bg">
 									  	
 									    <td class="table-title"> Colors </td>
-									    <td class="table-text"> : Black, Blue, Purple </td>
+									    <td class="table-text"> :{% for color in product.colors.split(",") %}
+											<span>{{color}}</span>,
+										   {% endfor %} </td>
 									  </tr>
 									  <tr class="tabs-bg">
 									    <td class="table-title"> Size </td>

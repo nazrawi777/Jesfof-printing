@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, session, request, flash
+from flask import Blueprint, jsonify, render_template, redirect, url_for, session, request, flash
 from werkzeug.utils import secure_filename
 from app import db
 from app.models.model import Product,ProductCategory
@@ -30,9 +30,6 @@ def product_detail(product_id):
 @product_bp.route("/admin/add_product" ,  methods=["GET","POST"])
 def add_product():
     if request.method == 'POST':
-        print("-----l----")
-        print(request.files.get("image"))
-        print(request.form.get("name"))
         name = request.form.get('name')
         category = request.form.get('category')
         colors = request.form.get('color')
@@ -40,21 +37,25 @@ def add_product():
         discount_percent = request.form.get('discount_price')
         weight = request.form.get('weight')
         description = request.form.get('description')
-        image_file = request.files.get('image')
-        print("Made It to HEre ")
-        if image_file and allowed_file(image_file.filename):
-            print("Made It to HEre ")
-            # Upload image to Cloudinary
-            upload_result = cloudinary.uploader.upload(
-                image_file, resource_type='auto')
-            
+
+        image_file = request.files.getlist('image')
+        upload_results = []
+
+        if image_file:
+            for image in image_file:
+                result = cloudinary.uploader.upload(image)
+                upload_results.append({
+                                      "image_url":result["secure_url"],
+                                      "public_id":result["public_id"]}
+            )
+               
             new_product = Product(name=name, price=price,
-                                  images=[{
-                                      "image_url":upload_result["secure_url"],
-                                      "public_id":upload_result["public_id"]
-                                  }], description=description,discount_percent=discount_percent,weight=weight,colors=colors)
+                                  images=upload_results, description=description,discount_percent=discount_percent,weight=weight,colors=colors)
             if category:
                 new_product.categories.append(ProductCategory.query.get(category))
+
+            print(upload_results)
+            print("-----l----")
 
             db.session.add(new_product)
             db.session.commit()
@@ -72,8 +73,8 @@ def add_product():
 
 @product_bp.route('/admin/edit_product/<int:product_id>', methods=['GET', 'POST'])
 def edite_product(product_id):
-    product = Product.query.get_or_404(product_id)
     if request.method == 'POST':
+        product = Product.query.get_or_404(product_id)
         product.name = request.form.get('name')
         product.price = request.form.get('price')
         product.description = request.form.get('description')
@@ -87,6 +88,11 @@ def edite_product(product_id):
         product.log_action('Edited',f"Product '{product.name}' edited successfully.")
         flash('Product updated successfully.', 'success')
         return redirect(url_for('admin.admin'))
+    else:
+        category = ProductCategory.query.all()
+        products = Product.query.all()
+        return render_template("admin/edit-product.html",data={
+        "categories":category , "product":product })
 
 
 @product_bp.route('/admin/delete_product/<int:product_id>', methods=['POST'])
