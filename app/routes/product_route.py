@@ -27,10 +27,12 @@ def product_detail(product_id):
     return render_template('product_detail.html', product=product, related_products=related_products)
 
 
-@product_bp.route("/admin/add_product" , methods=["GET", "POST"])
+@product_bp.route("/admin/add_product" ,  methods=["GET","POST"])
 def add_product():
     if request.method == 'POST':
-        print("ADDDDDDDDDD")
+        print("-----l----")
+        print(request.files.get("image"))
+        print(request.form.get("name"))
         name = request.form.get('name')
         category = request.form.get('category')
         colors = request.form.get('color')
@@ -52,7 +54,7 @@ def add_product():
                                       "public_id":upload_result["public_id"]
                                   }], description=description,discount_percent=discount_percent,weight=weight,colors=colors)
             if category:
-                new_product.categories.append(ProductCategory.query.get(id=category)[0])
+                new_product.categories.append(ProductCategory.query.get(category))
 
             db.session.add(new_product)
             db.session.commit()
@@ -64,10 +66,6 @@ def add_product():
     else:
         category = ProductCategory.query.all()
         products = Product.query.all()
-
-        print(products)
-        for p in products:
-            print(p)
         return render_template("admin/add-product.html",data={
         "categories":category})
 
