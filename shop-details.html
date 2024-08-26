@@ -393,84 +393,57 @@
 				</div>
 			</div>
 			<div class="col-lg-12">
-				<div class="appoinment-tab">
+					<div class="appoinment-tab">
 					<!-- / tab -->
 					<div class="tab">
 						<!-- / tabs -->
 						<ul class="tabs">
-							<li><a href="shop-details.html#">Description</a></li>
-							<li><a href="shop-details.html#">Additional Info </a></li>
+							<li><a href="{{ url_for('static', filename='shop-details.html#') }}">Description</a></li>
+							<li><a href="{{ url_for('static', filename='shop-details.html#') }}">Additional Info </a></li>
 						</ul> 
 						<div class="tab_content">
 							<!-- / tabs_item -->
-							<div class="tabs_item">
-								<!-- post comment -->
-								<div class="post-comment-description">
-									<p>Leverage existing competitive e-tailers for clicks-and-mortar materials. Continually pursue long-term high-impact innovation vis-a-vis low high-yield markets. Efficiently incentiv superior infrastructures without future-proof communities. Credibly whiteboard transparent resources before distinctive alignments. Progressively scale plug-and meta-services whereas standardized niches. Globally incentivize effective e-markets via intuitive architectures. Compellingly facilitate next-generation experiences vis-a-vis business core are in competencies. Globally enable synergistic platforms rather than high-payoff convergence. Progressively enhance low-risk high-yield scenarios without 24/365 imperatives. Top compellingly incentivize out-of-the-box</p>
-									<p class="pt-2">Meta-services whereas standardized niches. Globally incentivize effective e-markets via intuitive architectures. Compellingly facilitate next-generation experiences vis-a-vis business core are in competencies. Globally enable synergistic platforms rather than high-payoff convergence. Progressively enhance low-risk high-yield scenarios without 24/365 imperatives. Top compellingly incentivize out-of-the-box convergence for synergistic benefits.</p>
-								</div>
-							</div> 
 							<!-- / tabs_item -->
 							<div class="tabs_item">
 								<!-- post comment -->
 								<table class="tab-items-table">
-									 <tr>
-									  	<!-- table data -->
-									    <td class="table-title"> Stand Up </td>
-									    <td class="table-text"> : KKAL </td>
-									  </tr>
+									<tr class="tabs-bg">
+										<!-- table data -->
+									  <td class="table-title"> Brand </td>
+									  <td class="table-text"> : JESOFE-PRINTING </td>
+									</tr>
 									  <tr class="tabs-bg">
-									  	<!-- table data -->
+									  	
 									    <td class="table-title"> Colors </td>
 									    <td class="table-text"> : Black, Blue, Purple </td>
 									  </tr>
-									  <tr>
-									  	<!-- table data -->
-									    <td class="table-title"> Weight </td>
-									    <td class="table-text"> : 35 KG </td>
-									  </tr>
 									  <tr class="tabs-bg">
-									  	<!-- table data -->
-									    <td class="table-title"> Wheels </td>
-									    <td class="table-text"> : 12” air/ Wide Truck Sleek Trade </td>
-									  </tr>
-									  <tr class="tabs-bg">
-									  	<!-- table data -->
-									    <td class="table-title"> Address </td>
-									    <td class="table-text"> : 18F Keangnam Landmark 72, PhamHung Str Hanoi, FL 100000 </td>
-									  </tr>
-									  
-								</table> <!-- widget table End -->
+									    <td class="table-title"> Size </td>
+									    <td class="table-text"> : Small,Midium,Large </td>
+									  </tr>  
+								</table> 
 							</div> 
-							<!-- / tabs_item -->
 							<div class="tabs_item">
-								<!-- post comment -->
-								<div class="post-comment">
-									<div class="post-comment-thumb">
-										<a href="blog-details.html"><img src="assets/images/resource/test5.png" alt=""></a>
+								<div class="rating-box">
+									<header>How Was the Quality of Your Printed Product?</header>
+									<div class="stars">
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
+									  <i class="fa-solid fa-star"></i>
 									</div>
-									<!-- comment icon -->
-									<div class="comment-icon-list">
-										<ul>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star-fill"></i></li>
-											<li><i class="bi bi-star"></i></li>
-										</ul>
-									</div>
-									<div class="post-title"><h4>David Alexon <span class="left-date">October 01, 2022</span></h4></div>
-									<div class="posts-reply">
-										<p>Appropriately syndicate integrated niches with virtual methods of emporeffective process improvements with high.</p>
-										<span class="rights-reply"> <i class="bi bi-reply-fill"></i>Reply</span>
-									</div>
-								</div>
+									<button class="submit-rating">Submit</button>
+								  </div>
+								  
+								  <div class="rating-alert" id="rating-alert"></div>
+								
 								
 							</div> 
-						</div> <!-- / tab_content -->
+						</div> 
 					</div> 
 				</div>
-            </div>
+			</div>
 			<div id="cart-popup" style="display: none;">
 				<div class="cart-content">
 					<div class="cart-header">
