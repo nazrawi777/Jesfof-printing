@@ -10,11 +10,12 @@ product_bp = Blueprint('product',__name__)
 
 @product_bp.route("/product")
 def product():
-    #products = Product.query.all()
+    products = Product.query.all()
     category = ProductCategory.query.all()
     print(category)
     return render_template('admin/products.html',data={
-        "categories":category
+        "categories":category,
+        "products":products
     })
 
 @product_bp.route('/product/<int:product_id>')
@@ -66,44 +67,82 @@ def add_product():
             return redirect(request.url)
     else:
         category = ProductCategory.query.all()
-        products = Product.query.all()
+       
         return render_template("admin/add-product.html",data={
-        "categories":category})
+        "categories":category, })
 
 
-@product_bp.route('/admin/edit_product/<int:product_id>', methods=['GET', 'POST'])
+@product_bp.route('/admin/edite_product/<int:product_id>', methods=['GET', 'POST'])
 def edite_product(product_id):
+    product = Product.query.get_or_404(product_id)
     if request.method == 'POST':
-        product = Product.query.get_or_404(product_id)
-        product.name = request.form.get('name')
-        product.price = request.form.get('price')
-        product.description = request.form.get('description')
-        image_file = request.files.get('image')
-        if image_file and allowed_file(image_file.filename):
-            filename = secure_filename(image_file.filename)
-            image_path = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
-            image_file.save(image_path)
-            product.image = filename
-        db.session.commit()
-        product.log_action('Edited',f"Product '{product.name}' edited successfully.")
-        flash('Product updated successfully.', 'success')
+        # Get form data and convert to dictionary
+        form_data = {
+            'name': request.form.get('name'),
+            'category': request.form.get('category'),
+            'colors': request.form.get('color'),
+            'price': request.form.get('original_price'),
+            'discount_percent': request.form.get('discount_price'),
+            'weight': request.form.get('weight'),
+            'description': request.form.get('description')
+        }
+
+        # Iterate over form data and update only changed fields
+        for key, value in form_data.items():
+            if value and value != str(getattr(product, key)):
+                setattr(product, key, value)
+
+        # Handle categories separately if necessary
+        if form_data['category']:
+            category = ProductCategory.query.get(form_data['category'])
+            if category and category not in product.categories:
+                product.categories = [category]
+
+        # Handle image uploads
+        image_files = request.files.getlist('image')
+        if image_files:
+            upload_results = []
+            for image in image_files:
+                result = cloudinary.uploader.upload(image)
+                upload_results.append({
+                    "image_url": result["secure_url"],
+                    "public_id": result["public_id"]
+                })
+            if upload_results:
+                product.images = upload_results
+
+        try:
+            db.session.commit()
+            flash('Product updated successfully.', 'success')
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Error updating product: {str(e)}', 'error')
+
         return redirect(url_for('admin.admin'))
     else:
         category = ProductCategory.query.all()
-        products = Product.query.all()
-        return render_template("admin/edit-product.html",data={
-        "categories":category , "product":product })
+        return render_template("admin/edit-product.html", product=product,categories=category)
 
 
 @product_bp.route('/admin/delete_product/<int:product_id>', methods=['POST'])
 def delete_product(product_id):
-    if 'admin_logged_in' not in session or not session['admin_logged_in']:
-        return redirect(url_for('admin.login'))
     product = Product.query.get_or_404(product_id)
-    db.session.delete(product)
-    db.session.commit()
-    product.log_action('Deleted',f"Product '{product.name}' deleted successfully")
-    flash('Product deleted successfully.', 'success')
+
+    try:
+        # Delete images from Cloudinary
+        if product.images:
+            for image in product.images:
+                cloudinary.uploader.destroy(image['public_id'])
+
+        # Delete the product from the database
+        db.session.delete(product)
+        db.session.commit()
+
+        flash('Product deleted successfully.', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting product: {str(e)}', 'error')
+
     return redirect(url_for('admin.admin'))
 
 
@@ -121,3 +160,4 @@ def add_product_category():
         else:
             flash('No image selected or invalid file type.', 'error')
             return redirect(url_for('product.product'))
+        
