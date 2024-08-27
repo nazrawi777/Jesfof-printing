@@ -28,6 +28,15 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
+
+  <style>
+    .custom-btn {
+    padding: 0.1rem 0.25rem; /* Reduce padding for a more compact size */
+    font-size: 0.75rem; /* Smaller font size */
+    line-height: 1; /* Reduce line height for a tighter fit */
+    border-radius: 0.2rem; /* Adjust border radius for a more compact look */
+}
+  </style>
   </head>
 
   <body id="reportsPage">
@@ -141,13 +150,20 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.discount_percent }}</td>
                     <td>{{ product.colors }}</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
+                    <td class="d-flex gap-2">
+                      <form action="{{ url_for('product.delete_product', product_id=product.id) }}" method="POST">
+                        <button type="submit" class="tm-product-delete-link">
+                          <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                      </form>
+
+                      <a href="{{ url_for('product.edite_product', product_id=product.id) }}" class="btn btn-primary btn-xs">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    
                     </td>
                   </tr>
-
+                </a>
                   {% endfor %}
                 </tbody>
               </table>

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, send_from_directory, url_for, session, request, flash
+from flask import Blueprint, jsonify, render_template, redirect, send_from_directory, url_for, session, request, flash
 from werkzeug.utils import secure_filename
 import os
 from app import db
@@ -157,3 +157,43 @@ def serve_imgs(filename):
         print("error")
         return "Error"
 
+@main_bp.route('/slide/delete/<string:id>', methods=['GET', 'POST'])
+def delete_slider(id):
+    try:
+        if request.method == "POST":
+            resource_type = request.values.get('type')
+            delete_result = ""
+            if resource_type == 'video':
+                delete_result = cloudinary.uploader.destroy(
+                    id, resource_type="video")
+            elif resource_type == "link":
+                YoutubeVideos.query.filter_by(id=id).delete()
+                db.session.commit()
+                return jsonify({'status': 'success', 'message': 'deleted successfully'})
+            else:
+                delete_result = cloudinary.uploader.destroy(id)
+            if delete_result['result'] == 'ok':
+                slider_type = request.values.get('type')
+                if slider_type == 'image':
+                    HeroSlider.query.filter_by(public_id=id).delete()
+                    db.session.commit()
+                    return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
+                elif slider_type == 'about':
+                    AboutImges.query.filter_by(public_id=id).delete()
+                    db.session.commit()
+                    return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
+                elif slider_type == 'logo':
+                    Clients.query.filter_by(public_id=id).delete()
+                    db.session.commit()
+                    return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
+                elif slider_type == 'video':
+                    HeroVideos.query.filter_by(public_id=id).delete()
+                    db.session.commit()
+                    return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
+                else:
+                    return jsonify({'status': 'error', 'message': 'Failed to delete item'})
+            else:
+                return jsonify({'status': 'error', 'message': 'Failed to delete item'})
+    except cloudinary.exceptions.Error as e:
+        return jsonify({'status': 'error', 'message': 'Failed to delete item'})
+    return redirect(request.url)

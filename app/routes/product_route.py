@@ -79,7 +79,7 @@ def edite_product(product_id):
         # Get form data and convert to dictionary
         form_data = {
             'name': request.form.get('name'),
-            'category': request.form.get('category'),
+            'categories': request.form.get('category'),
             'colors': request.form.get('color'),
             'price': request.form.get('original_price'),
             'discount_percent': request.form.get('discount_price'),
@@ -89,14 +89,17 @@ def edite_product(product_id):
 
         # Iterate over form data and update only changed fields
         for key, value in form_data.items():
-            if value and value != str(getattr(product, key)):
+            if key != 'categories' and value and value != str(getattr(product, key)):
                 setattr(product, key, value)
 
-        # Handle categories separately if necessary
-        if form_data['category']:
-            category = ProductCategory.query.get(form_data['category'])
-            if category and category not in product.categories:
-                product.categories = [category]
+        # Handle categories separately
+        if form_data['categories']:
+            category = ProductCategory.query.get(form_data['categories'])
+            if category:
+                # Replace the current categories with the new one if it's not already associated
+                if category not in product.categories:
+                    product.categories = [category]  # Assign a list containing the single category
+
 
         # Handle image uploads
         image_files = request.files.getlist('image')
@@ -127,8 +130,9 @@ def edite_product(product_id):
 @product_bp.route('/admin/delete_product/<int:product_id>', methods=['POST'])
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
-
+    print(product)
     try:
+        print("product")
         # Delete images from Cloudinary
         if product.images:
             for image in product.images:
@@ -141,9 +145,12 @@ def delete_product(product_id):
         flash('Product deleted successfully.', 'success')
     except Exception as e:
         db.session.rollback()
-        flash(f'Error deleting product: {str(e)}', 'error')
+        print("Success")
+        print(f'Error deleting product: {str(e)}', 'error')
 
     return redirect(url_for('admin.admin'))
+
+#action="{{ url_for('delete_product', product_id=product.id) }}" method="POST"
 
 
 
