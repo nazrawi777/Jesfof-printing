@@ -1,4 +1,4 @@
-from flask import Blueprint , render_template
+from flask import Blueprint , render_template, session
 from app.models.model import Product
 
 shop_bp = Blueprint('shop',__name__)
@@ -7,6 +7,8 @@ shop_bp = Blueprint('shop',__name__)
 @shop_bp.route('/shop')
 def shop():
     products = Product.query.all()
+    session["user"] = 'Current user'
+    session["cart"] = []
     return render_template('shop.html',data={
         "products":products
     })
@@ -20,9 +22,9 @@ def shop_details(product_id):
     return render_template('shopdetails.html', product=product)
 
 
-
-@shop_bp.route('/add-cart')
-def add_shop_cart():
-      
+@shop_bp.route('/add-cart/product/<int:product_id>')
+def add_shop_cart(product_id):
+    cart_items = session["cart"]
+    cart_items.append(Product.query.filter_by(id=product_id).first())
     return render_template('shop-details.html')
 

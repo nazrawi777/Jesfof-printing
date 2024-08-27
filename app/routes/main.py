@@ -157,7 +157,7 @@ def serve_imgs(filename):
         print("error")
         return "Error"
 
-@main_bp.route('/slide/delete/<string:id>', methods=['GET', 'POST'])
+@main_bp.route('/slides/delete/<string:id>', methods=['GET', 'POST'])
 def delete_slider(id):
     try:
         if request.method == "POST":
@@ -188,6 +188,10 @@ def delete_slider(id):
                     return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
                 elif slider_type == 'video':
                     HeroVideos.query.filter_by(public_id=id).delete()
+                    db.session.commit()
+                    return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
+                elif slider_type == 'gallery_image':
+                    HeroExpandImage.query.filter_by(public_id=id).delete()
                     db.session.commit()
                     return jsonify({'status': 'success', 'message': 'Slider deleted successfully'})
                 else:

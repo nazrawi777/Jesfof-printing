@@ -35,8 +35,11 @@ def create_app():
     with app.app_context():
         db.create_all()
         from app.models.model import User
-        new_user = User(username="kal",password="9866544",role="Admin")
-        db.session.add(new_user)
-        db.session.commit()
-    
+        
+        if User.query.filter_by(username="admin").first() not in User.query.all():
+            new_user = User(username="admin",password="adim",role="Admin")
+            db.session.add(new_user)
+            db.session.commit()
+            
+        
     return app

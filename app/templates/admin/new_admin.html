@@ -324,7 +324,7 @@
             >
               <tr>
                 <th scope="col" class="px-6 py-3">id</th>
-             <!--   <th scope="col" class="px-6 py-3">name</th>-->
+                <!--   <th scope="col" class="px-6 py-3">name</th>-->
                 <th scope="col" class="px-6 py-3">preview</th>
                 <th scope="col" class="px-6 py-3">action</th>
               </tr>
@@ -338,7 +338,7 @@
                 >
                   {{ slidevideo.id }}
                 </th>
-            <!--     <td class="px-6 py-4">{{ slidevideo.public_id }}</td> -->
+                <!--     <td class="px-6 py-4">{{ slidevideo.public_id }}</td> -->
                 <td class="px-6 py-4">
                   <button
                     data-modal-target="popup-modal-{{ slidevideo.public_id }}"
@@ -704,9 +704,8 @@
           </div>
         </div>
       </div>
-      
-      
-       <div>
+
+      <div>
         <h3
           style="margin-top: 50px; margin-bottom: 20px"
           class="text-xl font-blanck"
@@ -897,15 +896,13 @@
           </div>
         </div>
       </div>
-      
-      
-      
+
       <div>
         <h3
           style="margin-top: 50px; margin-bottom: 20px"
           class="text-xl font-blanck"
         >
-         gallery image
+          gallery image
         </h3>
         <div class="relative overflow-x-auto">
           <table
@@ -989,7 +986,7 @@
                     type="button"
                     class="deleteBtn focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     data-id="{{ gallery_image.public_id }}"
-                    data-type="logo"
+                    data-type="gallery_image"
                   >
                     Delete
                   </button>
@@ -1241,7 +1238,12 @@
               </div>
               <!-- Modal body -->
               <div class="p-4 md:p-5">
-                <form id="uploadVideoLink" class="space-y-4" method="post"  action="{{ url_for('main.home_youtube_video')}}">
+                <form
+                  id="uploadVideoLink"
+                  class="space-y-4"
+                  method="post"
+                  action="{{ url_for('main.home_youtube_video')}}"
+                >
                   <div class="mb-6">
                     <label
                       for="link"
@@ -1317,6 +1319,24 @@
 
         setTimeout(() => location.reload(), 1000);
       }
+
+      $(document).ready(function () {
+        $(".deleteBtn").on("click", function (event) {
+          $.ajax({
+            url: "/slides/delete/" + $(this).data("id"),
+            type: "POST",
+            data: {
+              type: $(this).data("type"),
+            },
+            success: function (response) {
+              showNotice("item deleted successfully!", "success");
+            },
+            error: function (xhr, status, error) {
+              showNotice("Error deleting image", "error");
+            },
+          });
+        });
+      });
     </script>
   </body>
 </html>

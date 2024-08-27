@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, session, request, flash
+from flask import Blueprint, jsonify, render_template, redirect, url_for, session, request, flash
 
 from app.models.model import User,HeroSlider,HeroVideos,YoutubeVideos,AboutImges,Clients,HeroExpandImage
 
@@ -38,26 +38,29 @@ def admin():
       "youtube_videos":youtube_links,
   },image_url=image_url)
 
-@admin_bp.route('/login', methods=['GET', 'POST'])
+@admin_bp.route('/admin/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-    if not username or not password:
-        flash('Please enter both username and password.', 'error')
-    else:
-        find_user = User.query.filter_by(username=username).first()
-        if find_user and find_user.password == password:
-            session['admin_logged_in'] = True
-            session['username'] = username
-            session['role'] = find_user.role
-            return redirect(url_for('admin.admin'))
+        print(username,password)
+        if not username or not password:
+            print('Invalid username or password.', 'error')
+            return render_template('admin/login.html')
         else:
-            flash('Invalid username or password.', 'error')
-    return render_template('admin/login.html')
-
-
+            print('Invalid username or password. 2', 'error')
+            find_user = User.query.filter_by(username=username).first()
+            if find_user and find_user.password == password:
+                session['admin_logged_in'] = True
+                session['username'] = username
+                session['role'] = find_user.role
+                print(session)
+                return redirect(url_for('admin.admin'))
+            else:
+                return render_template('admin/login.html')
+    else:
+        return render_template('admin/login.html')
+        
 @admin_bp.route('/logout')
 def logout():
     session.pop('admin_logged_in', None)
