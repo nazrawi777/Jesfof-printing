@@ -1324,13 +1324,13 @@
         $(".deleteBtn").on("click", function (event) {
           $.ajax({
             url: "/slides/delete/" + $(this).data("id"),
-            type: "POST",
+            type: "POST", 
             data: {
               type: $(this).data("type"),
             },
             success: function (response) {
               showNotice("item deleted successfully!", "success");
-            },
+            }, 
             error: function (xhr, status, error) {
               showNotice("Error deleting image", "error");
             },

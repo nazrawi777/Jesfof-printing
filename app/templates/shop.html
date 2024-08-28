@@ -596,13 +596,12 @@
                               alt=""
                             />
                             <div class="shop-card">
-                              <a
-                                href="{{ url_for('static', filename='#') }}"
+                              <span
                                 class="add-to-cart"
                                 data-name="Shoping Bag Pack"
                                 data-price="35.00"
-                                data-image="assets/images/resource/shop4.jpg"
-                                >Add To Cart</a
+                                data-productid="{{ product.id }}"
+                                >Add To Cart</span
                               >
                             </div>
                           </div>
@@ -610,14 +609,11 @@
                             <div class="shop-social-list">
                               <ul>
                                 <li>
-                                  <a
-                                    href="{{ url_for('static', filename='#') }}"
+                                  <span
+                                    data-productid="{{ product.id }}"
                                     class="add-to-cart"
-                                    data-name="Shoping Bag Pack"
-                                    data-price="35.00"
-                                    data-image="assets/images/resource/shop4.jpg"
                                     ><i class="bi bi-cart3"></i
-                                  ></a>
+                                  ></span>
                                 </li>
                                 <li>
                                   <a
@@ -668,11 +664,11 @@
                             <div class="shop-social-list">
                               <ul>
                                 <li>
-                                  <a
-                                    href="{{ url_for('static', filename='#') }}"
+                                  <span
+                                    data-productid="{{ product.id }}"
                                     class="add-to-cart"
                                     ><i class="bi bi-cart3"></i
-                                  ></a>
+                                  ></span>
                                 </li>
                                 <li>
                                   <a
@@ -1169,7 +1165,7 @@
           cartPopup.style.display = "none";
         });
 
-        addToCartButtons.forEach((button) => {
+       /* addToCartButtons.forEach((button) => {
           button.addEventListener("click", (e) => {
             e.preventDefault();
             const name = button.getAttribute("data-name");
@@ -1191,7 +1187,7 @@
           cartItems.push(product);
           renderCartItems();
           updateCartCount(); // Update cart count
-        }
+        }*/
 
         function renderCartItems() {
           cartItemsContainer.innerHTML = "";
@@ -1200,9 +1196,9 @@
             const cartItem = document.createElement("div");
             cartItem.className = "cart-item";
             cartItem.innerHTML = `
-                <img src="{{ url_for('static', filename='${
-                  item.image
-                }') }}" alt="${item.name}" class="cart-item-image">
+                <img src="${item.image_url}" alt="${
+              item.name
+            }" class="cart-item-image">
                 <div class="cart-item-details">
                     <p class="cart-item-name">${item.name}</p>
                     <p class="cart-item-price">$${item.price.toFixed(2)}</p>
@@ -1492,6 +1488,80 @@
         const welcomeChatLi = createChatLi(welcomeMessage, "incoming");
         chatbox.appendChild(welcomeChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
+      });
+
+      function showNotice(message, type) {
+        toastMessage.textContent = message;
+        if (type === "success") {
+          toast.classList.add("success");
+        } else if (type === "error") {
+          toast.classList.add("error");
+        }
+        toast.classList.add("show");
+        toast.style.display = "block";
+        setTimeout(() => {
+          //toast.classList.remove('show');
+          toast.style.display = "none";
+        }, 3000); // Hide after 3 seconds
+
+        setTimeout(() => location.reload(), 1000);
+      }
+
+      $(document).ready(function () {
+        $(".add-to-cart").on("click", function (event) {
+          $.ajax({
+            url: "/add_to_cart/" + $(this).data("productid"),
+            type: "POST",
+            success: function (response) {
+              alert("item deleted successfully!", "success");
+
+              const cartItemsContainer = document.getElementById("cart-items");
+              const cartCount = document.getElementById("cart-count");
+              cartItemsContainer.innerHTML = "";
+          
+              fetch("/get/cart-items").then(res=> res.json())
+              .then(data=> {
+                
+               const cart = data.cart
+               cartCount.textContent = cart.length
+                
+               cart.forEach((item, index) => {
+                
+             const cartItem = document.createElement("div");
+             cartItem.className = "cart-item";
+             cartItem.innerHTML = `
+                 <img src="${item.image_url.image_url}" alt="${
+               item.name
+             }" class="cart-item-image">
+                 <div class="cart-item-details">
+                     <p class="cart-item-name">${item.name}</p>
+                     <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                 </div>
+                 <button class="delete-item" data-index="${item.id}">
+                 <i class="fas fa-trash-alt"></i>
+             </button>
+             `;
+             cartItemsContainer.appendChild(cartItem);
+
+
+             deleteButtons.forEach((button) => {
+            button.addEventListener("click", (e) => {
+              const index = button.getAttribute("data-index");
+              cartItems.splice(index, 1);
+              renderCartItems();
+              updateCartCount(); // Update cart count after deletion
+            });
+          });
+
+           })}).catch(err=> alert(err))
+             
+              //renderCartItems();
+            },
+            error: function (xhr, status, error) {
+              alert("Error deleting image", "error");
+            },
+          });
+        });
       });
     </script>
   </body>
