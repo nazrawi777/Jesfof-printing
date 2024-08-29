@@ -1,0 +1,31 @@
+deployment:
+  tasks:
+    - export DEPLOY_DIR=$HOME/home/amcoinxb/main/Jesfof-printing 
+    - echo "Starting deployment..."
+    
+    # Step 1: Navigate to the project directory
+    - echo "Navigating to $DEPLOY_DIR"
+    - cd $DEPLOY_DIR
+    
+    # Step 2: Create a virtual environment (if not already created)
+    - if [ ! -d "venv" ]; then python3 -m venv venv; fi
+    - source venv/bin/activate
+    
+    # Step 3: Install dependencies
+    - echo "Installing dependencies..."
+    - pip install -r requirements.txt
+    
+    # Step 4: Apply database migrations (if any)
+    - echo "Applying database migrations..."
+    - flask db upgrade
+    
+    # Step 5: Collect static files (if using Flask-Collect)
+    - echo "Collecting static files..."
+    - flask collect --noinput
+    
+    # Step 6: Restart the web server (e.g., Apache)
+    - echo "Restarting web server..."
+    - touch $DEPLOY_DIR/tmp/restart.txt
+
+    # Step 7: Finished
+    - echo "Deployment completed successfully."
