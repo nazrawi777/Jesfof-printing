@@ -1165,7 +1165,7 @@
           cartPopup.style.display = "none";
         });
 
-       /* addToCartButtons.forEach((button) => {
+        /* addToCartButtons.forEach((button) => {
           button.addEventListener("click", (e) => {
             e.preventDefault();
             const name = button.getAttribute("data-name");
@@ -1508,31 +1508,20 @@
       }
 
       $(document).ready(function () {
-        $(".add-to-cart").on("click", function (event) {
-          $.ajax({
-            url: "/add_to_cart/" + $(this).data("productid"),
-            type: "POST",
-            success: function (response) {
-              alert("item deleted successfully!", "success");
-
-              const cartItemsContainer = document.getElementById("cart-items");
-              const cartCount = document.getElementById("cart-count");
-              cartItemsContainer.innerHTML = "";
+        function renderCart(cartItem) {
+          const cartItemsContainer = document.getElementById("cart-items");
           
-              fetch("/get/cart-items").then(res=> res.json())
-              .then(data=> {
-                
-               const cart = data.cart
-               cartCount.textContent = cart.length
-                
-               cart.forEach((item, index) => {
-                
-             const cartItem = document.createElement("div");
-             cartItem.className = "cart-item";
-             cartItem.innerHTML = `
+          cartItemsContainer.innerHTML = "";
+
+
+          cartItem.forEach((item) => {
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+
+            cartItem.innerHTML = `
                  <img src="${item.image_url.image_url}" alt="${
-               item.name
-             }" class="cart-item-image">
+              item.name
+            }" class="cart-item-image">
                  <div class="cart-item-details">
                      <p class="cart-item-name">${item.name}</p>
                      <p class="cart-item-price">$${item.price.toFixed(2)}</p>
@@ -1541,21 +1530,53 @@
                  <i class="fas fa-trash-alt"></i>
              </button>
              `;
-             cartItemsContainer.appendChild(cartItem);
+            cartItemsContainer.appendChild(cartItem);
 
+            const deleteButtons = document.querySelectorAll(".delete-item");
 
-             deleteButtons.forEach((button) => {
-            button.addEventListener("click", (e) => {
-              const index = button.getAttribute("data-index");
-              cartItems.splice(index, 1);
-              renderCartItems();
-              updateCartCount(); // Update cart count after deletion
+            deleteButtons.forEach((button) => {
+              button.addEventListener("click", (e) => {
+                const product_id = button.getAttribute("data-index");
+
+                fetch("/delete_cart_item", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    product_id: product_id,
+                  }),
+                })
+                  .then((res) => res.json())
+                  .then((data) => getCartAndRender())
+                  .catch((error) => alert(error, "error"));
+              });
             });
           });
 
-           })}).catch(err=> alert(err))
-             
-              //renderCartItems();
+        }
+
+
+        function getCartAndRender() {
+          const totalAmount = document.getElementById("total-amount");
+          const cartCount = document.getElementById("cart-count");
+            fetch("/get/cart-items")
+              .then((res) => res.json())
+              .then((data) => {
+                renderCart(data.cart)
+                totalAmount.textContent = data.total
+                cartCount.textContent = data.quantity
+              
+              })
+              .catch((err) => showNotice(err));
+          }
+
+        $(".add-to-cart").on("click", function (event) {
+          $.ajax({
+            url: "/add_to_cart/" + $(this).data("productid"),
+            type: "POST",
+            success: function (response) {
+              getCartAndRender()
             },
             error: function (xhr, status, error) {
               alert("Error deleting image", "error");

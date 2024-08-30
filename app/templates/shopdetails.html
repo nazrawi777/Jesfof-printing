@@ -332,7 +332,7 @@
 					<!-- product button -->
 					<div class="category-button">
 						<div class="category-button">
-							<a href="{{ url_for('static', filename='#') }}" class="add-to-cart" data-name="Product Name" data-price="35.00" data-image="assets/images/resource/shop4.jpg">Add to Cart <i class="bi bi-cart3"></i></a>
+							<a class="add-to-cart" data-productid="{{ product.id }}">Add to Cart <i class="bi bi-cart3"></i></a>
 						</div>
 					</div>
 				</div>
@@ -354,12 +354,22 @@
 						<li><a href="#" id="share-button"><i class="bi bi-share"></i></a></li>
 						<!-- Social Media Icons (Initially Hidden) -->
 						<div id="social-icons" style="display: none;">
-							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="{{ url_for('static', filename='shop-details.html#') }}" class="social-icon"><i class="fab fa-tiktok"></i></a></li>
-							<!-- Copy Link Button -->
-							<li><a href="#" id="copy-link" data-clipboard-text="{{ request.url }}"><i class="bi bi-clipboard"></i></a></li>
+							<ul>
+								<!-- Facebook Share -->
+								<li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a></li>
+						
+								<!-- Twitter Share -->
+								<li><a href="https://twitter.com/intent/tweet?url={{ request.url }}&text=Check+this+out!" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a></li>
+						
+								<!-- TikTok Share (Note: TikTok doesn't have a direct share link; consider using a different platform) -->
+								<li><a href="#" class="social-icon" onclick="alert('TikTok does not support direct web sharing. Please share manually.');"><i class="fab fa-tiktok"></i></a></li>
+						
+								<!-- Copy Link Button -->
+								<li><a href="#" id="copy-link" data-clipboard-text="{{ request.url }}" class="social-icon"><i class="bi bi-clipboard"></i></a></li>
+							</ul>
 						</div>
+					
+						
 					</ul>
 				</div>
 				
@@ -437,122 +447,63 @@
 					<h2>Related Products</h2>
 				</div>
 			</div>
-            <div class="col-lg-3 col-md-6">
-				<div class="shop-single-box">
-					<div class="shop-box-inner">
-						<!-- shop thumb -->
-						<div class="shop-thumb">
-							<img src="{{ url_for('static', filename='assets/images/resource/shop5.jpg') }}" alt="">
-							<!-- Add To Cart -->
-							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
-							</div>
-						</div>
-						<!-- SHOP content -->
-						<div class="shop-content">
-							<!-- shop social list -->
-							<div class="shop-social-list">
-								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-								</ul>
-							</div>
-							<!-- shop title -->
-							<div class="shop-title">
-								<h4> Transparfnt Bread </h4>
-								<h6>$ 49.00 <span>$ 59.00</span></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="shop-single-box">
-					<div class="shop-box-inner">
-						<!-- shop thumb -->
-						<div class="shop-thumb">
-							<img src="{{ url_for('static', filename='assets/images/resource/shop6.jpg') }}" alt="">
-							<!-- Add To Cart -->
-							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
-							</div>
-						</div>
-						<!-- SHOP content -->
-						<div class="shop-content">
-							<!-- shop social list -->
-							<div class="shop-social-list">
-								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-								</ul>
-							</div>
-							<!-- shop title -->
-							<div class="shop-title">
-								<h4> Juice Tetra pack </h4>
-								<h6>$ 25.00 <span>$ 45.00</span></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="shop-single-box">
-					<div class="shop-box-inner">
-						<!-- shop thumb -->
-						<div class="shop-thumb">
-							<img src="{{ url_for('static', filename='assets/images/resource/shop7.jpg') }}" alt="">
-							<!-- Add To Cart -->
-							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
-							</div>
-						</div>
-						<!-- SHOP content -->
-						<div class="shop-content">
-							<!-- shop social list -->
-							<div class="shop-social-list">
-								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-								</ul>
-							</div>
-							<!-- shop title -->
-							<div class="shop-title">
-								<h4> Brand Shoping Bag </h4>
-								<h6>$ 39.00 <span>$ 49.00</span></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="shop-single-box">
-					<div class="shop-box-inner">
-						<!-- shop thumb -->
-						<div class="shop-thumb">
-							<img src="{{ url_for('static', filename='assets/images/resource/shop8.jpg') }}" alt="">
-							<!-- Add To Cart -->
-							<div class="shop-card">
-								<a href="{{ url_for('static', filename='shop-details.html#') }}">Add To Cart</a>
-							</div>
-						</div>
-						<!-- SHOP content -->
-						<div class="shop-content">
-							<!-- shop social list -->
-							<div class="shop-social-list">
-								<ul>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-cart3"></i></a></li>
-									<li><a href="{{ url_for('static', filename='shop-details.html#') }}"><i class="bi bi-search"></i></a></li>
-								</ul>
-							</div>
-							<!-- shop title -->
-							<div class="shop-title">
-								<h4> Folder Paper Bag </h4>
-								<h6>$ 35.00 <span>$ 45.00</span></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> 
+
+
+{% for product in related_products %}
+<div class="col-lg-4 col-md-6">
+	<div
+	  class="shop-single-box"
+	  data-categories="Business Cart"
+	  data-popularity="3"
+	>
+	  <div class="shop-box-inner">
+		<div class="shop-thumb">
+		  <img
+			src="{{ product.images[0].image_url }}"
+			alt=""
+		  />
+		  <div class="shop-card">
+			<span
+			  class="add-to-cart"
+			  data-name="Shoping Bag Pack"
+			  data-price="35.00"
+			  data-productid="{{ product.id }}"
+			  >Add To Cart</span
+			>
+		  </div>
+		</div>
+		<div class="shop-content">
+		  <div class="shop-social-list">
+			<ul>
+			  <li>
+				<span
+				  data-productid="{{ product.id }}"
+				  class="add-to-cart"
+				  ><i class="bi bi-cart3"></i
+				></span>
+			  </li>
+			  <li>
+				<a
+				  href="{{ url_for('shop.shop_details', product_id=product.id) }}"
+				  ><i class="bi bi-search"></i
+				></a>
+			  </li>
+			</ul>
+		  </div>
+		  <div class="shop-title">
+			<h4>{{ product.name }}</h4>
+			<h6>
+			  $ {{ product.price }}
+			  <span>$ {{ product.price }} </span>
+			</h6>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+{% endfor %}
+
 		</div>
 	</div>
 </div>
@@ -765,29 +716,29 @@ document.addEventListener("DOMContentLoaded", function () {
         cartPopup.style.display = "none";
     });
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            e.preventDefault();
-            const name = button.getAttribute("data-name");
-            const price = parseFloat(button.getAttribute("data-price"));
-            const image = button.getAttribute("data-image");
+    // addToCartButtons.forEach(button => {
+    //     button.addEventListener("click", (e) => {
+    //         e.preventDefault();
+    //         const name = button.getAttribute("data-name");
+    //         const price = parseFloat(button.getAttribute("data-price"));
+    //         const image = button.getAttribute("data-image");
 
-            const product = {
-                name,
-                price,
-                image
-            };
+    //         const product = {
+    //             name,
+    //             price,
+    //             image
+    //         };
 
-            addProductToCart(product);
-            cartPopup.style.display = "block"; // Open cart pop-up
-        });
-    });
+    //         addProductToCart(product);
+    //         cartPopup.style.display = "block"; // Open cart pop-up
+    //     });
+    // });
 
-    function addProductToCart(product) {
-        cartItems.push(product);
-        renderCartItems();
-        updateCartCount(); // Update cart count
-    }
+    // function addProductToCart(product) {
+    //     cartItems.push(product);
+    //     renderCartItems();
+    //     updateCartCount(); // Update cart count
+    // }
 
     function renderCartItems() {
         cartItemsContainer.innerHTML = "";
@@ -1003,8 +954,100 @@ document.addEventListener("DOMContentLoaded", () => {
     const welcomeChatLi = createChatLi(welcomeMessage, "incoming");
     chatbox.appendChild(welcomeChatLi);
     chatbox.scrollTo(0, chatbox.scrollHeight);
+
+
+	// Copy link to clipboard using Clipboard API
+    document.getElementById('copy-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action
+
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => {
+                
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    });
 });
 
+$(document).ready(function () {
+        function renderCart(cartItem) {
+          const cartItemsContainer = document.getElementById("cart-items");
+          
+          cartItemsContainer.innerHTML = "";
+
+
+          cartItem.forEach((item) => {
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+
+            cartItem.innerHTML = `
+                 <img src="${item.image_url.image_url}" alt="${
+              item.name
+            }" class="cart-item-image">
+                 <div class="cart-item-details">
+                     <p class="cart-item-name">${item.name}</p>
+                     <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                 </div>
+                 <button class="delete-item" data-index="${item.id}">
+                 <i class="fas fa-trash-alt"></i>
+             </button>
+             `;
+            cartItemsContainer.appendChild(cartItem);
+
+            const deleteButtons = document.querySelectorAll(".delete-item");
+
+            deleteButtons.forEach((button) => {
+              button.addEventListener("click", (e) => {
+                const product_id = button.getAttribute("data-index");
+
+                fetch("/delete_cart_item", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    product_id: product_id,
+                  }),
+                })
+                  .then((res) => res.json())
+                  .then((data) => getCartAndRender())
+                  .catch((error) => alert(error, "error"));
+              });
+            });
+          });
+
+        }
+
+
+        function getCartAndRender() {
+          const totalAmount = document.getElementById("total-amount");
+          const cartCount = document.getElementById("cart-count");
+            fetch("/get/cart-items")
+              .then((res) => res.json())
+              .then((data) => {
+                renderCart(data.cart)
+                totalAmount.textContent = data.total
+                cartCount.textContent = data.quantity
+              
+              })
+              .catch((err) => showNotice(err));
+          }
+
+        $(".add-to-cart").on("click", function (event) {
+          $.ajax({
+            url: "/add_to_cart/" + $(this).data("productid"),
+            type: "POST",
+            success: function (response) {
+              getCartAndRender()
+            },
+            error: function (xhr, status, error) {
+              alert("Error deleting image", "error");
+            },
+          });
+        });
+      });
+ 
 	</script>
   
   
