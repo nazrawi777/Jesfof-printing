@@ -9,26 +9,27 @@ shop_bp = Blueprint('shop',__name__)
 @shop_bp.route('/shop')
 def shop():
     category_name = request.args.get('query', '')
+
+    page = request.args.get('page', 1, type=int)
+    per_page = 10 
     
-    products =[]
-    if not category_name:
-        products = Product.query.all()
-    else:
-        # category = ProductCategory.query.filter_by(category_name=category_name).first()
-        # if category:
-        #     products = Product.query.join(product_category_association).filter( # type: ignore
-        #         product_category_association.c.category_id == category.id # type: ignore
-        #     ).all()
+    query = Product.query
+
+    if category_name:
         category_alias = aliased(ProductCategory)
         
-        # Join Product with ProductCategory through the association table
-        products = db.session.query(Product).join(
+        query = query.join(
             product_category_association
         ).join(
             category_alias, category_alias.id == product_category_association.c.category_id
         ).filter(
             category_alias.category_name == category_name
-        ).all()
+        )
+
+    products = query.paginate(page=page, per_page=per_page)
+    # Calculate total number of pages
+    total_products = Product.query.count()
+    total_pages = int(total_products /5)
             
             
     session["user"] = 'Current user'
@@ -37,9 +38,8 @@ def shop():
     categories = ProductCategory.query.all()
     return render_template('shop.html',data={
         "products":products,"categories":categories
-    })
+    },page=page, total_pages=total_pages)
     
-
 
 
 
