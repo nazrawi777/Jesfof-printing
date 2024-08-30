@@ -1,16 +1,42 @@
 from flask import Blueprint, jsonify , render_template, request, session
-from app.models.model import Product
+from app.models.model import Product,ProductCategory,product_category_association
+from sqlalchemy.orm import aliased
+from app import db
 
 shop_bp = Blueprint('shop',__name__)
 
 
 @shop_bp.route('/shop')
 def shop():
-    products = Product.query.all()
+    category_name = request.args.get('query', '')
+    
+    products =[]
+    if not category_name:
+        products = Product.query.all()
+    else:
+        # category = ProductCategory.query.filter_by(category_name=category_name).first()
+        # if category:
+        #     products = Product.query.join(product_category_association).filter( # type: ignore
+        #         product_category_association.c.category_id == category.id # type: ignore
+        #     ).all()
+        category_alias = aliased(ProductCategory)
+        
+        # Join Product with ProductCategory through the association table
+        products = db.session.query(Product).join(
+            product_category_association
+        ).join(
+            category_alias, category_alias.id == product_category_association.c.category_id
+        ).filter(
+            category_alias.category_name == category_name
+        ).all()
+            
+            
     session["user"] = 'Current user'
     session["cart"] = []
+    
+    categories = ProductCategory.query.all()
     return render_template('shop.html',data={
-        "products":products
+        "products":products,"categories":categories
     })
     
 

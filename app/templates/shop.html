@@ -489,75 +489,20 @@
               <div class="widget-categories-menu">
                 <ul id="category-list">
                   <li>
-                    <a href="javascript:void(0)" data-category="all">All</a>
-                  </li>
-                  <!-- Added All -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="banner"
-                      >Banner</a
+                    <a href="{{ url_for('shop.shop') }}" data-category="all"
+                      >All</a
                     >
                   </li>
+                  {% for category in data['categories'] %}
                   <li>
-                    <a href="javascript:void(0)" data-category="t-shirt"
-                      >T-Shirts</a
+                    <a
+                      href="{{ url_for('shop.shop' , query=category.category_name ) }}"
+                      data-category="all"
                     >
+                      {{ category.category_name }}
+                    </a>
                   </li>
-                  <li>
-                    <a href="javascript:void(0)" data-category="invitations"
-                      >Invitations</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="design"
-                      >Design</a
-                    >
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)" data-category="decoration"
-                      >Decoration</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="business-card"
-                      >Business Cards</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="squarebook"
-                      >Square Book</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="shopping-bag"
-                      >Shopping Bag</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="body-lotion"
-                      >Body Lotion</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="calendar"
-                      >Calendar</a
-                    >
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="cup">Cup</a>
-                  </li>
-                  <!-- Updated category name -->
-                  <li>
-                    <a href="javascript:void(0)" data-category="tickets"
-                      >Tickets</a
-                    >
-                  </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -1510,9 +1455,8 @@
       $(document).ready(function () {
         function renderCart(cartItem) {
           const cartItemsContainer = document.getElementById("cart-items");
-          
-          cartItemsContainer.innerHTML = "";
 
+          cartItemsContainer.innerHTML = "";
 
           cartItem.forEach((item) => {
             const cartItem = document.createElement("div");
@@ -1553,30 +1497,27 @@
               });
             });
           });
-
         }
-
 
         function getCartAndRender() {
           const totalAmount = document.getElementById("total-amount");
           const cartCount = document.getElementById("cart-count");
-            fetch("/get/cart-items")
-              .then((res) => res.json())
-              .then((data) => {
-                renderCart(data.cart)
-                totalAmount.textContent = data.total
-                cartCount.textContent = data.quantity
-              
-              })
-              .catch((err) => showNotice(err));
-          }
+          fetch("/get/cart-items")
+            .then((res) => res.json())
+            .then((data) => {
+              renderCart(data.cart);
+              totalAmount.textContent = data.total;
+              cartCount.textContent = data.quantity;
+            })
+            .catch((err) => showNotice(err));
+        }
 
         $(".add-to-cart").on("click", function (event) {
           $.ajax({
             url: "/add_to_cart/" + $(this).data("productid"),
             type: "POST",
             success: function (response) {
-              getCartAndRender()
+              getCartAndRender();
             },
             error: function (xhr, status, error) {
               alert("Error deleting image", "error");
