@@ -448,7 +448,7 @@
                 Contact Us <i class="bi bi-arrow-right"></i>
               </a>
               <a href="#" id="cart-icon">
-                <i class="bi bi-cart3"></i> <span id="cart-count">0</span>
+                <i class="bi bi-cart3"></i> <span class="cart-count">0</span>
               </a>
             </div>
           </div>
@@ -475,7 +475,7 @@
             </li>
             <li>
               <a href="#" id="cart-icon">
-                <i class="bi bi-cart3"></i> <span id="cart-count">0</span>
+                <i class="bi bi-cart3"></i> <span class="cart-count">0</span>
                 </a>
             </li>
           </ul>
@@ -1612,23 +1612,27 @@
 
         function getCartAndRender() {
           const totalAmount = document.getElementById("total-amount");
-          const cartCount = document.getElementById("cart-count");
+          const cartCount = document.querySelectorAll(".cart-count");
           fetch("/get/cart-items")
             .then((res) => res.json())
             .then((data) => {
               renderCart(data.cart);
               totalAmount.textContent = data.total;
-              cartCount.textContent = data.quantity;
+              cartCount.forEach(node=> node.textContent = data.quantity)
             })
             .catch((err) => showNotice(err));
         }
 
         $(".add-to-cart").on("click", function (event) {
+
+          
           $.ajax({
             url: "/add_to_cart/" + $(this).data("productid"),
             type: "POST",
             success: function (response) {
               getCartAndRender();
+              const cartPopup = document.getElementById("cart-popup");
+              cartPopup.style.display = "block";
             },
             error: function (xhr, status, error) {
               alert("Error deleting image", "error");

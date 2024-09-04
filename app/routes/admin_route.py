@@ -55,7 +55,7 @@ def login():
                 session['username'] = username
                 session['role'] = find_user.role
                 print(session)
-                return redirect(url_for('admin.admin'))
+                return redirect(url_for('product.product'))
             else:
                 return render_template('admin/login.html')
     else:
@@ -66,5 +66,9 @@ def logout():
     session.pop('admin_logged_in', None)
     return redirect(url_for('login'))
 
+
+@admin_bp.route('/dash-bord')
+def dash_bord():
+    return render_template("admin/index.html") 
 
 
